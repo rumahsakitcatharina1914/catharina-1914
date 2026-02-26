@@ -2,105 +2,15 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DoctorCard from '@/components/DoctorCard';
 import { Stethoscope } from 'lucide-react';
+import { readCollection } from '@/lib/dataStore';
 
 export const metadata = {
   title: 'Dokter | Rumah Sakit Catharina 1914',
   description: 'Daftar dokter spesialis profesional di Rumah Sakit Catharina 1914 dengan pengalaman dan keahlian di berbagai bidang medis.',
 };
 
-export default function DokterPage() {
-  const doctors = [
-    {
-      name: 'Budi Santoso',
-      specialization: 'Dokter Umum',
-      experience: 15,
-      education: 'Universitas Indonesia, Fakultas Kedokteran',
-      schedule: [
-        { day: 'Senin - Jumat', time: '09:00 - 13:00' },
-        { day: 'Sabtu', time: '09:00 - 11:00' },
-      ],
-    },
-    {
-      name: 'Dr. Siti Nurhaliza',
-      specialization: 'Spesialis Jantung',
-      experience: 20,
-      education: 'Universitas Gadjah Mada, Spesialis Kardiologi',
-      schedule: [
-        { day: 'Selasa, Kamis', time: '14:00 - 17:00' },
-        { day: 'Sabtu', time: '10:00 - 13:00' },
-      ],
-    },
-    {
-      name: 'Prof. Ahmad Wahab',
-      specialization: 'Spesialis Penyakit Dalam',
-      experience: 30,
-      education: 'Universitas Airlangga, Professor Konsultan',
-      schedule: [
-        { day: 'Senin, Rabu', time: '13:00 - 16:00' },
-        { day: 'Jumat', time: '09:00 - 12:00' },
-      ],
-    },
-    {
-      name: 'Dr. Eka Putri Wijaya',
-      specialization: 'Spesialis Anak & Pediatri',
-      experience: 18,
-      education: 'Universitas Diponegoro, Spesialis Anak',
-      schedule: [
-        { day: 'Senin - Jumat', time: '08:00 - 12:00' },
-        { day: 'Sabtu', time: '08:00 - 10:00' },
-      ],
-    },
-    {
-      name: 'Dr. Rini Hardianti',
-      specialization: 'Spesialis Kandungan & Kebidanan',
-      experience: 22,
-      education: 'Universitas Hasanuddin, Spesialis Obstetri',
-      schedule: [
-        { day: 'Selasa, Kamis', time: '15:00 - 18:00' },
-        { day: 'Minggu', time: '09:00 - 12:00' },
-      ],
-    },
-    {
-      name: 'Dr. Hendra Kurniawan',
-      specialization: 'Spesialis Saraf & Neurologi',
-      experience: 16,
-      education: 'Universitas Padjadjaran, Spesialis Neurologi',
-      schedule: [
-        { day: 'Rabu, Jumat', time: '14:00 - 17:00' },
-        { day: 'Sabtu', time: '10:00 - 13:00' },
-      ],
-    },
-    {
-      name: 'Dr. Megawati Lestari',
-      specialization: 'Spesialis Mata',
-      experience: 19,
-      education: 'Universitas Indonesia, Spesialis Oftalmologi',
-      schedule: [
-        { day: 'Selasa, Jumat', time: '13:00 - 16:00' },
-        { day: 'Minggu', time: '10:00 - 13:00' },
-      ],
-    },
-    {
-      name: 'Dr. Yusuf Rahman',
-      specialization: 'Spesialis Bedah Umum',
-      experience: 25,
-      education: 'Universitas Brawijaya, Spesialis Bedah',
-      schedule: [
-        { day: 'Senin, Rabu', time: '14:00 - 17:00' },
-        { day: 'Jumat', time: '10:00 - 12:00' },
-      ],
-    },
-    {
-      name: 'Dr. Tina Suryanto',
-      specialization: 'Spesialis Kulit & Kelamin',
-      experience: 17,
-      education: 'Universitas Sebelas Maret, Spesialis Dermatologi',
-      schedule: [
-        { day: 'Selasa, Sabtu', time: '15:00 - 18:00' },
-        { day: 'Jumat', time: '09:00 - 12:00' },
-      ],
-    },
-  ];
+export default async function DokterPage(){
+  const doctors = await readCollection('doctors');
 
   return (
     <>

@@ -47,11 +47,11 @@ export default function Header() {
         {/* CTA Button */}
         <div className="hidden md:flex gap-3">
           <Link
-            href="#hubungi"
+            href="/admin/login"
             className="px-8 py-3 rounded-xl text-white hover:shadow-xl transition-all font-bold text-sm hover:scale-105 transform duration-300"
             style={{backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'}}
           >
-            Hubungi Kami
+            Masuk Sebagai Admin
           </Link>
         </div>
 
@@ -80,12 +80,12 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="#hubungi"
+              href="/admin/login"
               className="block px-6 py-3 text-white rounded-xl hover:shadow-xl transition-all text-center font-bold mt-6 transform hover:scale-105"
               style={{backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'}}
               onClick={() => setIsMenuOpen(false)}
             >
-              Hubungi Kami
+              Masuk Sebagai Admin
             </Link>
           </div>
         </div>

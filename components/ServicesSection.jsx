@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { Ambulance, Bed, Stethoscope, Microscope, Users, Zap, ArrowRight, Check, Instagram, ExternalLink} from 'lucide-react';
 
 export default function ServicesSection() {
@@ -47,29 +49,24 @@ export default function ServicesSection() {
     },
   ];
 
-  const instagramPost = [
-    {
-      title: "Postingan Instagram 1",
-      href:"https://www.instagram.com/reel/DSW8ipeAe2C/?igsh=dnBpbDltanpmZXd5/embed",
-      
-    },
-        {
-      title: "Postingan Instagram 2",
-      href:"https://www.instagram.com/p/DU5IKYsAbDF/?igsh=MTVpb2EwM2FhYW9hcQ==/embed",
-   
-    },
-        {
-      title: "Postingan Instagram 3",
-      href:"https://www.instagram.com/reel/DUQEe7hkWkS/?igsh=MXZuNjB6YjNlemM0dA==/embed",
+  const [instagramPosts, setInstagramPosts] = useState([]);
 
-    },
+  useEffect(() => {
+    const loadInstagramPosts = async () => {
+      try {
+        const response = await fetch('/api/instagram-feeds');
+        if (!response.ok) return;
+        const data = await response.json();
+        setInstagramPosts(data);
+      } catch {
+        // fallback: keep empty state
+      }
+    };
 
-  ];
+    loadInstagramPosts();
+  }, []);
 
-  const getEmbedUrl = (postUrl) => {
-    const normalized = postUrl.endsWith('/') ? postUrl : `${postUrl}/`;
-    return `${normalized}embed`;
-  };
+
 
   return (
     <section className="py-20 sm:py-32 bg-gradient-to-b from-white via-neutral-light to-white">
@@ -142,19 +139,38 @@ export default function ServicesSection() {
                 <ExternalLink size={18} />
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {instagramPost.map((post, index) => (
-                <div key={index} className="p-4 flex justify-center">
-                  <div className="bg-white rounded-xl p-4">
-                    <blockquote
-                      className="instagram-media"
-                      data-instgrm-permalink={post.href}
-                      data-instgrm-version="14"
-                      />
-                  </div>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {instagramPosts.length === 0 && (
+              <div className="md:col-span-3 rounded-2xl border border-dashed border-border p-8 text-center text-foreground/70">
+                Belum ada feed Instagram. Tambahkan dari dashboard admin.
+              </div>
+            )}
+
+            {instagramPosts.map((post) => (
+              <a
+                key={post.id}
+                href={post.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-2xl border border-border bg-neutral-light p-4 hover:shadow-lg transition-all"
+              >
+                      <div className="overflow-hidden rounded-xl border border-border bg-white">
+                        <img
+                          src={post.thumbnail}
+                          alt={post.title}
+                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="mt-4">
+                        <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{post.title}</p>
+                        <span className="inline-flex mt-2 items-center gap-2 text-primary text-sm font-semibold hover:text-primary-dark transition-colors">
+                          Lihat di Instagram
+                          <ArrowRight size={16} />
+                        </span>
+                      </div>
+                    </a>
+                  ))}
                 </div> 
-              ))}
-            </div>
         </div>
       </div>
     </section>

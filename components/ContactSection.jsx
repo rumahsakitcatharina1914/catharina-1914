@@ -11,6 +11,8 @@ export default function ContactSection() {
     longitude: 99.60747961534287,
   };
 
+  const [submitStatus, setSubmitStatus] = useState('');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,10 +20,26 @@ export default function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setSubmitStatus('Mengirim pesan...');
+
+      try {
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Gagal mengirim pesan');
+      }
+
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setSubmitStatus('Pesan berhasil dikirim. Terima kasih!');
+      } catch {
+      setSubmitStatus('Terjadi kendala saat mengirim pesan. Silakan coba lagi.');
+      }
   };
 
   const contacts = [
@@ -199,7 +217,9 @@ export default function ContactSection() {
                 <Send size={20} className="group-hover:translate-x-1 transition-transform" />
                 Kirim Pesan
               </button>
-
+              {submitStatus && (
+                <p className="text-sm text-foreground/70 font-medium">{submitStatus}</p>
+              )}
             </form>
           </div>
 
