@@ -7,7 +7,7 @@ export function middleware(request) {
   const { pathname } = request.nextUrl;
   
   // Proteksi halaman admin (kecuali login)
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+  if (pathname.startsWith('/admin') && pathname !== '/admin') {
     const session = request.cookies.get(COOKIE_NAME);
     
     // Kalau tidak ada session atau value salah, redirect ke login
@@ -17,11 +17,11 @@ export function middleware(request) {
   }
   
   // Kalau sudah login tapi coba akses login page, redirect ke dashboard
-  if (pathname === '/admin/login') {
+  if (pathname === '/admin') {
     const session = request.cookies.get(COOKIE_NAME);
     
     if (session?.value === COOKIE_VALUE) {
-      return NextResponse.redirect(new URL('/admin', request.url));
+      return NextResponse.redirect(new URL('/admin/dashboard', request.url));
     }
   }
   

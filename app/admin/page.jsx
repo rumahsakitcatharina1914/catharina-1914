@@ -1,98 +1,126 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Instagram, Mail, Stethoscope, TrendingUp } from 'lucide-react';
-import Link from 'next/link';
+import { useState } from 'react';
+import { Lock, Mail, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
-export default function AdminDashboard() {
-  const [stats, setStats] = useState({
-    feeds: 0,
-    messages: 0,
-    doctors: 0,
-  });
+export default function AdminLoginPage() {
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const loadStats = async () => {
-      const [feedRes, msgRes, docRes] = await Promise.all([
-        fetch('/api/instagram-feeds'),
-        fetch('/api/messages'),
-        fetch('/api/doctors'),
-      ]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
 
-      const feeds = feedRes.ok ? await feedRes.json() : [];
-      const messages = msgRes.ok ? await msgRes.json() : [];
-      const doctors = docRes.ok ? await docRes.json() : [];
-
-      setStats({
-        feeds: feeds.length,
-        messages: messages.length,
-        doctors: doctors.length,
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       });
-    };
 
-    loadStats();
-  }, []);
+      const data = await response.json();
 
-  const cards = [
-    {
-      title: 'Instagram Feeds',
-      value: stats.feeds,
-      icon: Instagram,
-      color: 'from-pink-500 to-purple-600',
-      href: '/admin/feeds',
-    },
-    {
-      title: 'Pesan Masuk',
-      value: stats.messages,
-      icon: Mail,
-      color: 'from-blue-500 to-cyan-600',
-      href: '/admin/messages',
-    },
-    {
-      title: 'Total Dokter',
-      value: stats.doctors,
-      icon: Stethoscope,
-      color: 'from-green-500 to-emerald-600',
-      href: '/admin/doctors',
-    },
-  ];
+      if (response.ok && data.ok) {
+        // Redirect ke dashboard (bukan /admin lagi!)
+        window.location.href = '/admin/dashboard';
+      } else {
+        setError(data?.message || 'Login gagal');
+        setLoading(false);
+      }
+    } catch (err) {
+      setError('Terjadi kesalahan jaringan');
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8">
-      <div>
-        <h1 className="text-4xl font-serif font-bold text-foreground mb-2">Dashboard</h1>
-        <p className="text-foreground/70">Selamat datang di Admin Panel RS Catharina 1914</p>
-      </div>
+    <main className="min-h-screen bg-gradient-to-br from-primary/10 via-white to-secondary/10 flex items-center justify-center px-4">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-3xl mb-4 shadow-lg">
+            <Lock className="text-white" size={40} />
+          </div>
+          <h1 className="text-4xl font-serif font-bold text-foreground mb-2">Login Admin</h1>
+          <p className="text-foreground/70">Rumah Sakit Catharina 1914</p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {cards.map((card) => {
-          const Icon = card.icon;
-          return (
-            <Link
-              key={card.title}
-              href={card.href}
-              className="bg-white rounded-2xl border border-border p-6 hover:shadow-lg transition-all group"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div
-                  className={`p-3 rounded-xl bg-gradient-to-br ${card.color} text-white`}
-                >
-                  <Icon size={24} />
-                </div>
-                <TrendingUp className="text-green-500" size={20} />
+        <div className="w-full bg-white rounded-2xl border border-border p-8 shadow-2xl">
+          <p className="text-foreground/70 text-sm mb-6 text-center">
+            Masukkan akun Gmail dan password admin yang benar untuk membuka dashboard.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                Email Gmail
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/50" size={20} />
+                <input
+                  type="email"
+                  className="w-full pl-11 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-neutral-light"
+                  placeholder="catharina2026@gmail.com"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
+                  disabled={loading}
+                />
               </div>
-              <h3 className="text-foreground/70 text-sm font-medium mb-1">{card.title}</h3>
-              <p className="text-4xl font-bold text-foreground">{card.value}</p>
-              <p className="text-sm text-primary mt-2 group-hover:underline">Lihat detail →</p>
-            </Link>
-          );
-        })}
-      </div>
+            </div>
 
-      <div className="bg-white rounded-2xl border border-border p-6">
-        <h2 className="text-2xl font-bold mb-4">Aktivitas Terbaru</h2>
-        <p className="text-foreground/70">Fitur aktivitas terbaru akan segera hadir...</p>
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                Password
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/50" size={20} />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="w-full pl-11 pr-12 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-neutral-light"
+                  placeholder="••••••••••"
+                  value={form.password}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                  required
+                  disabled={loading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/50 hover:text-foreground transition-colors"
+                  disabled={loading}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+            </div>
+
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm flex items-start gap-2">
+                <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
+                <span>{error}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3.5 rounded-lg text-white font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg"
+              style={{ backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)' }}
+            >
+              {loading ? 'Memproses...' : 'Masuk Admin'}
+            </button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <a href="/" className="text-sm text-primary hover:underline font-medium">
+              ← Kembali ke Beranda
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

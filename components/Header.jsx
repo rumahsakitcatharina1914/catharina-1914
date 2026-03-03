@@ -47,7 +47,7 @@ export default function Header() {
         {/* CTA Button */}
         <div className="hidden md:flex gap-3">
           <Link
-            href="admin/login"
+            href="/admin"
             className="px-8 py-3 rounded-xl text-white hover:shadow-xl transition-all font-bold text-sm hover:scale-105 transform duration-300"
             style={{backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'}}
           >
