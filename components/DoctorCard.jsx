@@ -1,19 +1,22 @@
 import { Clock, Award, Stethoscope, Calendar, User } from 'lucide-react';
 import Image from 'next/image';
 
+
+
 export default function DoctorCard({ doctor }) {
   return (
-    < div className="group relative h-full animate-fade-in-up">
+    <div className="group relative h-full animate-fade-in-up">
       <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 h-full flex flex-col transform hover:scale-105 hover:-translate-y-2">
         
         {/* Foto Dokter */}
-        <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
           {doctor?.image ? (
             <Image
               src={doctor.image}
               alt={doctor.name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover object-top"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
@@ -26,12 +29,12 @@ export default function DoctorCard({ doctor }) {
         </div>
 
         {/* Info Dokter */}
-        <div className="p-6">
-          <h3 className="text-2xl font-serif font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-            {doctor?.name?.replace(/^Dr\.?\s*/i, '')}
+        <div className="p-5">
+          <h3 className="text-xl font-serif font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+            {doctor?.name}
           </h3>
 
-          <p className="text-primary font-semibold mb-4">
+          <p className="text-sm text-primary font-semibold mb-3">
             {doctor?.specialization}
           </p>
 
@@ -62,19 +65,8 @@ export default function DoctorCard({ doctor }) {
               </div>
             </div>
           )}
-
-          {/* Tombol Jadwalkan */}
-          <a
-            href="#hubungi"
-            className="mt-6 w-full px-6 py-3 bg-primary text-black rounded-xl hover:bg-primary/90 transition-all font-semibold inline-flex items-center justify-center gap-2 group"
-          >
-            Jadwalkan Konsultasi
-            <span className="group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </a>
         </div>
       </div>
     </div>
   );
-}
+} 

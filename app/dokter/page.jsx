@@ -58,7 +58,7 @@ export default async function DokterPage(){
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {doctors.map((doctor, index) => (
-                <DoctorCard key={index} doctor={doctor} />
+                <DoctorCard key={doctor.id} doctor={doctor} />
               ))}
             </div>
           </div>

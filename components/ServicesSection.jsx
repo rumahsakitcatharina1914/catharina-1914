@@ -12,7 +12,7 @@ export default function ServicesSection() {
       description:
         'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman',
       features: ['Konsultasi dokter', 'Pemeriksaan kesehatan', 'Resep & Obat-obatan'],
-      color: 'from-blue-500 to-blue-600',
+      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Bed,
@@ -20,7 +20,7 @@ export default function ServicesSection() {
       description:
         'Perawatan intensif dengan fasilitas kamar modern dan nyaman',
       features: ['Kamar VIP & Standar', 'Perawatan 24 jam', 'Keluarga boleh menginap'],
-      color: 'from-emerald-500 to-emerald-600',
+     gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Ambulance,
@@ -28,7 +28,7 @@ export default function ServicesSection() {
       description:
         'Layanan darurat 24 jam siap membantu kondisi medis mendesak',
       features: ['Respons 24/7', 'Dokter spesialis', 'Ambulans siaga'],
-      color: 'from-red-500 to-red-600',
+      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Users,
@@ -36,7 +36,7 @@ export default function ServicesSection() {
       description:
         'Layanan kesehatan spesifik dari dokter ahli bidang tertentu',
       features: ['Mata', 'Jantung', 'Anak', 'Kandungan', 'dan lainnya'],
-      color: 'from-purple-500 to-purple-600',
+      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Microscope,
@@ -44,7 +44,7 @@ export default function ServicesSection() {
       description:
         'Diagnosa akurat dengan peralatan modern dan teknologi terkini',
       features: ['Tes darah', 'Rontgen', 'CT Scan', 'USG', 'ECG'],
-      color: 'from-orange-500 to-orange-600',
+      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Zap,
@@ -52,7 +52,7 @@ export default function ServicesSection() {
       description:
         'Prosedur medis dan operasi dengan tim ahli dan fasilitas steril',
       features: ['Operasi mayor', 'Operasi minor', 'Endoskopi', 'Anestesi umum'],
-      color: 'from-pink-500 to-pink-600',
+      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
     },
   ];
 
@@ -107,10 +107,10 @@ export default function ServicesSection() {
                 <div
                   className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity"
                   style={{
-                    backgroundImage:
-                      'linear-gradient(to bottom right, var(--primary), var(--secondary))',
-                  }}
-                ></div>
+                    backgroundImage: service.gradient }}
+                >
+
+                </div>
 
                 <div className="relative z-10">
                   <div
@@ -152,7 +152,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Instagram Section */}
-        <div className="relative rounded-3xl overflow-hidden border border-primary/15 bg-white p-8 sm:p-12 shadow-xl">
+        <div className="relative bg-white rounded-2xl p-8 h-full shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
@@ -170,7 +170,7 @@ export default function ServicesSection() {
               </p>
             </div>
 
-            <Link
+            {/* <Link
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -178,7 +178,7 @@ export default function ServicesSection() {
             >
               Ikuti Instagram
               <ExternalLink size={18} />
-            </Link>
+            </Link> */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

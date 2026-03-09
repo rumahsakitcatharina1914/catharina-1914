@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,16 +16,21 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-b from-white to-white border-b-2 border-secondary/10 shadow-sm">
+    <header className="sticky top-0 z-50 bg-linear-to-b from-white to-white border-b-2 border-secondary/10 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300" style={{backgroundImage: 'linear-gradient(to bottom right, #005ba3, #003d7a)'}}>
-            C
+          <div className="relative w-12 h-12 rounded-xl overflow-hidden  group-hover:shadow-xl group-hover:scale-110 transition-all duration-300" style={{backgroundImage: 'linear-gradient(to bottom right, #d7e5f1, #b2bfcb)'}} >
+            <Image 
+              src="/catharina-logo.png" 
+              alt = ""
+              className="object-contain p-1"
+              fill
+              />
           </div>
         <div className="hidden sm:block">
-          <div className="font-serif font-bold text-primary text-xl leading-tight group-hover:text-secondary transition-colors">
-            Catharina
+          <div className="text-xl font-bold text-secondary">
+            RS Catharina 
           </div>
             <div className="text-xs font-bold text-secondary">1914</div>
           </div>
@@ -39,7 +45,7 @@ export default function Header() {
               className="text-foreground hover:text-primary transition-colors font-semibold text-base relative group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary group-hover:w-full transition-all duration-300 rounded-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-1 bg-linear-to-r from-primary via-secondary to-primary group-hover:w-full transition-all duration-300 rounded-full"></span>
             </Link>
           ))}
         </div>
@@ -67,7 +73,7 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gradient-to-b from-white to-neutral-lighter border-t-2 border-secondary/20 shadow-xl animate-fade-in-up">
+        <div className="md:hidden bg-linear-to-b from-white to-neutral-lighter border-t-2 border-secondary/20 shadow-xl animate-fade-in-up">
           <div className="max-w-7xl mx-auto px-4 py-8 space-y-2">
             {navLinks.map((link) => (
               <Link

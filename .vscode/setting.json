@@ -1,0 +1,21 @@
+{
+  "css.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "javascript": "javascript",
+    "typescript": "javascript"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "class[:]\\s*?[\"'`]([^\"'`]*).*?[\"'`]",
+    "className[:]\\s*?[\"'`]([^\"'`]*).*?[\"'`]",
+    "cn\\(([^)]*)\\)"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}

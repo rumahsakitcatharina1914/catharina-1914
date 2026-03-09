@@ -74,7 +74,7 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        {/* <div className="text-center mb-16 max-w-3xl mx-auto">
           <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-bold">
             Kontak Kami
           </div>
@@ -84,10 +84,10 @@ export default function ContactSection() {
           <p className="text-xl text-neutral-gray leading-relaxed">
             Hubungi Rumah Sakit Catharina 1914 untuk konsultasi, appointment, atau pertanyaan kesehatan Anda kapan saja
           </p>
-        </div>
+        </div> */}
 
         {/* Contact Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {contacts.map((contact, index) => {
             const Icon = contact.icon;
 
@@ -126,13 +126,13 @@ export default function ContactSection() {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Form & Info Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-border hover:shadow-xl transition-all">
+          <div className="relative bg-white rounded-2xl p-8 h-full shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden">
             <h3 className="text-3xl font-serif font-bold text-foreground mb-2">
               Kirim Pesan
             </h3>
@@ -209,7 +209,7 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
+                className="mt-10 w-full text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
                 style={{
                   backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'
                 }}
@@ -231,7 +231,7 @@ export default function ContactSection() {
             </h3>
 
             {/* Lokasi */}
-            <div className="bg-white rounded-2xl p-8 border border-border hover:shadow-lg transition-all">
+            <div className="relative bg-white rounded-2xl p-8 h-full shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden">
 
               <div className="flex gap-4 items-start mb-6">
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -269,20 +269,20 @@ export default function ContactSection() {
               >
                 <button
                   type="submit"
-                  className="w-full text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
+                  className="w-full text-white font-bold px-5 py-4 rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
                   style={{
                     backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'
                   }}
                 >
                   <MapPin size={20} className="group-hover:translate-x-1 transition-transform" />
-                  Buka Rute Google
+                  Lihat Rute
                 </button>
               </a>
 
             </div>
 
             {/* Jam Operasional */}
-            <div className="bg-white rounded-2xl p-8 border border-border hover:shadow-lg transition-all border-2 border-primary/20">
+            <div className="relative bg-white rounded-2xl p-8 h-full shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden">
               <div className="flex gap-4 items-start mb-6">
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Clock className="text-secondary" size={24} />
