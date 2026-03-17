@@ -1,15 +1,17 @@
 import Head from 'next/head';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import HeroSection from '@/components/HeroSection';
+
 import AboutSection from '@/components/AboutSection';
 import AdvantagesSection from '@/components/AdvantagesSection';
 import PendirianSection from '@/components/PendirianSection';
 import ServicesSection from '@/components/ServicesSection';
 import ContactSection from '@/components/ContactSection';
 import Link from 'next/link';
+import SlideSection from '@/components/SlideSection';
 import prisma from '@/lib/prisma'; 
 import DoctorsSection from '../components/DoctorSection';
+import HeroSection from '../components/SlideSection';
 
 
 export const metadata = {
@@ -27,7 +29,7 @@ export default async function HomePage() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        <SlideSection/>
         {/* <AboutSection /> */}
         <DoctorsSection/>
         <ServicesSection />

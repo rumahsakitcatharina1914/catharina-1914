@@ -12,7 +12,7 @@ export default function ServicesSection() {
       description:
         'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman',
       features: ['Konsultasi dokter', 'Pemeriksaan kesehatan', 'Resep & Obat-obatan'],
-      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
+      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Bed,
@@ -20,7 +20,7 @@ export default function ServicesSection() {
       description:
         'Perawatan intensif dengan fasilitas kamar modern dan nyaman',
       features: ['Kamar VIP & Standar', 'Perawatan 24 jam', 'Keluarga boleh menginap'],
-     gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
+     linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Ambulance,
@@ -28,7 +28,7 @@ export default function ServicesSection() {
       description:
         'Layanan darurat 24 jam siap membantu kondisi medis mendesak',
       features: ['Respons 24/7', 'Dokter spesialis', 'Ambulans siaga'],
-      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
+      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Users,
@@ -36,7 +36,7 @@ export default function ServicesSection() {
       description:
         'Layanan kesehatan spesifik dari dokter ahli bidang tertentu',
       features: ['Mata', 'Jantung', 'Anak', 'Kandungan', 'dan lainnya'],
-      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
+      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Microscope,
@@ -44,7 +44,7 @@ export default function ServicesSection() {
       description:
         'Diagnosa akurat dengan peralatan modern dan teknologi terkini',
       features: ['Tes darah', 'Rontgen', 'CT Scan', 'USG', 'ECG'],
-      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
+      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Zap,
@@ -52,7 +52,7 @@ export default function ServicesSection() {
       description:
         'Prosedur medis dan operasi dengan tim ahli dan fasilitas steril',
       features: ['Operasi mayor', 'Operasi minor', 'Endoskopi', 'Anestesi umum'],
-      gradient: 'linear-gradient(to right, #3b82f6, #2563eb)',
+      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
   ];
 
@@ -78,7 +78,7 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-b from-white via-neutral-light to-white">
+    <section className="py-20 sm:py-32 bg-linear-to-b from-white via-neutral-light to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -105,19 +105,19 @@ export default function ServicesSection() {
                 className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden"
               >
                 <div
-                  className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity"
+                  className="absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-5 transition-opacity"
                   style={{
-                    backgroundImage: service.gradient }}
+                    backgroundImage: service.linear }}
                 >
 
                 </div>
 
                 <div className="relative z-10">
                   <div
-                    className="mb-6 inline-flex p-4 bg-gradient-to-br rounded-xl group-hover:shadow-lg transition-all"
+                    className="mb-6 inline-flex p-4 bg-linear-to-br rounded-xl group-hover:shadow-lg transition-all"
                     style={{
                       backgroundImage:
-                        'linear-gradient(to bottom right, rgba(0, 91, 163, 0.1), rgba(0, 153, 216, 0.1))',
+                        'linear-linear(to bottom right, rgba(0, 91, 163, 0.1), rgba(0, 153, 216, 0.1))',
                     }}
                   >
                     <Icon
@@ -140,7 +140,7 @@ export default function ServicesSection() {
                         key={idx}
                         className="text-sm text-foreground/70 flex items-center gap-3"
                       >
-                        <Check className="w-5 h-5 text-secondary flex-shrink-0" />
+                        <Check className="w-5 h-5 text-secondary shrink-0" />
                         <span className="font-medium">{feature}</span>
                       </li>
                     ))}

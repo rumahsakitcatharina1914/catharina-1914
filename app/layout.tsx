@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`${playfair.variable} ${lato.variable}`}>
-      <body className={`font-sans antialiased bg-background text-foreground`}>
+      <body className={`overflow-x-hidden font-sans antialiased bg-background text-foreground`}>
         {children}
         <Script
           src="https://www.instagram.com/embed.js"

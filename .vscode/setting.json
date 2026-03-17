@@ -1,7 +1,7 @@
 {
   "css.validate": false,
   "css.lint.unknownAtRules": "ignore",
-  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.emmetCompletions": false,
   "tailwindCSS.includeLanguages": {
     "plaintext": "html",
     "javascript": "javascript",
@@ -17,5 +17,6 @@
   },
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+    "tailwindcss.lint.suggestCanonicalClasses": false
 }
