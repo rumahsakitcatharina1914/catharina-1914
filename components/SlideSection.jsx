@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, PhoneCall, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
+import {  Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -9,21 +9,15 @@ const heroSlides = [
   {
     id: 1,
     title: 'Layanan Kesehatan Berkualitas Untuk Keluarga Anda',
-    description: 'Rumah Sakit Catharina 1914 hadir dengan dokter spesialis berpengalaman, fasilitas medis terkini, dan komitmen penuh memberikan perawatan terbaik.',
+    description: 'Rumah Sakit Catharina 1914 hadir dengan dokter spesialis berpengalaman, fasilitas medis terkini, dan komitmen penuh memberikan perawatan dan pelayanan terbaik.',
     badge: 'Terpercaya sejak 1914',
-    color: 'from-primary via-primary-dark to-primary',
-    ctaText: 'Lihat Layanan',
-    ctaHref: '/layanan',
     image: '/uploads/slide/no1.jpg'
   },
   {
     id: 2,
     title: 'Tim Dokter Spesialis Berpengalaman',
-    description: 'Lebih dari 100 dokter spesialis kami siap memberikan diagnosis akurat dan perawatan profesional untuk kesehatan optimal Anda.',
-    badge: '100+ Dokter Spesialis',
-    color: 'from-secondary via-primary to-secondary',
-    ctaText: 'Lihat Dokter Kami',
-    ctaHref: '/dokter',
+    description: 'Tersedia dokter spesialis berpengalaman yang siap memberikan diagnosis akurat dan perawatan profesional untuk kesehatan optimal Anda.',
+    badge: 'Dokter Spesialis yang Berpengalaman',
     image: '/uploads/slide/no2.jpg'
   },
   {
@@ -31,9 +25,6 @@ const heroSlides = [
     title: 'Fasilitas Kesehatan Modern & Lengkap',
     description: 'Dilengkapi dengan teknologi medis terkini, laboratorium canggih, dan ruang rawat yang nyaman untuk pemulihan optimal Anda.',
     badge: 'Fasilitas Terdepan',
-    color: 'from-primary to-secondary via-primary',
-    ctaText: 'Hubungi Kami',
-    ctaHref: '#hubungi',
     image: '/uploads/slide/no3.jpg'
   },
   {
@@ -41,9 +32,6 @@ const heroSlides = [
     title: 'Layanan Darurat 24/7',
     description: 'Tim medis kami siap 24 jam setiap hari untuk menangani keadaan darurat dengan cepat dan profesional.',
     badge: 'Layanan 24 Jam',
-    color: 'from-red-600 via-primary to-secondary',
-    ctaText: 'Hubungi Sekarang',
-    ctaHref: '#hubungi',
     image: '/uploads/slide/no4.jpg'
   }
 ];
@@ -111,7 +99,7 @@ export default function HeroSection() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: `linear-gradient(135deg, rgba(0, 91, 163, 0.85), rgba(0, 153, 216, 0.7))`
+                backgroundImage: `linear-gradient(135deg, rgba(5, 102, 181, 0.91), rgba(41, 176, 229, 0.7))`
               }}
             ></div>
 
@@ -154,7 +142,7 @@ export default function HeroSection() {
                   </p>
 
                   {/* CTA Buttons */}
-                  <div
+                  {/* <div
                     className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-slide-up"
                     style={{
                       animationDelay: idx === currentSlide ? '0.4s' : '0s',
@@ -175,7 +163,7 @@ export default function HeroSection() {
                       <PhoneCall size={20} />
                       Hubungi Kami
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

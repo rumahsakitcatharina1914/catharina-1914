@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Ambulance, Bed, Stethoscope, Microscope, Users, Zap, ArrowRight, Check, Instagram, ExternalLink } from 'lucide-react';
+import { Ambulance, Bed, Stethoscope, Microscope, Users, Zap, ArrowRight, Check, Instagram, Newspaper } from 'lucide-react';
 
 export default function ServicesSection() {
   const services = [
@@ -12,7 +12,7 @@ export default function ServicesSection() {
       description:
         'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman',
       features: ['Konsultasi dokter', 'Pemeriksaan kesehatan', 'Resep & Obat-obatan'],
-      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
+
     },
     {
       icon: Bed,
@@ -20,7 +20,6 @@ export default function ServicesSection() {
       description:
         'Perawatan intensif dengan fasilitas kamar modern dan nyaman',
       features: ['Kamar VIP & Standar', 'Perawatan 24 jam', 'Keluarga boleh menginap'],
-     linear: 'linear-linear(to right, #3b82f6, #2563eb)',
     },
     {
       icon: Ambulance,
@@ -28,7 +27,7 @@ export default function ServicesSection() {
       description:
         'Layanan darurat 24 jam siap membantu kondisi medis mendesak',
       features: ['Respons 24/7', 'Dokter spesialis', 'Ambulans siaga'],
-      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
+
     },
     {
       icon: Users,
@@ -36,7 +35,7 @@ export default function ServicesSection() {
       description:
         'Layanan kesehatan spesifik dari dokter ahli bidang tertentu',
       features: ['Mata', 'Jantung', 'Anak', 'Kandungan', 'dan lainnya'],
-      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
+
     },
     {
       icon: Microscope,
@@ -44,7 +43,7 @@ export default function ServicesSection() {
       description:
         'Diagnosa akurat dengan peralatan modern dan teknologi terkini',
       features: ['Tes darah', 'Rontgen', 'CT Scan', 'USG', 'ECG'],
-      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
+
     },
     {
       icon: Zap,
@@ -52,11 +51,12 @@ export default function ServicesSection() {
       description:
         'Prosedur medis dan operasi dengan tim ahli dan fasilitas steril',
       features: ['Operasi mayor', 'Operasi minor', 'Endoskopi', 'Anestesi umum'],
-      linear: 'linear-linear(to right, #3b82f6, #2563eb)',
+  
     },
   ];
 
   const [instagramPosts, setInstagramPosts] = useState([]);
+  const [newsArticles, setNewsArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -65,8 +65,14 @@ export default function ServicesSection() {
         const res = await fetch('/api/instagram-feeds');
         if (res.ok) {
           const data = await res.json();
-          setInstagramPosts(data.slice(0, 6));
+          setInstagramPosts(data.slice(0, 3));
         }
+
+      const newsRes = await fetch('/api/news?limit=3');
+      if (newsRes.ok) {
+        const newsData = await newsRes.json();
+        setNewsArticles(newsData);
+      }
       } catch (error) {
         console.error('Error fetching Instagram feeds:', error);
       } finally {
@@ -78,7 +84,7 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section className="py-20 sm:py-32 bg-linear-to-b from-white via-neutral-light to-white">
+    <section className="py-20 sm:py-32 bg-linear-to-b from-white via-neutral-light to-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -150,74 +156,128 @@ export default function ServicesSection() {
             );
           })}
         </div>
+        
 
-        {/* Instagram Section */}
-        <div className="relative bg-white rounded-2xl p-8 h-full shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
-                <Instagram size={16} />
-                Feed Instagram
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+          {/* Instagram Section */}
+          <div className="w-full bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/50">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                  <Instagram size={16} />
+                  Feed Instagram
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl font serif- font-bold text-foreground mb-2">
+                  Update Terbaru RS Catharina
+                </h3>
+
+                <p className="text-foreground/70 max-w-2xl">
+                  Tampilkan posting terbaru Instagram untuk berbagi edukasi
+                  kesehatan, kegiatan rumah sakit, dan informasi layanan terbaru.
+                </p>
               </div>
-
-              <h3 className="text-3xl sm:text-4xl font serif- font-bold text-foreground mb-2">
-                Update Terbaru RS Catharina
-              </h3>
-
-              <p className="text-foreground/70 max-w-2xl">
-                Tampilkan posting terbaru Instagram untuk berbagi edukasi
-                kesehatan, kegiatan rumah sakit, dan informasi layanan terbaru.
-              </p>
             </div>
 
-            {/* <Link
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary-dark transition-colors"
-            >
-              Ikuti Instagram
-              <ExternalLink size={18} />
-            </Link> */}
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {instagramPosts.length === 0 && (
+                <div className="md:col-span-3 rounded-2xl border border-dashed border-border p-8 text-center text-foreground/70">
+                  Belum ada feed Instagram. Tambahkan dari dashboard admin.
+                </div>
+              )}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {instagramPosts.length === 0 && (
-              <div className="md:col-span-3 rounded-2xl border border-dashed border-border p-8 text-center text-foreground/70">
-                Belum ada feed Instagram. Tambahkan dari dashboard admin.
+              {instagramPosts.map((post) => (
+                <a
+                  key={post.id}
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-2xl border border-border bg-neutral-light p-4 hover:shadow-lg transition-all"
+                >
+                  <div className="overflow-hidden rounded-xl border border-border bg-white">
+                    <img
+                      src={post.thumbnail}
+                      alt={post.title}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+
+                  <div className="mt-4">
+                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {post.title}
+                    </p>
+
+                    <span className="inline-flex mt-2 items-center gap-2 text-primary text-sm font-semibold hover:text-primary-dark transition-colors">
+                      Lihat di Instagram
+                      <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>  
+
+          
+          {/* BERITA SECTION */}
+          <div className="w-full bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50">
+            <div className="mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary/10 text-secondary rounded-full text-xs font-semibold mb-3">
+                <Newspaper size={14} />
+                Berita Terbaru
               </div>
-            )}
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-2">
+                Informasi & Artikel
+              </h3>
+              <p className="text-sm text-foreground/70">
+                Berita kesehatan, kegiatan, dan pengumuman penting dari RS Catharina
+              </p>
 
-            {instagramPosts.map((post) => (
-              <a
-                key={post.id}
-                href={post.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group rounded-2xl border border-border bg-neutral-light p-4 hover:shadow-lg transition-all"
+            </div>
+              <div className="space-y-4 mb-6">
+                {newsArticles.length === 0 && (
+                  <div className="rounded-xl border border-dashed border-border p-6 text-center text-foreground/60 text-sm">
+                    Belum ada berita
+                  </div>
+                )}
+
+                {newsArticles.map((article) => (
+                  <Link
+                    key={article.id}
+                    href={`/berita/${article.slug}`}
+                    className="group flex gap-4 p-3 rounded-xl border border-border hover:bg-neutral-light hover:border-secondary/50 transition-all"
+                  >
+                    <img
+                      src={article.thumbnail}
+                      alt={article.title}
+                      className="w-20 h-20 object-cover rounded-lg flex-shrink-0 group-hover:scale-105 transition-transform"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <span className="inline-block px-2 py-0.5 bg-secondary/10 text-secondary rounded text-xs font-semibold mb-1">
+                        {article.category}
+                      </span>
+                      <p className="font-semibold text-foreground group-hover:text-secondary transition-colors line-clamp-2 text-sm mb-1">
+                        {article.title}
+                      </p>
+                      <p className="text-xs text-foreground/60">
+                        {new Date(article.publishedAt).toLocaleDateString('id-ID', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric'
+                        })}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <Link
+                href="/berita"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-secondary text-white rounded-xl font-semibold hover:bg-secondary/90 transition-colors text-sm"
               >
-                <div className="overflow-hidden rounded-xl border border-border bg-white">
-                  <img
-                    src={post.thumbnail}
-                    alt={post.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {post.title}
-                  </p>
-
-                  <span className="inline-flex mt-2 items-center gap-2 text-primary text-sm font-semibold hover:text-primary-dark transition-colors">
-                    Lihat di Instagram
-                    <ArrowRight size={16} />
-                  </span>
-                </div>
-              </a>
-            ))}
+                Lihat Semua Berita
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
-        </div>
       </div>
     </section>
   );

@@ -49,3 +49,18 @@ model Doctor {
 
   @@map("doctors")
 }
+
+//Model untuk berita 
+model News {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  excerpt     String   @db.Text
+  content     String   @db.LongText
+  thumbnail   String
+  images      Json?    @default("[]") 
+  category    String   @default("umum")
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

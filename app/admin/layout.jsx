@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Instagram, Mail, Stethoscope, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Instagram, Newspaper, Mail, Stethoscope, LogOut, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function AdminLayout({ children }) {
@@ -20,6 +20,7 @@ export default function AdminLayout({ children }) {
   const menuItems = [
     { href: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { href: '/admin/feeds', icon: Instagram, label: 'IG Feeds' },
+    { href: '/admin/news', icon: Newspaper, label: 'Berita' },
     { href: '/admin/messages', icon: Mail, label: 'Pesan Masuk' },
     { href: '/admin/doctors', icon: Stethoscope, label: 'Kelola Dokter' },
   ];
@@ -35,7 +36,7 @@ export default function AdminLayout({ children }) {
     <div className="min-h-screen bg-neutral-light flex">
       {/* SIDEBAR DESKTOP */}
       <aside className="hidden md:flex md:flex-col md:w-52 bg-white border-r border-border">
-        <div className="px-4 py-5 border-b border-border">
+        <div className="px-6 py-6 border-b border-border">
           <h1 className="text-xl font-serif font-bold text-primary">Admin Panel</h1>
           <p className="text-xs text-foreground/70 mt-0.5">RSU Catharina 1914</p>
         </div>
@@ -80,8 +81,8 @@ export default function AdminLayout({ children }) {
             onClick={() => setSidebarOpen(false)}
           ></div>
           
-          <aside className="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-border z-50 flex flex-col">
-            <div className="px-5 py-5 border-b border-border flex items-start justify-between">
+          <aside className="fixed left-0 top-0 bottom-0 w-72 bg-white border-r border-border z-50 flex flex-col">
+            <div className="px-6 py-6 border-b border-border flex items-start justify-between">
               <div>
                 <h1 className="text-xl font-serif font-bold text-primary">Admin Panel</h1>
                 <p className="text-xs text-foreground/70 mt-0.5">RSU Catharina 1914</p>
@@ -116,10 +117,10 @@ export default function AdminLayout({ children }) {
               })}
             </nav>
 
-            <div className="p-3 border-t border-border">
+            <div className="p-4 border-t border-border">
               <button
                 onClick={logoutAdmin}
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all"
+                className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all"
               >
                 <LogOut size={18} />
                 Logout
@@ -130,7 +131,7 @@ export default function AdminLayout({ children }) {
       )}
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 flex flex-col min-h-screen">
+      <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
         <header className="md:hidden bg-white border-b border-border px-4 py-3 flex items-center justify-between sticky top-0 z-40">
           <button 
             onClick={() => setSidebarOpen(true)} 
@@ -142,7 +143,7 @@ export default function AdminLayout({ children }) {
           <div className="w-10"></div>
         </header>
 
-        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
           {children}
         </main>
       </div>
