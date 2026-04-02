@@ -84,13 +84,10 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section className="py-20 sm:py-32 bg-linear-to-b from-white via-neutral-light to-white overflow-hidden">
+    <section className="py-20 sm:py-32  overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-bold">
-            Layanan Komprehensif
-          </div>
           <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
             Layanan Unggulan Kami
           </h2>
@@ -159,6 +156,7 @@ export default function ServicesSection() {
         
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+          
           {/* Instagram Section */}
           <div className="w-full bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/50">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
@@ -168,12 +166,12 @@ export default function ServicesSection() {
                   Feed Instagram
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font serif- font-bold text-foreground mb-2">
-                  Update Terbaru RS Catharina
+                <h3 className="text-3xl sm:text-4xl font-serif font-bold text-foreground mb-2">
+                  Update Terbaru 
                 </h3>
 
                 <p className="text-foreground/70 max-w-2xl">
-                  Tampilkan posting terbaru Instagram untuk berbagi edukasi
+                  Tampilan posting terbaru dari Kami untuk berbagi edukasi
                   kesehatan, kegiatan rumah sakit, dan informasi layanan terbaru.
                 </p>
               </div>
@@ -182,7 +180,7 @@ export default function ServicesSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {instagramPosts.length === 0 && (
                 <div className="md:col-span-3 rounded-2xl border border-dashed border-border p-8 text-center text-foreground/70">
-                  Belum ada feed Instagram. Tambahkan dari dashboard admin.
+                  Belum ada tersedia feed Instagram. 
                 </div>
               )}
 
@@ -198,17 +196,17 @@ export default function ServicesSection() {
                     <img
                       src={post.thumbnail}
                       alt={post.title}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-6">
                     <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
                       {post.title}
                     </p>
 
-                    <span className="inline-flex mt-2 items-center gap-2 text-primary text-sm font-semibold hover:text-primary-dark transition-colors">
-                      Lihat di Instagram
+                    <span className="inline-flex mt-2 items-center gap-2 text-primary text-sm  hover:text-primary-dark transition-colors">
+                      Lihat di IG 
                       <ArrowRight size={16} />
                     </span>
                   </div>
@@ -218,7 +216,7 @@ export default function ServicesSection() {
           </div>  
 
           
-          {/* BERITA SECTION */}
+          {/* Berita Section */}
           <div className="w-full bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50">
             <div className="mb-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary/10 text-secondary rounded-full text-xs font-semibold mb-3">
@@ -226,10 +224,10 @@ export default function ServicesSection() {
                 Berita Terbaru
               </div>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-2">
-                Informasi & Artikel
+                Informasi dan Artikel
               </h3>
               <p className="text-sm text-foreground/70">
-                Berita kesehatan, kegiatan, dan pengumuman penting dari RS Catharina
+                Berita kesehatan, kegiatan, dan pengumuman penting dari RS Catharina 1914.
               </p>
 
             </div>

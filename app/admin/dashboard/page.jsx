@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Instagram, Mail, Stethoscope, TrendingUp } from 'lucide-react';
+import { Instagram, Mail, Stethoscope, Newspaper, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminDashboard() {
@@ -9,24 +9,28 @@ export default function AdminDashboard() {
     feeds: 0,
     messages: 0,
     doctors: 0,
+    News: 0,
   });
 
   useEffect(() => {
     const loadStats = async () => {
-      const [feedRes, msgRes, docRes] = await Promise.all([
+      const [feedRes, msgRes, docRes, newRes] = await Promise.all([
         fetch('/api/instagram-feeds'),
         fetch('/api/messages'),
         fetch('/api/doctors'),
+        fetch('/api/news'),
       ]);
 
       const feeds = feedRes.ok ? await feedRes.json() : [];
       const messages = msgRes.ok ? await msgRes.json() : [];
       const doctors = docRes.ok ? await docRes.json() : [];
+      const news = docRes.ok ? await newRes.json() : [];
 
       setStats({
         feeds: feeds.length,
         messages: messages.length,
         doctors: doctors.length,
+        news: news.length,
       });
     };
 
@@ -55,6 +59,14 @@ export default function AdminDashboard() {
       color: 'from-green-500 to-emerald-600',
       href: '/admin/doctors',
     },
+
+    {
+      title: 'Berita',
+      value: stats.news,
+      icon: Newspaper,
+      color: 'from-blue-500 to-purple-600',
+      href: '/admin/news',
+    },
   ];
 
   return (
@@ -72,16 +84,15 @@ export default function AdminDashboard() {
               key={card.title}
               href={card.href}
               className="bg-white rounded-2xl border-2 border-border p-6 hover:shadow-lg transition-all group"
-            >
+            > 
               <div className="flex items-start justify-between mb-4">
+                <h3 className="text-foreground/70 text-sm font-semibold">{card.title}</h3>
                 <div
                   className={`p-3 rounded-xl bg-gradient-to-br ${card.color} text-white`}
                 >
                   <Icon size={24} />
                 </div>
-                <TrendingUp className="text-green-500" size={20} />
               </div>
-              <h3 className="text-foreground/70 text-sm font-medium mb-1">{card.title}</h3>
               <p className="text-4xl font-bold text-foreground">{card.value}</p>
               <p className="text-sm text-primary mt-2 group-hover:underline">Lihat detail →</p>
             </Link>
@@ -89,10 +100,6 @@ export default function AdminDashboard() {
         })}
       </div>
 
-      <div className="bg-white rounded-2xl border-2 border-border p-6">
-        <h2 className="text-2xl font-bold mb-4">Aktivitas Terbaru</h2>
-        <p className="text-foreground/70">Fitur aktivitas terbaru akan segera hadir...</p>
-      </div>
     </div>
   );
 }

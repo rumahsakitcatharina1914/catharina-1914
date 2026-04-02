@@ -194,13 +194,13 @@ export default function FeedsPage() {
                 </label>
               </div>
             ) : (
-              <div className="relative border border-border rounded-lg p-4">
+              <div className="relative border border-border rounded-lg p-4 max-w-sm">
                 <button
                   type="button"
                   onClick={removeImage}
                   className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
                 >
-                  <X size={16} />
+                  <Trash2 size={16} />
                 </button>
                 <img
                   src={uploadedImage}
@@ -228,27 +228,35 @@ export default function FeedsPage() {
         <h2 className="text-xl font-bold mb-4">Daftar Feed ({feeds.length})</h2>
         
         {feeds.length === 0 ? (
-          <p className="text-foreground/70 text-center py-8">Belum ada feed. Tambahkan feed pertama Anda!</p>
+          <p className="text-foreground/70 text-center py-8">Belum ada feed. Tambahkan feed pertama!</p>
         ) : (
           <div className="space-y-3">
             {feeds.map((feed) => (
-              <div key={feed.id} className="bg-neutral-light rounded-xl p-4 space-y-3">
-                <div className="flex justify-between items-start gap-3">
-                    <div className="flex-1">
-                        <p className="font-semibold text-lg">{feed.title}</p>
+              <div key={feed.id} className="bg-neutral-light rounded-xl p-4">
+                <div className="flex gap-4 items-start">
+                    {feed.thumbnail && (
+                      <img
+                        src={feed.thumbnail}
+                        alt={feed.title}
+                        className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                      />
+                    )}
+                    
+                    <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-base truncate">{feed.title}</p>
 
                         <a
                             href={feed.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-primary hover:underline"
+                            className="text-xs text-primary hover:underline truncate block"
                         >
                             {feed.href}
                         </a>
                     </div>
                   <button
                     onClick={() => deleteFeed(feed.id)}
-                    className="text-red-600 hover:bg-red-50 p-2 rounded-lg transition-all"
+                    className="text-red-600 hover:bg-red-50 p-2 rounded-lg transition-all flex-shrink-0"
                     title="Hapus feed"
                   >
                     <Trash2 size={20} />
@@ -264,14 +272,6 @@ export default function FeedsPage() {
                     placeholder="URL Thumbnail"
                   />
                 </div> */}
-
-                {feed.thumbnail && (
-                  <img
-                    src={feed.thumbnail}
-                    alt={feed.title}
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
-                )}
               </div>
             ))}
           </div>

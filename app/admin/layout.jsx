@@ -9,7 +9,7 @@ export default function AdminLayout({ children }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Kalau di halaman login (/admin), render tanpa sidebar
+
   const isLoginPage = pathname === '/admin';
 
   if (isLoginPage) {
@@ -60,9 +60,7 @@ export default function AdminLayout({ children }) {
               </Link>
             );
           })}
-        </nav>
-
-        <div className="p-3 border-t border-border">
+          
           <button
             onClick={logoutAdmin}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all"
@@ -70,7 +68,7 @@ export default function AdminLayout({ children }) {
             <LogOut size={18} />
             Logout
           </button>
-        </div>
+        </nav>
       </aside>
 
       {/* SIDEBAR MOBILE */}
@@ -115,9 +113,7 @@ export default function AdminLayout({ children }) {
                   </Link>
                 );
               })}
-            </nav>
-
-            <div className="p-4 border-t border-border">
+              
               <button
                 onClick={logoutAdmin}
                 className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all"
@@ -125,7 +121,7 @@ export default function AdminLayout({ children }) {
                 <LogOut size={18} />
                 Logout
               </button>
-            </div>
+            </nav>      
           </aside>
         </div>
       )}

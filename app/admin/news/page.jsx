@@ -13,7 +13,7 @@ export default function AdminNewsPage() {
     excerpt: '',
     content: '',
     thumbnail: '',
-    images: [], // ✅ Array untuk multiple images
+    images: [], 
     category: 'umum'
   });
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -61,7 +61,7 @@ export default function AdminNewsPage() {
           excerpt: '', 
           content: '', 
           thumbnail: '', 
-          images: [], // ✅ Reset images
+          images: [], 
           category: 'umum' 
         });
         fetchNews();
@@ -79,7 +79,7 @@ export default function AdminNewsPage() {
       excerpt: item.excerpt,
       content: item.content,
       thumbnail: item.thumbnail,
-      images: Array.isArray(item.images) ? item.images : [], // ✅ Load existing images
+      images: Array.isArray(item.images) ? item.images : [], 
       category: item.category
     });
     setShowForm(true);
@@ -100,7 +100,7 @@ export default function AdminNewsPage() {
     }
   };
 
-  // ✅ Upload Thumbnail
+  //  Upload Thumbnail
   const handleThumbnailUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -128,7 +128,9 @@ export default function AdminNewsPage() {
     }
   };
 
-  // ✅ Upload Multiple Content Images
+
+  
+  //  Upload Multiple Content Images
   const handleContentImagesUpload = async (e) => {
     const files = Array.from(e.target.files);
     if (files.length === 0) return;
@@ -170,7 +172,7 @@ export default function AdminNewsPage() {
     }
   };
 
-  // ✅ Remove Content Image
+  // Remove Content Image
   const handleRemoveImage = (index) => {
     setFormData(prev => ({
       ...prev,
@@ -185,24 +187,6 @@ export default function AdminNewsPage() {
           <Newspaper className="text-primary" size={32} />
           <h1 className="text-3xl font-serif font-bold text-foreground">Kelola Berita</h1>
         </div>
-        <button
-          onClick={() => {
-            setShowForm(!showForm);
-            setEditingNews(null);
-            setFormData({ 
-              title: '', 
-              excerpt: '', 
-              content: '', 
-              thumbnail: '', 
-              images: [], 
-              category: 'umum' 
-            });
-          }}
-          className="flex items-center gap-2 px-6 py-3 bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] transition-colors transition-all duration-200 flex items-center justify-center gap-2 shadow-lg"
-        >
-          <Plus size={20} />
-          Tambah Berita
-        </button>
       </div>
 
       {/* Form */}
@@ -256,23 +240,42 @@ export default function AdminNewsPage() {
             </div>
 
             {/* Thumbnail */}
-            <div>
-              <label className="block text-sm font-semibold mb-2">Gambar Thumbnail *</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleThumbnailUpload}
-                className="w-full px-4 py-3 border border-border rounded-lg"
-                disabled={uploadingImage}
-              />
-              {formData.thumbnail && (
+            <label className="block text-sm font-semibold mb-2">Upload Thumbnail *</label>
+            <div className="flex items-center gap-4">
+              <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
+                <Upload size={20} />
+                <span className="font-semibold">
+                  {uploadingImage ? 'Upload' :'Gambar Thumbnail'}
+                </span>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleThumbnailUpload}
+                  className="hidden"
+                  disabled={uploadingImage}
+                />
+              </label>
+            </div>
+            {formData.thumbnail && (
+                <div className="relative mt-4 inline-block">
                 <img
                   src={formData.thumbnail}
                   alt="Thumbnail preview"
                   className="mt-4 w-full max-w-md h-64 object-cover rounded-lg"
                 />
+
+                <button
+                  type="button"
+                  onClick={() => setFormData({...formData, thumbnail:''})}
+                  className="absolute top-1 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                >
+                  <Trash2 size={16}/>
+                </button>
+                </div>
+                
               )}
-            </div>
+
 
             {/* Content */}
             <div>
@@ -287,7 +290,7 @@ export default function AdminNewsPage() {
               />
             </div>
 
-            {/* ✅ Multiple Content Images */}
+            {/* Multiple Content Images */}
             <div>
               <label className="block text-sm font-semibold mb-2">
                 Gambar Konten (Opsional - Multiple)
@@ -344,7 +347,7 @@ export default function AdminNewsPage() {
             <div className="flex gap-4">
               <button
                 type="submit"
-                className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+                className="px-6 py-3  bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] transition-colors transition-all duration-200 flex items-center justify-center gap-2"
                 disabled={uploadingImage}
               >
                 {editingNews ? 'Update Berita' : 'Simpan Berita'}
@@ -372,74 +375,96 @@ export default function AdminNewsPage() {
         </div>
       )}
 
-      {/* Table - tetap sama */}
+      {/* Table*/}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-border">
-        <table className="w-full">
-          <thead className="bg-neutral-light border-b border-border">
-            <tr>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Thumbnail</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Judul</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Kategori</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Gambar</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Tanggal</th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {news.length === 0 && (
+        <div className="overflow-x-auto">
+          <table className="w-full-w-[700px]">
+            <thead className="bg-neutral-light border-b border-border">
               <tr>
-                <td colSpan="6" className="px-6 py-12 text-center text-foreground/50">
-                  Belum ada berita. Klik "Tambah Berita" untuk membuat berita baru.
-                </td>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Thumbnail</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Judul</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Kategori</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Gambar</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Tanggal</th>
+                <th className="px-10 py-4 text-left text-sm font-semibold text-foreground">Aksi</th>
               </tr>
-            )}
-            {news.map((item) => (
-              <tr key={item.id} className="border-b border-border hover:bg-neutral-light/50">
-                <td className="px-6 py-4">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-20 h-20 object-cover rounded-lg"
-                  />
-                </td>
-                <td className="px-6 py-4">
-                  <div className="font-semibold text-foreground">{item.title}</div>
-                  <div className="text-sm text-foreground/60 line-clamp-2">{item.excerpt}</div>
-                </td>
-                <td className="px-6 py-4">
-                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
-                    {item.category}
-                  </span>
-                </td>
-                <td className="px-6 py-4">
-                  <span className="text-sm text-foreground/70">
-                    {Array.isArray(item.images) ? item.images.length : 0} gambar
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-sm text-foreground/70">
-                  {new Date(item.publishedAt).toLocaleDateString('id-ID')}
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleEdit(item)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                    >
-                      <Edit size={18} />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                    >
-                      <Trash2 size={18} />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {news.length === 0 && (
+                <tr>
+                  <td colSpan="6" className="px-6 py-12 text-center text-foreground/50">
+                    Belum ada berita. Klik "Tambah Berita" untuk membuat berita baru.
+                  </td>
+                </tr>
+              )}
+              {news.map((item) => (
+                <tr key={item.id} className="border-b border-border hover:bg-neutral-light/50">
+                  <td className="px-6 py-4">
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className="w-20 h-20 object-cover rounded-lg"
+                    />
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="font-semibold text-foreground">{item.title}</div>
+                    <div className="text-sm text-foreground/60 line-clamp-2">{item.excerpt}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                      {item.category}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm text-foreground/70">
+                      {Array.isArray(item.images) ? item.images.length : 0} gambar
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-foreground/70">
+                    {new Date(item.publishedAt).toLocaleDateString('id-ID')}
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleEdit(item)}
+                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                      >
+                        <Edit size={18} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+
+      <button
+          onClick={() => {
+            setShowForm(!showForm);
+            setEditingNews(null);
+            setFormData({ 
+              title: '', 
+              excerpt: '', 
+              content: '', 
+              thumbnail: '', 
+              images: [], 
+              category: 'umum' 
+            });
+          }}
+          className=" mt-5 flex items-center gap-2 px-6 py-3 bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] transition-colors transition-all duration-200 flex items-center justify-center gap-2 shadow-lg"
+        >
+          <Plus size={20} />
+          Tambah Berita
+        </button>
     </div>
   );
 }
