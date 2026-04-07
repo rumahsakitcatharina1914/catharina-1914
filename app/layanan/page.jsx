@@ -25,9 +25,9 @@ export default function Layanan() {
       id: 2, icon: Bed,
       title: 'Rawat Inap', short: 'Perawatan Intensif',
       description: 'Fasilitas perawatan intensif dengan ruang yang nyaman dan tim medis 24 jam untuk pemulihan yang optimal.',
-      features: ['Kamar VIP dan standar', 'Perawatan intensif 24 jam', 'Nutrisi dan makanan khusus', 'Keluarga boleh menginap', 'Sarana rekreasi dan hiburan'],
+      features: ['Kamar VIP dan Kelas I, II, dan III', 'Perawatan intensif 24 jam', 'Nutrisi dan makanan khusus', 'Keluarga boleh menginap', 'Sarana rekreasi dan hiburan'],
       image: '/layanan/rawat-inap.jpg',
-      color: '#0096c7', bg: '#caf0f8', num: '02',
+      color: '#0077b6', bg: '#e0f2fe', num: '02',
     },
     {
       id: 3, icon: Ambulance,
@@ -35,7 +35,7 @@ export default function Layanan() {
       description: 'Layanan darurat 24 jam dengan respons cepat dan tim ahli untuk kondisi medis yang mendesak dan mengancam jiwa.',
       features: ['Respons 24 jam tanpa henti', 'Dokter spesialis darurat', 'Ambulans siaga siap jemput', 'Tindakan stabilisasi cepat', 'Laboratorium & radiologi 24 jam'],
       image: '/layanan/igd.jpeg',
-      color: '#dc2626', bg: '#fee2e2', num: '03',
+      color: '#0077b6', bg: '#e0f2fe', num: '03',
     },
     {
       id: 4, icon: Users,
@@ -43,15 +43,15 @@ export default function Layanan() {
       description: 'Layanan kesehatan spesifik dari dokter ahli berbagai bidang sesuai kebutuhan medis Anda dengan teknologi terkini.',
       features: ['Poliklinik Mata', 'Poliklinik Jantung & Vaskular', 'Poliklinik Anak & Pediatri', 'Poliklinik Kandungan & Kebidanan', 'Poliklinik Saraf & Neurologi', '10+ spesialisasi lainnya'],
       image: '/layanan/poli.jpeg',
-      color: '#1d4ed8', bg: '#dbeafe', num: '04',
+      color: '#0077b6', bg: '#e0f2fe', num: '04',
     },
     {
       id: 5, icon: Microscope,
       title: 'Laboratorium & Radiologi', short: 'Diagnosa Akurat & Modern',
       description: 'Diagnosa akurat dengan peralatan laboratorium modern dan teknologi radiologi terkini untuk hasil yang presisi.',
       features: ['Tes darah lengkap', 'Rontgen (X-Ray)', 'CT Scan & MRI', 'USG (Ultrasonografi)', 'EKG', 'Hasil cepat & akurat'],
-      image: '/layanan/lab.jpg',
-      color: '#059669', bg: '#d1fae5', num: '05',
+      image: '/layanan/lab.jpeg',
+      color: '#0077b6', bg: '#e0f2fe', num: '05',
     },
     {
       id: 6, icon: Zap,
@@ -60,7 +60,7 @@ export default function Layanan() {
       features: ['Operasi mayor & minor', 'Endoskopi diagnostik & terapeutik', 'Anestesi umum & lokal', 'Ruang operasi berstandar internasional', 'Kamar pemulihan monitoring', 'Tim anestesi profesional'],
       schedule: 'Jadwal sesuai kebutuhan pasien',
       image: '/layanan/operasi.jpeg',
-      color: '#7c3aed', bg: '#ede9fe', num: '06',
+      color: '#0077b6', bg: '#e0f2fe', num: '06',
     },
   ];
 
@@ -91,7 +91,7 @@ export default function Layanan() {
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-4" style={{ color: '#0077b6' }}>Hubungi Kami</p>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-4" style={{ color: '#0077b6' }}>Fasilitas & Layanan Kami</p>
                 <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight mb-6">
                   Siap Melayani<br /><span style={{ color: '#0077b6' }}>Kesehatan Anda</span>
                 </h2>
@@ -122,9 +122,9 @@ export default function Layanan() {
                       </div>
                       <div className="min-w-0">
                         <p className="font-black text-gray-900 text-sm truncate">{s.title}</p>
-                        <p className="text-xs text-gray-400 flex items-center gap-1 group-hover:text-gray-600 transition-colors">
+                        {/* <p className="text-xs text-gray-400 flex items-center gap-1 group-hover:text-gray-600 transition-colors">
                           Lihat detail <ChevronRight size={10} />
-                        </p>
+                        </p> */}
                       </div>
                     </a>
                   );
@@ -266,77 +266,7 @@ export default function Layanan() {
           </div>
         </section>
 
-        {/* <section className="bg-white">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            const isEven = index % 2 === 0;
-            return (
-              <div key={service.id} id={`layanan-${service.id}`}
-                className="grid grid-cols-1 lg:grid-cols-2"
-                style={{ minHeight: '520px' }}>
-
-               
-                <div className={`relative overflow-hidden ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
-                  style={{ minHeight: '300px' }}>
-                  <Image
-
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className=" aspect-3/2 object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0"
-                    style={{ background: `linear-gradient(to ${isEven ? 'right' : 'left'}, rgba(0,0,0,0.15), transparent)` }} />
-                  <div className="absolute top-6 left-6">
-                    <span className="px-3 py-1.5 rounded-full text-xs font-black text-white" style={{ background: service.color }}>
-                      {service.num}
-                    </span>
-                  </div>
-                </div>
-
-              
-                <div className={`flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-16 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
-                  style={{ background: [1, 2].includes(index % 4) ? '#f8fafc' : 'white' }}>
-
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center" style={{ background: service.bg }}>
-                      <Icon size={20} style={{ color: service.color }} />
-                    </div>
-                    <p className="text-xs font-bold tracking-widest uppercase" style={{ color: service.color }}>{service.short}</p>
-                  </div>
-
-                  <h2 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-4">{service.title}</h2>
-                  <p className="text-gray-500 leading-relaxed mb-8 max-w-md">{service.description}</p>
-
-                  <div className="space-y-2.5 mb-8">
-                    {service.features.map((f, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: service.bg }}>
-                          <CheckCircle size={11} style={{ color: service.color }} />
-                        </div>
-                        <span className="text-sm text-gray-600">{f}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-3 p-4 rounded-2xl mb-8" style={{ background: service.bg }}>
-                    <Clock size={15} style={{ color: service.color }} />
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5" style={{ color: service.color }}>Jadwal</p>
-                      <p className="text-sm font-semibold text-gray-700">{service.schedule}</p>
-                    </div>
-                  </div>
-
-                  <button className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-sm text-white transition-all hover:opacity-90 hover:-translate-y-0.5"
-                    style={{ background: service.color }}>
-                    Info Lebih Lanjut <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </section> */}
+    
 
         {/* FASILITAS GALLERY */}
         <section className="py-28 sm:py-36" style={{ background: '#f7f9fc' }}>
@@ -344,13 +274,13 @@ export default function Layanan() {
 
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
               <div>
-                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Fasilitas</p>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Fasilitas Lainnya</p>
                 <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
                   Fasilitas<br /><span className="text-gray-300">Kami</span>
                 </h2>
               </div>
               <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
-                Dilengkapi teknologi medis modern untuk pelayanan terbaik
+                Fasilitas yang Tersedia di Rumah Sakit Umum Catharina 1914
               </p>
             </div>
 

@@ -1,227 +1,239 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DoctorCard from '@/components/DoctorCard';
-import { Stethoscope } from 'lucide-react';
-import { PrismaClient } from '@prisma/client';
-import prisma from '@/lib/prisma'
-
-
+import { Stethoscope, ArrowRight, CheckCircle } from 'lucide-react';
+import prisma from '@/lib/prisma';
 
 export const metadata = {
   title: 'Dokter | RS Catharina 1914',
-  description: 'Daftar dokter spesialis profesional di Rumah Sakit Catharina 1914 dengan pengalaman dan keahlian di berbagai bidang medis.',
+  description: 'Daftar dokter spesialis profesional di Rumah Sakit Catharina 1914.',
 };
 
-export default async function DokterPage(){
+export default async function DokterPage() {
   const doctors = await prisma.doctor.findMany();
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{backgroundImage: 'linear-gradient(to bottom right, #005ba3, #003d7a, #005ba3)'}}>
-          {/* Decorative Elements */}
-          <div className="absolute top-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-secondary/10 rounded-full blur-3xl"></div>
 
-          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-secondary/20 backdrop-blur-sm text-secondary rounded-full text-sm font-bold border border-secondary/30">
-                <Stethoscope size={16} />
-                Tim Medis Profesional
-              </div>
-              <h1 className="text-5xl sm:text-7xl font-serif font-bold mb-6 text-white leading-tight text-balance">
-                Dokter Spesialis Terbaik
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-light">
-                Dokter spesialis berpengalaman dan bersertifikat dengan dedikasi tinggi untuk memberikan perawatan kesehatan terbaik bagi setiap pasien.
-              </p>
-            </div>
+        {/* ══════════════════════ HERO ══════════════════════ */}
+        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #001d3d 0%, #003566 50%, #0077b6 100%)', minHeight: '80vh' }}>
+          {/* dot grid */}
+          <div className="absolute inset-0 opacity-[0.05]"
+            style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+
+          {/* watermark */}
+          <div className="absolute bottom-0 right-0 select-none pointer-events-none overflow-hidden">
+            <span className="text-[20vw] font-black leading-none tracking-tighter"
+              style={{ color: 'rgba(255,255,255,0.03)' }}>DOKTER</span>
           </div>
-        </section>
 
-        {/* Doctors Grid */}
-        <section className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-16 text-center max-w-3xl mx-auto">
-              <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-bold">
-                Daftar Lengkap
-              </div>
-              <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-                Daftar Dokter Spesialis
-              </h2>
-              <p className="text-xl text-foreground/70 font-light">
-                Pilih dokter spesialis sesuai kebutuhan kesehatan Anda dan jadwalkan konsultasi dengan mudah sesuai jadwal yang tersedia
-              </p>
+          {/* decorative circles */}
+          <div className="absolute top-20 right-20 w-80 h-80 rounded-full border border-white/5" />
+          <div className="absolute top-32 right-32 w-48 h-48 rounded-full border border-white/5" />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-end"
+            style={{ minHeight: '80vh', paddingBottom: '6rem', paddingTop: '10rem' }}>
+
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-0.5" style={{ background: '#00b4d8' }} />
+              <span className="text-xs tracking-[0.35em] uppercase font-bold" style={{ color: '#90e0ef' }}>RS Catharina 1914</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {doctors.map((doctor, index) => (
-                <div key={doctor.id} className="max-w-[250px] mx-auto w-full"> 
-                <DoctorCard  doctor={doctor} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Info Section */}
-        <section className="py-20 sm:py-32 bg-gradient-to-b from-neutral-light to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
               <div>
-                <h2 className="text-5xl font-serif font-bold text-foreground mb-8 leading-tight">
-                  Bagaimana Memilih Dokter?
-                </h2>
-                <div className="space-y-5">
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-l-secondary hover:shadow-lg transition-all">
-                    <div className="flex gap-4 items-start">
-                      <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-secondary font-bold text-lg">1</div>
-                      <div>
-                        <h3 className="font-bold text-foreground mb-2 text-lg">Tentukan Keluhan Kesehatan</h3>
-                        <p className="text-foreground/70 leading-relaxed font-light">
-                          Identifikasi jenis keluhan atau gejala yang ingin Anda konsultasikan
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-l-primary hover:shadow-lg transition-all">
-                    <div className="flex gap-4 items-start">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary font-bold text-lg">2</div>
-                      <div>
-                        <h3 className="font-bold text-foreground mb-2 text-lg">Pilih Spesialisasi</h3>
-                        <p className="text-foreground/70 leading-relaxed font-light">
-                          Pilih dokter spesialis yang sesuai dengan bidang kesehatan Anda
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-l-secondary hover:shadow-lg transition-all">
-                    <div className="flex gap-4 items-start">
-                      <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-secondary font-bold text-lg">3</div>
-                      <div>
-                        <h3 className="font-bold text-foreground mb-2 text-lg">Cek Jadwal Praktik</h3>
-                        <p className="text-foreground/70 leading-relaxed font-light">
-                          Lihat jadwal praktik dokter yang tersedia di kartu dokter masing-masing
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-l-primary hover:shadow-lg transition-all">
-                    <div className="flex gap-4 items-start">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 text-primary font-bold text-lg">4</div>
-                      <div>
-                        <h3 className="font-bold text-foreground mb-2 text-lg">Jadwalkan Konsultasi</h3>
-                        <p className="text-foreground/70 leading-relaxed font-light">
-                          Hubungi kami atau klik tombol jadwalkan untuk membuat appointment Anda
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-[0.88] tracking-tight mb-8">
+                  TIM<br />
+                  <span style={{ color: '#00b4d8' }}>DOKTER</span><br />
+                  KAMI
+                </h1>
+                <p className="text-white/60 text-lg leading-relaxed max-w-md font-light">
+                  Dokter spesialis bersertifikat dengan dedikasi tinggi untuk memberikan perawatan terbaik bagi setiap pasien.
+                </p>
               </div>
 
-              {/* Right Content */}
-              <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 rounded-3xl p-8 sm:p-12 border-2 border-primary/20">
-                <h3 className="text-4xl font-serif font-bold text-foreground mb-8">
-                  Keunggulan Tim Kami
-                </h3>
-                <ul className="space-y-5 mb-8">
-                  <li className="flex gap-4 items-start">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm mt-1">✓</div>
-                    <div>
-                      <span className="text-foreground font-bold">Bersertifikat & Tersertifikasi Internasional</span>
-                      <p className="text-foreground/70 font-light text-sm mt-1">Semua dokter memiliki lisensi dan sertifikasi resmi</p>
-                    </div>
-                  </li>
-                  <li className="flex gap-4 items-start">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm mt-1">✓</div>
-                    <div>
-                      <span className="text-foreground font-bold">Pengalaman Puluhan Tahun</span>
-                      <p className="text-foreground/70 font-light text-sm mt-1">Rata-rata pengalaman 18+ tahun di bidangnya</p>
-                    </div>
-                  </li>
-                  <li className="flex gap-4 items-start">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm mt-1">✓</div>
-                    <div>
-                      <span className="text-foreground font-bold">Mengikuti Perkembangan Medis</span>
-                      <p className="text-foreground/70 font-light text-sm mt-1">Terus update dengan teknologi dan metode terkini</p>
-                    </div>
-                  </li>
-                  <li className="flex gap-4 items-start">
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm mt-1">✓</div>
-                    <div>
-                      <span className="text-foreground font-bold">Pendekatan Personal & Ramah</span>
-                      <p className="text-foreground/70 font-light text-sm mt-1">Komunikasi terbuka dan empati dengan setiap pasien</p>
-                    </div>
-                  </li>
-                </ul>
-
-                <a href="#hubungi" className="w-full px-6 py-4 text-white rounded-xl hover:shadow-lg transition-all font-bold inline-flex items-center justify-center gap-2 group" style={{backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'}}>
-                  Hubungi Kami Sekarang
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </a>
+              {/* stats */}
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { n: doctors.length, l: 'Dokter Aktif' },
+                  { n: '10+', l: 'Spesialisasi' },
+                  { n: '24/7', l: 'Siap Melayani' },
+                  { n: '18+', l: 'Rata-rata Pengalaman' },
+                ].map((s, i) => (
+                  <div key={i} className="p-5 rounded-2xl"
+                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div className="text-3xl font-black text-white mb-1">{s.n}</div>
+                    <div className="text-white/40 text-xs tracking-widest uppercase">{s.l}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-bold">
-                Pertanyaan Umum
+        {/* ══════════════════════ DOCTORS GRID ══════════════════════ */}
+        <section className="py-28 sm:py-36" style={{ background: '#f7f9fc' }}>
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+              <div>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Daftar Lengkap</p>
+                <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
+                  Dokter<br />
+                  <span className="text-gray-300">Spesialis</span>
+                </h2>
               </div>
-              <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-                FAQ Jadwal Dokter
-              </h2>
-              <p className="text-lg text-foreground/70 font-light max-w-2xl mx-auto">
-                Temukan jawaban untuk pertanyaan umum tentang konsultasi dan jadwal dokter kami
+              <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
+                Pilih dokter sesuai kebutuhan kesehatan dan jadwalkan konsultasi dengan mudah
               </p>
             </div>
 
-            <div className="space-y-4">
+            {doctors.length === 0 ? (
+              <div className="rounded-3xl border-2 border-dashed border-gray-200 p-20 text-center text-gray-400">
+                Belum ada dokter tersedia.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {doctors.map((doctor) => (
+                  <DoctorCard key={doctor.id} doctor={doctor} />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* ══════════════════════ CARA MEMILIH DOKTER ══════════════════════ */}
+        <section className="py-28 sm:py-36 bg-white">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+              {/* left */}
+              <div>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Panduan</p>
+                <h2 className="text-5xl font-black text-gray-900 leading-tight mb-12">
+                  Cara Memilih<br />
+                  <span style={{ color: '#0077b6' }}>Dokter</span>
+                </h2>
+
+                <div className="space-y-4">
+                  {[
+                    { n: '01', title: 'Tentukan Keluhan', desc: 'Identifikasi jenis keluhan atau gejala yang ingin dikonsultasikan', color: '#0077b6' },
+                    { n: '02', title: 'Pilih Spesialisasi', desc: 'Pilih dokter spesialis yang sesuai dengan bidang kesehatan Anda', color: '#0096c7' },
+                    { n: '03', title: 'Cek Jadwal Praktik', desc: 'Lihat jadwal praktik dokter yang tersedia di kartu dokter', color: '#1d4ed8' },
+                    { n: '04', title: 'Jadwalkan Konsultasi', desc: 'Hubungi kami untuk membuat appointment sesuai jadwal', color: '#003566' },
+                  ].map((step, i) => (
+                    <div key={i} className="group flex gap-5 p-6 rounded-2xl border hover:shadow-md transition-all"
+                      style={{ borderColor: '#e2e8f0', background: '#f8fafc' }}>
+                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 font-black text-sm text-white"
+                        style={{ background: step.color }}>
+                        {step.n}
+                      </div>
+                      <div>
+                        <h3 className="font-black text-gray-900 mb-1">{step.title}</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* right — keunggulan */}
+              <div className="rounded-3xl overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, #001d3d, #003566)' }}>
+                <div className="p-8 sm:p-10">
+                  <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#00b4d8' }}>Keunggulan</p>
+                  <h3 className="text-4xl font-black text-white leading-tight mb-8">
+                    Tim Medis<br />
+                    <span style={{ color: '#00b4d8' }}>Terpercaya</span>
+                  </h3>
+
+                  <div className="space-y-5 mb-10">
+                    {[
+                      { title: 'Bersertifikat Internasional', desc: 'Semua dokter memiliki lisensi dan sertifikasi resmi' },
+                      { title: 'Pengalaman 18+ Tahun', desc: 'Rata-rata pengalaman puluhan tahun di bidangnya' },
+                      { title: 'Update Teknologi Medis', desc: 'Terus update dengan metode dan teknologi terkini' },
+                      { title: 'Pendekatan Personal', desc: 'Komunikasi terbuka dan empati dengan setiap pasien' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex gap-4 items-start">
+                        <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                          style={{ background: 'rgba(0,180,216,0.2)' }}>
+                          <CheckCircle size={13} style={{ color: '#00b4d8' }} />
+                        </div>
+                        <div>
+                          <p className="text-white font-bold text-sm mb-0.5">{item.title}</p>
+                          <p className="text-white/40 text-xs leading-relaxed">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a href="#hubungi"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-sm transition-all hover:opacity-90 hover:-translate-y-0.5"
+                    style={{ background: '#0077b6', color: 'white' }}>
+                    Hubungi Kami <ArrowRight size={15} />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════ FAQ ══════════════════════ */}
+        <section className="py-28 sm:py-36" style={{ background: '#f7f9fc' }}>
+          <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16">
+
+            <div className="mb-16">
+              <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>FAQ</p>
+              <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
+                Pertanyaan<br />
+                <span className="text-gray-300">Umum</span>
+              </h2>
+            </div>
+
+            <div className="space-y-3">
               {[
                 {
                   question: 'Apakah saya perlu appointment sebelum konsultasi?',
-                  answer: 'Kami merekomendasikan appointment untuk menghindari waktu tunggu yang lama. Anda bisa menelepon kami di 0274-555-1914 atau menggunakan form online untuk mendaftar. Walau tanpa appointment, kami tetap melayani pasien dengan urutan antrian yang ada.',
+                  answer: 'Kami merekomendasikan appointment untuk menghindari waktu tunggu yang lama. Anda bisa menelepon kami atau menggunakan form online. Walau tanpa appointment, kami tetap melayani dengan urutan antrian.',
                 },
                 {
                   question: 'Berapa lama waktu konsultasi dengan dokter?',
-                  answer: 'Durasi konsultasi berkisar 15-30 menit tergantung kondisi dan kompleksitas kasus kesehatan Anda. Waktu ini sudah termasuk pemeriksaan kesehatan awal dan diskusi mengenai diagnosis serta rencana perawatan.',
+                  answer: 'Durasi konsultasi berkisar 15-30 menit tergantung kondisi dan kompleksitas kasus. Sudah termasuk pemeriksaan awal dan diskusi diagnosis.',
                 },
                 {
                   question: 'Apakah dokter menerima pasien baru?',
-                  answer: 'Ya, semua dokter kami menerima pasien baru. Silakan hubungi kami untuk mendapatkan informasi jadwal dokter yang Anda inginkan dan membuat appointment sebagai pasien baru.',
+                  answer: 'Ya, semua dokter kami menerima pasien baru. Hubungi kami untuk informasi jadwal dan membuat appointment.',
                 },
                 {
-                  question: 'Bagaimana jika saya tidak bisa datang pada jadwal yang ditentukan?',
-                  answer: 'Hubungi kami minimal 24 jam sebelum jadwal konsultasi untuk mengganti jadwal Anda dengan waktu yang lain. Tim kami siap membantu mencari waktu yang sesuai dengan kebutuhan Anda.',
+                  question: 'Bagaimana jika tidak bisa datang pada jadwal yang ditentukan?',
+                  answer: 'Hubungi kami minimal 24 jam sebelum jadwal untuk reschedule. Tim kami siap membantu mencari waktu yang sesuai.',
                 },
               ].map((faq, index) => (
-                <details
-                  key={index}
-                  className="group bg-white rounded-2xl border border-border p-6 sm:p-8 hover:shadow-lg transition-all duration-300"
-                >
-                  <summary className="font-bold text-lg text-foreground flex items-center justify-between cursor-pointer group-hover:text-primary transition-colors">
+                <details key={index}
+                  className="group bg-white rounded-2xl border overflow-hidden hover:shadow-md transition-all"
+                  style={{ borderColor: '#e2e8f0' }}>
+                  <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer font-black text-gray-900 hover:text-[#0077b6] transition-colors list-none">
                     <span>{faq.question}</span>
-                    <span className="text-secondary group-open:rotate-180 transition-transform flex-shrink-0 ml-4">
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 group-open:rotate-180 transition-transform"
+                      style={{ background: '#e0f2fe' }}>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="#0077b6" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
-                    </span>
+                    </div>
                   </summary>
-                  <p className="mt-4 text-foreground/70 leading-relaxed font-light text-base">
-                    {faq.answer}
-                  </p>
+                  <div className="px-6 pb-6">
+                    <div className="h-px mb-4" style={{ background: '#f1f5f9' }} />
+                    <p className="text-gray-500 leading-relaxed text-sm">{faq.answer}</p>
+                  </div>
                 </details>
               ))}
             </div>
+
           </div>
         </section>
+
       </main>
       <Footer />
     </>

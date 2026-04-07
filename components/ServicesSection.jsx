@@ -12,6 +12,7 @@ export default function ServicesSection() {
       description:
         'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman',
       features: ['Konsultasi dokter', 'Pemeriksaan kesehatan', 'Resep & Obat-obatan'],
+      color: '#0077b6', bg: '#e0f2fe',
 
     },
     {
@@ -20,6 +21,7 @@ export default function ServicesSection() {
       description:
         'Perawatan intensif dengan fasilitas kamar modern dan nyaman',
       features: ['Kamar VIP & Standar', 'Perawatan 24 jam', 'Keluarga boleh menginap'],
+      color: '#0077b6', bg: '#e0f2fe',
     },
     {
       icon: Ambulance,
@@ -27,7 +29,7 @@ export default function ServicesSection() {
       description:
         'Layanan darurat 24 jam siap membantu kondisi medis mendesak',
       features: ['Respons 24/7', 'Dokter spesialis', 'Ambulans siaga'],
-
+      color: '#0077b6', bg: '#e0f2fe',
     },
     {
       icon: Users,
@@ -35,7 +37,7 @@ export default function ServicesSection() {
       description:
         'Layanan kesehatan spesifik dari dokter ahli bidang tertentu',
       features: ['Mata', 'Jantung', 'Anak', 'Kandungan', 'dan lainnya'],
-
+      color: '#0077b6', bg: '#e0f2fe',
     },
     {
       icon: Microscope,
@@ -43,7 +45,7 @@ export default function ServicesSection() {
       description:
         'Diagnosa akurat dengan peralatan modern dan teknologi terkini',
       features: ['Tes darah', 'Rontgen', 'CT Scan', 'USG', 'ECG'],
-
+      color: '#0077b6', bg: '#e0f2fe',
     },
     {
       icon: Zap,
@@ -51,7 +53,7 @@ export default function ServicesSection() {
       description:
         'Prosedur medis dan operasi dengan tim ahli dan fasilitas steril',
       features: ['Operasi mayor', 'Operasi minor', 'Endoskopi', 'Anestesi umum'],
-  
+      color: '#0077b6', bg: '#e0f2fe',
     },
   ];
 
@@ -118,12 +120,10 @@ export default function ServicesSection() {
                 <div className="relative z-10">
                   <div
                     className="mb-6 inline-flex p-4 bg-linear-to-br rounded-xl group-hover:shadow-lg transition-all"
-                    style={{
-                      backgroundImage:
-                        'linear-linear(to bottom right, rgba(0, 91, 163, 0.1), rgba(0, 153, 216, 0.1))',
-                    }}
+                    style={{ background: service.bg }}
                   >
                     <Icon
+                      style={{ color: service.color }}
                       size={32}
                       className="text-secondary group-hover:text-primary transition-colors"
                     />
