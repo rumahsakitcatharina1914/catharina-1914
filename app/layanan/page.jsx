@@ -84,7 +84,7 @@ export default function Layanan() {
   return (
     <>
       <Header />
-      <main>
+      <main className="overflow-hidden">
 
         {/*HERO*/}
         <section className="py-28 sm:py-36 bg-white">

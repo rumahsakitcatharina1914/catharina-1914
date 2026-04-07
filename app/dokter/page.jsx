@@ -15,7 +15,7 @@ export default async function DokterPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="overflow-hidden">
 
         {/* ══════════════════════ HERO ══════════════════════ */}
         <section className="relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #001d3d 0%, #003566 50%, #0077b6 100%)', minHeight: '80vh' }}>

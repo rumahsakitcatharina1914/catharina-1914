@@ -28,7 +28,7 @@ export default async function HomePage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="overflow-hidden">
         <SlideSection/>
         {/* <AboutSection /> */}
         <DoctorsSection/>

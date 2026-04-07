@@ -1,6 +1,7 @@
 'use client';
 
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Tooltip } from 'recharts';
 import { useState } from 'react';
 
 export default function ContactSection() {
@@ -45,7 +46,7 @@ export default function ContactSection() {
 
 
   return (
-    <section id="hubungi" className="py-20 sm:py-32 bg-gradient-to-black from-white to-neutral-light">
+    <section id="hubungi" className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
