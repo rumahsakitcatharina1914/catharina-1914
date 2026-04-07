@@ -8,7 +8,7 @@ import prisma from '@/lib/prisma'
 
 
 export const metadata = {
-  title: 'Dokter | Rumah Sakit Catharina 1914',
+  title: 'Dokter | RS Catharina 1914',
   description: 'Daftar dokter spesialis profesional di Rumah Sakit Catharina 1914 dengan pengalaman dan keahlian di berbagai bidang medis.',
 };
 
@@ -56,9 +56,11 @@ export default async function DokterPage(){
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {doctors.map((doctor, index) => (
-                <DoctorCard key={doctor.id} doctor={doctor} />
+                <div key={doctor.id} className="max-w-[250px] mx-auto w-full"> 
+                <DoctorCard  doctor={doctor} />
+                </div>
               ))}
             </div>
           </div>

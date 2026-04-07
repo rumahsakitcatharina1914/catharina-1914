@@ -33,15 +33,15 @@ export default function DoctorsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-black tracking-tight mb-4">
             <Stethoscope size={16} />
             Tim Medis Profesional
           </div>
-          <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
+          <h2 className="text-5xl sm:text-6xl font-black tracking-tight text-foreground mb-6 leading-tight">
             Dokter Spesialis Kami
           </h2>
-          <p className="text-xl text-foreground/70 font-light">
-            Dipercaya oleh ribuan pasien dengan dedikasi tinggi untuk memberikan perawatan kesehatan terbaik
+          <p className="text-xl text-neutral-gray leading-relaxed text-gray-400">
+            Dipercaya oleh banyak pasien dengan dedikasi tinggi untuk memberikan perawatan kesehatan terbaik
           </p>
         </div>
 
@@ -64,9 +64,11 @@ export default function DoctorsSection() {
         {/* Grid Dokter */}
         {!loading && doctors.length > 0 && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
               {doctors.map((doctor) => (
-                <DoctorCard key={doctor.id} doctor={doctor} />
+                <div key={doctor.id} className="max-w-[250px] mx-auto w-full">
+                <DoctorCard doctor={doctor} />
+                </div>
               ))}
             </div>
 

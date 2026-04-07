@@ -5,17 +5,19 @@ import Image from 'next/image';
 
 export default function DoctorCard({ doctor }) {
   return (
-    <div className="group relative h-full animate-fade-in-up">
+    <div className="group relative">
       <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 h-full flex flex-col transform hover:scale-105 hover:-translate-y-2">
         
         {/* Foto Dokter */}
-        <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5"
+        style={{ height: '300px' }}>
+          
           {doctor?.image ? (
             <Image
               src={doctor.image}
               alt={doctor.name}
               fill
-               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+               sizes="(max-width: 768px) 100vw,  50vw, 33vw"
               className="object-cover object-top"
             />
           ) : (
@@ -29,35 +31,35 @@ export default function DoctorCard({ doctor }) {
         </div>
 
         {/* Info Dokter */}
-        <div className="p-5">
-          <h3 className="text-xl font-serif font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+        <div className="p-4">
+          <h3 className="text-xl font-black text-foreground mb-2 group-hover:text-primary transition-colors">
             {doctor?.name}
           </h3>
 
-          <p className="text-sm text-primary font-semibold mb-3">
+          <p className="text-xs text-primary font-semibold mb-3">
             {doctor?.specialization}
           </p>
 
           {/* Jadwal Praktik */}
           {doctor?.schedule && doctor.schedule.length > 0 && (
-            <div className="bg-neutral-light rounded-xl p-4 border border-border">
-              <p className="text-xs font-bold text-foreground/70 mb-3 flex items-center gap-2">
+            <div className="bg-neutral-light rounded-xl p-3 border border-border">
+              <p className="text-xs font-bold text-foreground/70 mb-2 flex items-center gap-2">
                 <Calendar size={14} />
                 Jadwal Praktik
               </p>
 
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {doctor.schedule.map((sched, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between text-sm"
+                    className="flex items-center justify-between text-xs"
                   >
                     <span className="text-foreground font-medium">
                       {sched.day}
                     </span>
 
                     <span className="flex items-center gap-1 text-primary font-semibold">
-                      <Clock size={14} />
+                      <Clock size={12} />
                       {sched.time}
                     </span>
                   </div>

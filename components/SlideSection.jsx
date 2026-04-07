@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 const heroSlides = [
   {
     id: 1,
-    title: 'Layanan Kesehatan Berkualitas Untuk Keluarga Anda',
+    title: 'Selamat Datang di Website Resmi RSU Catharina 1914',
     description: 'Rumah Sakit Catharina 1914 hadir dengan dokter spesialis berpengalaman, fasilitas medis terkini, dan komitmen penuh memberikan perawatan dan pelayanan terbaik.',
     badge: 'Terpercaya sejak 1914',
     image: '/uploads/slide/no1.jpg'
@@ -99,9 +99,11 @@ export default function HeroSection() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: `linear-gradient(135deg, rgba(5, 102, 181, 0.91), rgba(41, 176, 229, 0.7))`
+                backgroundImage: `linear-gradient(135deg, rgba(5, 102, 181, 0.4), rgba(41, 176, 229, 0.3))`
               }}
-            ></div>
+            >
+              
+            </div>
 
             {/* Content */}
             <div className="relative z-10 h-full flex items-center">
@@ -109,7 +111,7 @@ export default function HeroSection() {
                 <div className="max-w-3xl">
                   {/* Badge */}
                   <div
-                    className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-white/15 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-bold border border-white/30 animate-fade-in-up"
+                    className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-white/15 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-black border border-white/30 animate-fade-in-up"
                     style={{
                       animationDelay: idx === currentSlide ? '0.1s' : '0s',
                       animationFillMode: 'both'
@@ -121,7 +123,7 @@ export default function HeroSection() {
 
                   {/* Title */}
                   <h1
-                    className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight text-balance animate-slide-up"
+                    className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight  text-white mb-4 sm:mb-6 leading-tight text-balance animate-slide-up"
                     style={{
                       animationDelay: idx === currentSlide ? '0.2s' : '0s',
                       animationFillMode: 'both'
@@ -141,29 +143,6 @@ export default function HeroSection() {
                     {s.description}
                   </p>
 
-                  {/* CTA Buttons */}
-                  {/* <div
-                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-slide-up"
-                    style={{
-                      animationDelay: idx === currentSlide ? '0.4s' : '0s',
-                      animationFillMode: 'both'
-                    }}
-                  >
-                    <Link
-                      href={s.ctaHref}
-                      className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-secondary hover:bg-secondary text-primary-dark font-bold text-sm sm:text-lg rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
-                    >
-                      {s.ctaText}
-                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      href="#hubungi"
-                      className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white/15 hover:bg-white/25 text-white font-bold text-sm sm:text-lg rounded-xl backdrop-blur-md border-2 border-white/30 transition-all duration-300 hover:border-white/50 w-full sm:w-auto"
-                    >
-                      <PhoneCall size={20} />
-                      Hubungi Kami
-                    </Link>
-                  </div> */}
                 </div>
               </div>
             </div>

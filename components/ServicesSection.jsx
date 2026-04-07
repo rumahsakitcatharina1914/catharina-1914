@@ -88,10 +88,10 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
+          <h2 className="text-5xl sm:text-6xl font-bold  mb-6">
             Layanan Unggulan Kami
           </h2>
-          <p className="text-xl text-neutral-gray leading-relaxed">
+          <p className="text-xl text-gray-400 leading-relaxed">
             Berbagai layanan kesehatan komprehensif untuk memenuhi kebutuhan
             medis Anda dan keluarga dengan fasilitas terbaik
           </p>
@@ -166,7 +166,7 @@ export default function ServicesSection() {
                   Feed Instagram
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font-serif font-bold text-foreground mb-2">
+                <h3 className="text-3xl sm:text-4xl font-black text-foreground mb-2">
                   Update Terbaru 
                 </h3>
 
@@ -223,7 +223,7 @@ export default function ServicesSection() {
                 <Newspaper size={14} />
                 Berita Terbaru
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-2">
+              <h3 className="text-2xl sm:text-3xl font-black  text-foreground mb-2">
                 Informasi dan Artikel
               </h3>
               <p className="text-sm text-foreground/70">

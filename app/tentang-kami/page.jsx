@@ -5,8 +5,8 @@ import prisma from '@/lib/prisma';
 import { CheckCircle, ArrowRight, Calendar, Target, Heart, Shield, Users, Award, TrendingUp } from 'lucide-react';
 
 export const metadata = {
-  title: 'Tentang Kami | Rumah Sakit Catharina 1914',
-  description: 'Sejarah, visi, misi, dan nilai-nilai Rumah Sakit Catharina 1914.',
+  title: 'Tentang Kami',
+  description: 'Sejarah, visi, misi, dan Struktur Organisasi Rumah Sakit Catharina 1914.',
 };
 
 async function getLatestNews() {
@@ -27,12 +27,7 @@ export default async function TentangKami() {
   ];
 
   const strukturOrganisasi = [
-    { jabatan: 'Direktur Utama', nama: 'Dr. Andreas Santoso, Sp.PD', foto: null },
-    { jabatan: 'Direktur Medis', nama: 'Dr. Maria Helena, Sp.OG', foto: null },
-    { jabatan: 'Direktur Operasional', nama: 'Bpk. Thomas Kurniawan, M.M.', foto: null },
-    { jabatan: 'Direktur Keuangan', nama: 'Ibu. Lucia Dewi, S.E., M.Ak.', foto: null },
-    { jabatan: 'Kepala Keperawatan', nama: 'Ns. Fransiska, S.Kep., M.Kes.', foto: null },
-    { jabatan: 'Kepala Farmasi', nama: 'Apt. Benediktus, S.Farm.', foto: null },
+    { jabatan: 'Kepala Utama', nama: 'DR. dr. H. Elman Boy, M.Kes.', foto: 'org/latar-merah.jpg'},
   ];
 
   const misiList = [
@@ -54,9 +49,7 @@ export default async function TentangKami() {
       <Header />
       <main className="overflow-hidden">
 
-        {/* ════════════════════════════════════════
-            HERO — full-bleed editorial
-        ════════════════════════════════════════ */}
+        {/*HERO — full-bleed editorial */}
         <section
           className="relative min-h-[100svh] flex flex-col justify-end"
           style={{ background: 'linear-gradient(160deg, #001d3d 0%, #003566 45%, #0077b6 100%)' }}
@@ -64,9 +57,6 @@ export default async function TentangKami() {
           {/* dot grid pattern */}
           <div className="absolute inset-0 opacity-[0.07]"
             style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-
-          {/* diagonal accent bar */}
-          <div className="absolute top-0 left-0 w-2 h-full" style={{ background: '#00b4d8' }} />
 
           {/* floating year */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none overflow-hidden">
@@ -79,51 +69,32 @@ export default async function TentangKami() {
           <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-10 lg:px-16 pb-24 pt-40">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-0.5 bg-[#00b4d8]" />
-                <span className="text-[#90e0ef] text-xs tracking-[0.3em] uppercase font-semibold">Sejak 1914</span>
+                <div className="w-10 h-0.5 bg-[#91C8E4]" />
+                <span className="text-[#91C8E4] text-xs tracking-[0.3em] uppercase font-semibold">Sejak 1914</span>
               </div>
               <h1 className="text-6xl sm:text-8xl font-black text-white leading-[0.95] tracking-tight mb-8">
-                RUMAH<br />
-                SAKIT<br />
-                <span style={{ color: '#00b4d8' }}>CATHARINA</span>
+                Rumah<br />
+                Sakit<br />
+                <span style={{ color: '#91C8E4' }}>Catharina</span>
               </h1>
               <p className="text-white/60 text-xl leading-relaxed max-w-xl font-light">
-                Lebih dari satu abad hadir — mengabdi untuk kesehatan masyarakat dengan hati, ilmu, dan teknologi terkini.
+                Lebih dari satu abad hadir dengan mengabdi untuk kesehatan masyarakat dengan hati, ilmu, dan teknologi terkini.
               </p>
             </div>
           </div>
 
-          {/* bottom stats bar */}
-          <div className="relative z-10 border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-              <div className="grid grid-cols-2 md:grid-cols-4">
-                {[
-                  { n: '110+', l: 'Tahun Berdiri' },
-                  { n: '500+', l: 'Tenaga Medis' },
-                  { n: '100K+', l: 'Pasien / Tahun' },
-                  { n: '50+', l: 'Spesialisasi' },
-                ].map((s, i) => (
-                  <div key={i} className="py-8 px-2 border-r border-white/10 last:border-r-0 text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-white mb-1">{s.n}</div>
-                    <div className="text-white/40 text-xs tracking-widest uppercase">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </section>
 
-        {/* ════════════════════════════════════════
-            SEJARAH — horizontal scrolling timeline feel
-        ════════════════════════════════════════ */}
-        <section className="py-28 sm:py-40" style={{ background: '#f7f9fc' }}>
+
+        {/* SEJARAH — horizontal scrolling timeline feel*/}
+        <section className="py-28 sm:py-40" style={{ background: '' }}>
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
             <div className="mb-20">
               <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>01 — Sejarah</p>
               <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
                 Perjalanan<br />
-                <span className="text-gray-300">110 Tahun</span>
+                <span className="text-gray-300"> 100+ Tahun</span>
               </h2>
             </div>
 
@@ -169,95 +140,172 @@ export default async function TentangKami() {
         ════════════════════════════════════════ */}
         <section className="py-28 sm:py-40 bg-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-
+        
             <div className="mb-20">
-              <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>02 — Struktur</p>
+              <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#005ba3' }}>02 — Struktur</p>
               <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
                 Organisasi<br />
                 <span className="text-gray-300">Kepemimpinan</span>
               </h2>
             </div>
-
-            {/* top 1 director */}
-            <div className="mb-6">
-              <div className="max-w-xs mx-auto">
-                <div className="relative rounded-2xl overflow-hidden border-2 p-6 text-center transition-all hover:shadow-xl"
-                  style={{ borderColor: '#0077b6', background: 'linear-gradient(135deg, #001d3d, #0077b6)' }}>
-                  <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-black"
-                    style={{ background: 'rgba(255,255,255,0.1)', color: '#90e0ef' }}>
-                    {strukturOrganisasi[0].nama.split(' ')[0][0]}
-                    {strukturOrganisasi[0].nama.split(' ')[1]?.[0] ?? ''}
-                  </div>
-                  <p className="text-xs tracking-widest uppercase font-bold mb-1" style={{ color: '#90e0ef' }}>
-                    {strukturOrganisasi[0].jabatan}
-                  </p>
-                  <p className="text-white font-bold text-sm leading-snug">{strukturOrganisasi[0].nama}</p>
-                </div>
-                {/* connector */}
-                <div className="flex justify-center"><div className="w-px h-8" style={{ background: '#e2e8f0' }} /></div>
+        
+            {/* ── Level 1: Direktur PT. KSM ── */}
+            <div className="flex justify-center mb-2">
+              <div className="px-6 py-3 rounded-xl text-center text-xs font-bold tracking-widest uppercase border"
+                style={{ background: '#f0f9ff', borderColor: '#bae6fd', color: '#0077b6' }}>
+                KURNIA FITRA UTAMA — Direktur PT. KSM
               </div>
             </div>
-
-            {/* 3 directors row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-              {strukturOrganisasi.slice(1, 4).map((org, i) => (
-                <div key={i}>
-                  <div className="rounded-2xl border border-gray-100 p-5 text-center hover:border-blue-200 hover:shadow-md transition-all bg-white group">
-                    <div className="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center text-sm font-black transition-all group-hover:scale-105"
-                      style={{ background: '#e0f2fe', color: '#0077b6' }}>
-                      {org.nama.split(' ')[0][0]}{org.nama.split(' ')[1]?.[0] ?? ''}
+            <div className="flex justify-center"><div className="w-px h-6 bg-gray-300" /></div>
+        
+            {/* ── Level 2: Kepala RS ── */}
+            <div className="flex justify-center mb-2">
+              <div className="relative rounded-2xl overflow-hidden text-center px-8 py-5 min-w-[220px]"
+                style={{ background: 'linear-gradient(135deg, #003d7a, #005ba3)' }}>
+                <p className="text-white font-black text-base">Dr. dr. Elman Boy, M.Kes</p>
+                <p className="text-white/60 text-xs tracking-widest uppercase mt-1">Kepala RS</p>
+              </div>
+            </div>
+            <div className="flex justify-center"><div className="w-px h-6 bg-gray-300" /></div>
+        
+            {/* ── Level 3: Komite Medik (samping) ── */}
+            <div className="flex justify-center mb-2">
+              <div className="px-5 py-3 rounded-xl text-center text-xs border max-w-xs"
+                style={{ background: '#fefce8', borderColor: '#fde68a', color: '#92400e' }}>
+                <p className="font-bold mb-1">Komite Medik & Tim</p>
+                <p className="text-[10px] leading-relaxed opacity-70">Casemix · TB/DOTS · PPI & IPCN · Malaria · SPI · Marketing · Bimbingan Rohani</p>
+              </div>
+            </div>
+            <div className="flex justify-center"><div className="w-px h-6 bg-gray-300" /></div>
+        
+            {/* ── Level 4: 2 Kabag ── */}
+            <div className="relative flex justify-center gap-8 sm:gap-24 mb-2">
+              {/* horizontal connector */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-px bg-gray-300 mt-0" />
+              {[
+                { nama: 'Suhendrik', jabatan: 'Kabag Umum, Legal & Keuangan' },
+                { nama: 'Yessy Yulianti', jabatan: 'Kabag Penunjang Medis' },
+              ].map((o, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div className="w-px h-6 bg-gray-300" />
+                  <div className="rounded-2xl border p-4 text-center w-44 sm:w-52 hover:shadow-md transition-all"
+                    style={{ background: '#e0f2fe', borderColor: '#7dd3fc' }}>
+                    <div className="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center font-black text-sm"
+                      style={{ background: '#0077b6', color: 'white' }}>
+                      {o.nama[0]}
                     </div>
-                    <p className="text-xs tracking-widest uppercase font-bold mb-1 text-gray-400">{org.jabatan}</p>
-                    <p className="text-gray-800 font-semibold text-sm leading-snug">{org.nama}</p>
+                    <p className="font-bold text-gray-900 text-sm">{o.nama}</p>
+                    <p className="text-[10px] text-gray-500 mt-0.5 leading-snug">{o.jabatan}</p>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* connector */}
-            <div className="flex justify-center mb-4">
-              <div className="w-px h-6" style={{ background: '#e2e8f0' }} />
-            </div>
-
-            {/* 2 kepala row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-              {strukturOrganisasi.slice(4).map((org, i) => (
-                <div key={i} className="rounded-2xl border border-gray-100 p-5 text-center hover:border-blue-200 hover:shadow-md transition-all bg-white group">
-                  <div className="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center text-sm font-black"
-                    style={{ background: '#f0f9ff', color: '#0077b6' }}>
-                    {org.nama.split(' ')[0][0]}{org.nama.split(' ')[1]?.[0] ?? ''}
+            <div className="flex justify-center"><div className="w-px h-6 bg-gray-300" /></div>
+        
+            {/* ── Level 5: Staff ── */}
+            <div className="mb-8">
+              <p className="text-center text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Staff & Koordinator</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {[
+                  { nama: 'Fendy Aditya T', jabatan: 'Legal' },
+                  { nama: 'Zainul Umri', jabatan: 'Umum' },
+                  { nama: 'Arif Hakim H', jabatan: 'Keuangan' },
+                  { nama: 'Peri Fadli', jabatan: 'Payrol, Pajak & Asuransi' },
+                  { nama: 'Ade Chandra', jabatan: 'Administrasi' },
+                  { nama: 'Aithar Salman', jabatan: 'IT' },
+                  { nama: 'Suriadi', jabatan: 'Gudang' },
+                  { nama: 'Dedek Vivi Ampelani', jabatan: 'Keperawatan & Kebidanan' },
+                  { nama: 'Endirianayah', jabatan: 'CSSD' },
+                  { nama: 'Yuli Yasmin', jabatan: 'Rekam Medis' },
+                  { nama: 'Putri Rezeki', jabatan: 'Laboratorium' },
+                  { nama: 'Wafa Washilah', jabatan: 'Gizi' },
+                  { nama: 'Ainul', jabatan: 'Radiologi' },
+                  { nama: 'Aulia Cahaya', jabatan: 'Farmasi' },
+                  { nama: 'Lia Nauli', jabatan: 'Laundry' },
+                ].map((s, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl border hover:shadow-sm transition-all"
+                    style={{ background: '#f8fafc', borderColor: '#e2e8f0' }}>
+                    <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black"
+                      style={{ background: '#dbeafe', color: '#1d4ed8' }}>
+                      {s.nama[0]}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-semibold text-gray-800 text-xs truncate">{s.nama}</p>
+                      <p className="text-[10px] text-gray-400 truncate">{s.jabatan}</p>
+                    </div>
                   </div>
-                  <p className="text-xs tracking-widest uppercase font-bold mb-1 text-gray-400">{org.jabatan}</p>
-                  <p className="text-gray-800 font-semibold text-sm leading-snug">{org.nama}</p>
+                ))}
+              </div>
+            </div>
+        
+            {/* ── Level 6: Instalasi ── */}
+            <div>
+              <p className="text-center text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Kepala Instalasi</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {[
+                  { nama: 'Jhohan Reaniyah', jabatan: 'Ka. Instalasi Gawat Darurat' },
+                  { nama: 'Chairun Nisa', jabatan: 'Ka. Instalasi Rawat Jalan' },
+                  { nama: 'Budi Arifin', jabatan: 'Ka. Instalasi Rawat Inap' },
+                  { nama: 'Zainuri', jabatan: 'Ka. Instalasi OK' },
+                  { nama: 'Madana H', jabatan: 'Ka. Instalasi ICU' },
+                  { nama: 'dr. Ratu Novita Sari', jabatan: 'Ka. Instalasi MCU' },
+                  { nama: 'Mahmud Solin', jabatan: 'Ka. Unit Ambulans' },
+                  { nama: 'Larsa Uncleyanti', jabatan: 'Ka. Instalasi Alat Medis' },
+                ].map((s, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl border hover:shadow-sm transition-all"
+                    style={{ background: '#fff7ed', borderColor: '#fed7aa' }}>
+                    <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black"
+                      style={{ background: '#fb923c', color: 'white' }}>
+                      {s.nama[0]}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-semibold text-gray-800 text-xs truncate">{s.nama}</p>
+                      <p className="text-[10px] text-gray-400 truncate">{s.jabatan}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+        
+            {/* Legend */}
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              {[
+                { color: '#e0f2fe', border: '#7dd3fc', label: 'Pimpinan' },
+                { color: '#f8fafc', border: '#e2e8f0', label: 'Tim Pendukung' },
+                { color: '#fff7ed', border: '#fed7aa', label: 'Tim Operasional' },
+              ].map((l) => (
+                <div key={l.label} className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded border" style={{ background: l.color, borderColor: l.border }} />
+                  <span className="text-xs text-gray-500">{l.label}</span>
                 </div>
               ))}
             </div>
-
+        
           </div>
         </section>
 
         {/* ════════════════════════════════════════
             VISI MISI TUJUAN — bold split layout
         ════════════════════════════════════════ */}
-        <section style={{ background: '#001d3d' }} className="py-28 sm:py-40">
+        <section style={{ background: '#D6E6F2' }} className="py-28 sm:py-40">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
             <div className="mb-20">
-              <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#00b4d8' }}>03 — Arah</p>
-              <h2 className="text-5xl sm:text-6xl font-black text-white leading-tight">
+              <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#005ba3' }}>03 — Arah</p>
+              <h2 className="text-5xl sm:text-6xl font-black leading-tight" style={{ color: '#002a52' }}>
                 Visi, Misi<br />
-                <span style={{ color: '#00b4d8' }}>& Tujuan</span>
+                <span style={{ color: '#005ba3' }}>& Tujuan</span>
               </h2>
             </div>
 
             {/* VISI — full width statement */}
             <div className="relative mb-12 p-10 sm:p-14 rounded-3xl overflow-hidden"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              style={{ background: 'linear-gradient(135deg, #003d7a, #005ba3)', border: '1px solid #0077c8' }}>
               <div className="absolute top-6 right-8 text-[80px] font-black leading-none select-none"
-                style={{ color: 'rgba(0,180,216,0.06)' }}>VISI</div>
+                style={{ color: 'rgba(255,255,255,0.05)' }}>VISI</div>
               <div className="flex items-start gap-4 mb-4 relative z-10">
-                <Target className="flex-shrink-0 mt-1" size={20} style={{ color: '#00b4d8' }} />
-                <span className="text-xs tracking-widest uppercase font-bold" style={{ color: '#00b4d8' }}>Visi Kami</span>
+                <Target  size={20} style={{ color: '#91C8E4' }} />
+                <span className="text-xs tracking-widest uppercase font-bold" style={{ color: '#90e0ef' }}>Visi Kami</span>
               </div>
               <p className="text-2xl sm:text-3xl text-white font-light leading-relaxed relative z-10 max-w-4xl">
                 "Menjadi rumah sakit pilihan utama yang dikenal dengan standar pelayanan kesehatan internasional, inovasi berkelanjutan, dan kepedulian tulus terhadap setiap jiwa yang kami layani."
@@ -265,48 +313,50 @@ export default async function TentangKami() {
             </div>
 
             {/* MISI grid */}
-            <div className="mb-12">
-              <div className="flex items-center gap-4 mb-6 relative z-10">
-                <Heart size={20} style={{ color: '#00b4d8' }} />
-                <span className="text-xs tracking-widest uppercase font-bold" style={{ color: '#00b4d8' }}>Misi Kami</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {misiList.map((m, i) => (
-                  <div key={i} className="flex gap-4 p-6 rounded-2xl group transition-all hover:bg-white/5"
-                    style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <span className="text-3xl font-black leading-none flex-shrink-0"
-                      style={{ color: 'rgba(0,180,216,0.25)' }}>
-                      0{i + 1}
-                    </span>
-                    <p className="text-white/70 leading-relaxed text-sm group-hover:text-white/90 transition-colors">{m}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="flex items-center gap-4 mb-6">
+              <Heart size={20} style={{ color: '#005ba3' }} />
+              <span className="text-xs tracking-widest uppercase font-bold" style={{ color: '#005ba3' }}>Misi Kami</span>
             </div>
 
-            {/* TUJUAN */}
-            <div>
-              <div className="flex items-center gap-4 mb-6">
-                <TrendingUp size={20} style={{ color: '#00b4d8' }} />
-                <span className="text-xs tracking-widest uppercase font-bold" style={{ color: '#00b4d8' }}>Tujuan Kami</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {tujuanList.map((t, i) => {
-                  const Icon = t.icon;
-                  return (
-                    <div key={i} className="p-6 rounded-2xl group hover:bg-[#0077b6] transition-all duration-300 cursor-default"
-                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110"
-                        style={{ background: 'rgba(0,180,216,0.15)' }}>
-                        <Icon size={18} style={{ color: '#00b4d8' }} />
-                      </div>
-                      <h4 className="text-white font-bold mb-2 text-sm">{t.title}</h4>
-                      <p className="text-white/50 text-xs leading-relaxed group-hover:text-white/70 transition-colors">{t.desc}</p>
-                    </div>
-                  );
-                })}
-              </div>
+            {/* MISI grid cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+              {misiList.map((m, i) => (
+                <div key={i} className="flex gap-4 p-6 rounded-2xl  bg-white hover:shadow-md transition-all group"
+                  style={{ background:'#F7FBFC', border: '1px solid #dbeafe' }}>
+                  <span className="text-3xl font-black leading-none flex-shrink-0"
+                    style={{ color: '#005ba3' }}>
+                    0{i + 1}
+                  </span>
+                  <p className="leading-relaxed text-sm group-hover:text-gray-900 transition-colors"
+                    style={{ color: '#475569' }}>{m}</p>
+                </div>
+              ))}
             </div>
+
+            {/* TUJUAN label */}
+            <div className="flex items-center gap-4 mb-6">
+              <TrendingUp size={20} style={{ color: '#005ba3' }} />
+              <span className="text-xs tracking-widest uppercase font-bold" style={{ color: '#005ba3' }}>Tujuan Kami</span>
+            </div>
+
+            {/* TUJUAN cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {tujuanList.map((t, i) => {
+                const Icon = t.icon;
+                return (
+                  <div key={i} className="p-6 rounded-2xl bg-white group hover:shadow-lg transition-all duration-300 cursor-default"
+                    style={{background:'#F7FBFC',  border: '1px solid #dbeafe' }}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-all group-hover:scale-110"
+                      style={{ background: '#e0f2fe' }}>
+                      <Icon size={18} style={{ color: '#005ba3' }} />
+                    </div>
+                    <h4 className="font-bold mb-2 text-sm" style={{ color: '#002a52' }}>{t.title}</h4>
+                    <p className="text-xs leading-relaxed" style={{ color: '#64748b' }}>{t.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+                  
 
           </div>
         </section>
@@ -314,7 +364,7 @@ export default async function TentangKami() {
         {/* ════════════════════════════════════════
             BERITA — editorial masonry feel
         ════════════════════════════════════════ */}
-        <section className="py-28 sm:py-40" style={{ background: '#f7f9fc' }}>
+        <section className="py-28 sm:py-40">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-20">
@@ -353,7 +403,7 @@ export default async function TentangKami() {
                         style={{ background: '#0077b6' }}>
                         {latestNews[0].category}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl font-black text-white leading-snug mb-3 group-hover:text-[#90e0ef] transition-colors">
+                      <h3 className="text-2xl sm:text-3xl font-black text-white leading-snug mb-3  transition-colors">
                         {latestNews[0].title}
                       </h3>
                       <p className="text-white/60 text-sm line-clamp-2 mb-4">{latestNews[0].excerpt}</p>

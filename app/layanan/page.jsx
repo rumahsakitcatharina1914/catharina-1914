@@ -1,213 +1,263 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { 
+import Image from 'next/image';
+import {
   Ambulance, Bed, Stethoscope, Microscope, Users, Zap,
-  CheckCircle, Shield, Clock, Users2
+  CheckCircle, Shield, Clock, Users2, ArrowRight, Phone, ChevronRight
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Layanan | Rumah Sakit Catharina 1914',
-  description: 'Jelajahi berbagai layanan kesehatan unggulan kami termasuk rawat jalan, rawat inap, IGD, laboratorium, dan spesialisasi medis lainnya.',
+  title: 'Layanan | RS Catharina 1914',
+  description: 'Jelajahi berbagai layanan kesehatan unggulan kami.',
 };
 
 export default function Layanan() {
   const services = [
     {
-      id: 1,
-      icon: Stethoscope,
-      title: 'Rawat Jalan',
-      description: 'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman untuk berbagai keluhan kesehatan.',
-      features: [
-        'Konsultasi dengan dokter umum dan spesialis',
-        'Pemeriksaan kesehatan menyeluruh',
-        'Resep dan obat-obatan',
-        'Vaksinasi dan imunisasi',
-        'Tindakan medis sederhana'
-      ],
-      schedule: 'Senin - Minggu, 07:00 - 18:00 WIB',
+      id: 1, icon: Stethoscope,
+      title: 'Rawat Jalan', short: 'Konsultasi & Pemeriksaan',
+      description: 'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman untuk berbagai keluhan kesehatan Anda dan keluarga.',
+      features: ['Konsultasi dokter umum & spesialis', 'Pemeriksaan kesehatan menyeluruh', 'Resep dan obat-obatan', 'Vaksinasi dan imunisasi', 'Tindakan medis sederhana'],
+      image: '/layanan/rawat-jalan.jpeg',
+      color: '#0077b6', bg: '#e0f2fe', num: '01',
     },
     {
-      id: 2,
-      icon: Bed,
-      title: 'Rawat Inap',
-      description: 'Fasilitas perawatan intensif dengan ruang yang nyaman dan tim medis 24 jam untuk pemulihan optimal.',
-      features: [
-        'Kamar VIP dan standar',
-        'Perawatan intensif 24 jam',
-        'Nutrisi dan makanan khusus',
-        'Keluarga boleh menginap',
-        'Sarana rekreasi dan hiburan'
-      ],
-      schedule: 'Buka setiap hari, 24 jam',
+      id: 2, icon: Bed,
+      title: 'Rawat Inap', short: 'Perawatan Intensif',
+      description: 'Fasilitas perawatan intensif dengan ruang yang nyaman dan tim medis 24 jam untuk pemulihan yang optimal.',
+      features: ['Kamar VIP dan standar', 'Perawatan intensif 24 jam', 'Nutrisi dan makanan khusus', 'Keluarga boleh menginap', 'Sarana rekreasi dan hiburan'],
+      image: '/layanan/rawat-inap.jpg',
+      color: '#0096c7', bg: '#caf0f8', num: '02',
     },
     {
-      id: 3,
-      icon: Ambulance,
-      title: 'IGD (Instalasi Gawat Darurat)',
-      description: 'Layanan darurat 24 jam dengan respons cepat dan tim ahli untuk kondisi medis yang mendesak.',
-      features: [
-        'Respons 24 jam tanpa henti',
-        'Dokter spesialis darurat',
-        'Ambulans siaga siap jemput',
-        'Tindakan stabilisasi cepat',
-        'Laboratorium & radiologi 24 jam'
-      ],
-      schedule: 'Buka 24 jam setiap hari',
+      id: 3, icon: Ambulance,
+      title: 'IGD', short: 'Instalasi Gawat Darurat',
+      description: 'Layanan darurat 24 jam dengan respons cepat dan tim ahli untuk kondisi medis yang mendesak dan mengancam jiwa.',
+      features: ['Respons 24 jam tanpa henti', 'Dokter spesialis darurat', 'Ambulans siaga siap jemput', 'Tindakan stabilisasi cepat', 'Laboratorium & radiologi 24 jam'],
+      image: '/layanan/igd.jpeg',
+      color: '#dc2626', bg: '#fee2e2', num: '03',
     },
     {
-      id: 4,
-      icon: Users,
-      title: 'Poliklinik Spesialis',
-      description: 'Layanan kesehatan spesifik dari dokter ahli berbagai bidang sesuai kebutuhan medis Anda.',
-      features: [
-        'Poliklinik Mata',
-        'Poliklinik Jantung & Vaskular',
-        'Poliklinik Anak & Pediatri',
-        'Poliklinik Kandungan & Kebidanan',
-        'Poliklinik Saraf & Neurologi',
-        'dan 10+ spesialisasi lainnya'
-      ],
-      schedule: 'Jadwal sesuai dokter masing-masing',
+      id: 4, icon: Users,
+      title: 'Poliklinik Spesialis', short: '10+ Bidang Spesialisasi',
+      description: 'Layanan kesehatan spesifik dari dokter ahli berbagai bidang sesuai kebutuhan medis Anda dengan teknologi terkini.',
+      features: ['Poliklinik Mata', 'Poliklinik Jantung & Vaskular', 'Poliklinik Anak & Pediatri', 'Poliklinik Kandungan & Kebidanan', 'Poliklinik Saraf & Neurologi', '10+ spesialisasi lainnya'],
+      image: '/layanan/poli.jpeg',
+      color: '#1d4ed8', bg: '#dbeafe', num: '04',
     },
     {
-      id: 5,
-      icon: Microscope,
-      title: 'Laboratorium & Radiologi',
-      description: 'Diagnosa akurat dengan peralatan laboratorium modern dan teknologi radiologi terkini.',
-      features: [
-        'Tes darah lengkap',
-        'Rontgen (X-Ray)',
-        'CT Scan & MRI',
-        'USG (Ultrasonografi)',
-        'EKG (Electrocardiogram)',
-        'Hasil cepat & akurat'
-      ],
-      schedule: 'Senin - Minggu, 07:00 - 20:00 WIB',
+      id: 5, icon: Microscope,
+      title: 'Laboratorium & Radiologi', short: 'Diagnosa Akurat & Modern',
+      description: 'Diagnosa akurat dengan peralatan laboratorium modern dan teknologi radiologi terkini untuk hasil yang presisi.',
+      features: ['Tes darah lengkap', 'Rontgen (X-Ray)', 'CT Scan & MRI', 'USG (Ultrasonografi)', 'EKG', 'Hasil cepat & akurat'],
+      image: '/layanan/lab.jpg',
+      color: '#059669', bg: '#d1fae5', num: '05',
     },
     {
-      id: 6,
-      icon: Zap,
-      title: 'Tindakan & Operasi',
-      description: 'Prosedur medis dan operasi dengan tim ahli, fasilitas steril, dan teknologi modern.',
-      features: [
-        'Operasi mayor & minor',
-        'Endoskopi diagnostik & terapeutik',
-        'Anestesi umum & lokal',
-        'Ruang operasi berstandar internasional',
-        'Kamar pemulihan dengan monitoring',
-        'Tim anestesi profesional'
-      ],
+      id: 6, icon: Zap,
+      title: 'Tindakan & Operasi', short: 'Prosedur Medis Lengkap',
+      description: 'Prosedur medis dan operasi dengan tim ahli, fasilitas steril berstandar internasional, dan teknologi modern.',
+      features: ['Operasi mayor & minor', 'Endoskopi diagnostik & terapeutik', 'Anestesi umum & lokal', 'Ruang operasi berstandar internasional', 'Kamar pemulihan monitoring', 'Tim anestesi profesional'],
       schedule: 'Jadwal sesuai kebutuhan pasien',
+      image: '/layanan/operasi.jpeg',
+      color: '#7c3aed', bg: '#ede9fe', num: '06',
     },
   ];
 
   const advantages = [
-    {
-      icon: Shield,
-      title: 'Standar Internasional',
-      description: 'Fasilitas dan prosedur yang sesuai standar kesehatan internasional',
-    },
-    {
-      icon: Clock,
-      title: 'Respons Cepat',
-      description: 'Tim medis siap dengan respons cepat untuk setiap kebutuhan Anda',
-    },
-    {
-      icon: Users2,
-      title: 'Dokter Berpengalaman',
-      description: 'Dokter spesialis dengan pengalaman puluhan tahun di bidangnya',
-    },
-    {
-      icon: CheckCircle,
-      title: 'Perawatan Holistik',
-      description: 'Pendekatan perawatan menyeluruh untuk kesembuhan optimal',
-    },
+    { icon: Shield, title: 'Standar Internasional', description: 'Fasilitas dan prosedur sesuai standar kesehatan internasional' },
+    { icon: Clock, title: 'Respons Cepat', description: 'Tim medis siap dengan respons cepat untuk setiap kebutuhan' },
+    { icon: Users2, title: 'Dokter Berpengalaman', description: 'Dokter spesialis berpengalaman puluhan tahun di bidangnya' },
+    { icon: CheckCircle, title: 'Perawatan Holistik', description: 'Pendekatan menyeluruh untuk kesembuhan yang optimal' },
+  ];
+
+  const fasilitas = [
+    { src: '/layanan/operasi.jpeg', label: 'Ruang Operasi', large: true },
+  { src: '  /layanan/icu.jpeg', label: 'ICU' },
+    { src: '/layanan/lab.jpeg', label: 'Laboratorium' },
+    { src: '/layanan/lab.jpeg', label: 'Radiologi' },
+    { src: '/layanan/kamar-vip.jpeg', label: 'Kamar VIP' },
+    { src: '/layanan/poli.jpeg', label: 'Poliklinik' },
+    { src: '/layanan/farmasi.jpg', label: 'Farmasi', wide: true },
   ];
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center overflow-hidden" style={{backgroundImage: 'linear-gradient(to bottom right, #005ba3, #003d7a, #005ba3)'}}>
-          {/* Decorative Elements */}
-          <div className="absolute top-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-secondary/10 rounded-full blur-3xl"></div>
 
-          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-secondary/20 backdrop-blur-sm text-secondary rounded-full text-sm font-bold border border-secondary/30">
-                <Ambulance size={16} />
-                Layanan Kesehatan Lengkap
+        {/*HERO*/}
+        <section className="py-28 sm:py-36 bg-white">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-4" style={{ color: '#0077b6' }}>Hubungi Kami</p>
+                <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight mb-6">
+                  Siap Melayani<br /><span style={{ color: '#0077b6' }}>Kesehatan Anda</span>
+                </h2>
+                <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-md">
+                  Tim medis profesional kami siap memberikan layanan terbaik dengan pendekatan personal dan penuh perhatian.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-white text-sm hover:opacity-90 transition-all"
+                    style={{ background: 'linear-gradient(135deg, #003566, #0077b6)' }}>
+                    Buat Janji Temu <ArrowRight size={16} />
+                  </button>
+                  <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-sm hover:bg-gray-50 transition-all"
+                    style={{ border: '2px solid #e2e8f0', color: '#374151' }}>
+                    <Phone size={16} /> Hubungi Sekarang
+                  </button>
+                </div>
               </div>
-              <h1 className="text-5xl sm:text-7xl font-serif font-bold mb-6 text-white leading-tight text-balance">
-                Layanan Kesehatan Kami
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl font-light">
-                Berbagai layanan kesehatan komprehensif dengan fasilitas modern dan dokter berpengalaman untuk memenuhi semua kebutuhan medis Anda dengan standar internasional.
-              </p>
+
+              <div className="grid grid-cols-2 gap-3">
+                {services.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <a key={s.id} href={`#layanan-${s.id}`}
+                      className="group flex items-center gap-3 p-4 rounded-2xl border hover:shadow-md transition-all"
+                      style={{ borderColor: '#e2e8f0', background: '#f8fafc' }}>
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: s.bg }}>
+                        <Icon size={18} style={{ color: s.color }} />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-black text-gray-900 text-sm truncate">{s.title}</p>
+                        <p className="text-xs text-gray-400 flex items-center gap-1 group-hover:text-gray-600 transition-colors">
+                          Lihat detail <ChevronRight size={10} />
+                        </p>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Services Detail */}
-        <section className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
+        
+        
+        {/* SERVICES */}
+        
+        {/* SERVICES - MODERN CARD GRID */}
+        <section className="py-20 sm:py-32 bg-gradient-to-b from-white via-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-24">
-              {services.map((service) => {
+            
+            {/* Header */}
+            <div className="text-center mb-16">
+              <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold mb-4">
+                Layanan Kami
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                Layanan Kesehatan Terpadu
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Fasilitas medis lengkap dengan dokter spesialis berpengalaman untuk kebutuhan kesehatan Anda
+              </p>
+            </div>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <div key={service.id} className="group grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/* Visual */}
-                    <div className={service.id % 2 === 0 ? 'lg:order-2' : ''}>
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                        <div className="relative bg-gradient-to-br from-secondary/10 to-primary/10 rounded-3xl p-12 sm:p-16 flex items-center justify-center min-h-72 border-2 border-secondary/20 group-hover:border-secondary/50 transition-all shadow-sm group-hover:shadow-xl">
-                          <Icon size={140} className="text-secondary/40 group-hover:text-secondary/60 transition-colors" />
-                        </div>
+                  <div
+                    key={service.id}
+                    id={`layanan-${service.id}`}
+                    className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100"
+                  >
+                    {/* Image */}
+                    <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                      
+                      {/* Badge Number */}
+                      <div className="absolute top-4 right-4">
+                        <span
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg"
+                          style={{ background: service.color }}
+                        >
+                          {service.num}
+                        </span>
+                      </div>
+
+                      {/* Category Badge */}
+                      <div className="absolute bottom-4 left-4">
+                        <span
+                          className="px-3 py-1.5 rounded-full text-xs font-bold text-white backdrop-blur-sm"
+                          style={{ background: `${service.color}dd` }}
+                        >
+                          {service.short}
+                        </span>
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className={service.id % 2 === 0 ? 'lg:order-1' : ''}>
-                      <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-bold">
-                        <span className="w-2 h-2 bg-secondary rounded-full"></span>
-                        Layanan Unggulan
+                    <div className="p-6">
+                      {/* Icon & Title */}
+                      <div className="flex items-start gap-3 mb-4">
+                        <div
+                          className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                          style={{ background: service.bg }}
+                        >
+                          <Icon size={24} style={{ color: service.color }} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-primary transition-colors">
+                            {service.title}
+                          </h3>
+                        </div>
                       </div>
-                      <h3 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-5 leading-tight">
-                        {service.title}
-                      </h3>
-                      <p className="text-lg text-foreground/80 mb-8 leading-relaxed font-light">
+
+                      {/* Description */}
+                      <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
                         {service.description}
                       </p>
 
                       {/* Features */}
-                      <div className="mb-8">
-                        <h4 className="font-bold text-foreground mb-5 text-lg">Fasilitas & Layanan Tersedia:</h4>
-                        <ul className="space-y-3">
-                          {service.features.map((feature, idx) => (
-                            <li key={idx} className="flex gap-4 items-start">
-                              <CheckCircle className="flex-shrink-0 text-secondary mt-0.5" size={22} />
-                              <span className="text-foreground/80 font-light text-base">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="space-y-2 mb-4">
+                        {service.features.slice(0, 3).map((f, i) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <div
+                              className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                              style={{ background: service.bg }}
+                            >
+                              <CheckCircle size={12} style={{ color: service.color }} />
+                            </div>
+                            <span className="text-xs text-gray-600 line-clamp-1">{f}</span>
+                          </div>
+                        ))}
                       </div>
 
                       {/* Schedule */}
-                      <div className="bg-gradient-to-br from-neutral-light to-white rounded-2xl p-6 mb-8 border-l-4 border-l-primary shadow-sm hover:shadow-md transition-shadow">
-                        <div className="flex gap-4 items-start">
-                          <Clock className="text-primary flex-shrink-0 mt-1" size={24} />
-                          <div>
-                            <p className="text-sm font-bold text-primary mb-1">Jadwal Operasional</p>
-                            <p className="text-base text-foreground font-light">{service.schedule}</p>
-                          </div>
+                      {/* <div
+                        className="flex items-center gap-2 p-3 rounded-xl mb-4"
+                        style={{ background: service.bg }}
+                      >
+                        <Clock size={16} style={{ color: service.color }} />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: service.color }}>
+                            Jadwal
+                          </p>
+                          <p className="text-xs font-semibold text-gray-700 truncate">
+                            {service.schedule}
+                          </p>
                         </div>
-                      </div>
+                      </div> */}
 
-                      <button className="px-8 py-4 text-white rounded-lg hover:shadow-lg transition-all font-bold group-hover:scale-105 transform" style={{backgroundImage: 'linear-gradient(to right, #005ba3, #003d7a)'}}>
-                        Hubungi Untuk Info Lebih Lanjut
-                      </button>
+                      {/* CTA Button */}
+                      {/* <button
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:shadow-lg hover:-translate-y-1"
+                        style={{ background: service.color }}
+                      >
+                        Info Lengkap
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </button> */}
                     </div>
                   </div>
                 );
@@ -216,58 +266,156 @@ export default function Layanan() {
           </div>
         </section>
 
-        {/* Keunggulan */}
-        <section className="py-20 sm:py-32 bg-neutral-light">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-12 text-center">
-              Keunggulan Rumah Sakit Kami
-            </h2>
+        {/* <section className="bg-white">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            const isEven = index % 2 === 0;
+            return (
+              <div key={service.id} id={`layanan-${service.id}`}
+                className="grid grid-cols-1 lg:grid-cols-2"
+                style={{ minHeight: '520px' }}>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {advantages.map((advantage, index) => {
-                const Icon = advantage.icon;
+               
+                <div className={`relative overflow-hidden ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
+                  style={{ minHeight: '300px' }}>
+                  <Image
+
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className=" aspect-3/2 object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0"
+                    style={{ background: `linear-gradient(to ${isEven ? 'right' : 'left'}, rgba(0,0,0,0.15), transparent)` }} />
+                  <div className="absolute top-6 left-6">
+                    <span className="px-3 py-1.5 rounded-full text-xs font-black text-white" style={{ background: service.color }}>
+                      {service.num}
+                    </span>
+                  </div>
+                </div>
+
+              
+                <div className={`flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-16 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
+                  style={{ background: [1, 2].includes(index % 4) ? '#f8fafc' : 'white' }}>
+
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center" style={{ background: service.bg }}>
+                      <Icon size={20} style={{ color: service.color }} />
+                    </div>
+                    <p className="text-xs font-bold tracking-widest uppercase" style={{ color: service.color }}>{service.short}</p>
+                  </div>
+
+                  <h2 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-4">{service.title}</h2>
+                  <p className="text-gray-500 leading-relaxed mb-8 max-w-md">{service.description}</p>
+
+                  <div className="space-y-2.5 mb-8">
+                    {service.features.map((f, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: service.bg }}>
+                          <CheckCircle size={11} style={{ color: service.color }} />
+                        </div>
+                        <span className="text-sm text-gray-600">{f}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3 p-4 rounded-2xl mb-8" style={{ background: service.bg }}>
+                    <Clock size={15} style={{ color: service.color }} />
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5" style={{ color: service.color }}>Jadwal</p>
+                      <p className="text-sm font-semibold text-gray-700">{service.schedule}</p>
+                    </div>
+                  </div>
+
+                  <button className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-sm text-white transition-all hover:opacity-90 hover:-translate-y-0.5"
+                    style={{ background: service.color }}>
+                    Info Lebih Lanjut <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </section> */}
+
+        {/* FASILITAS GALLERY */}
+        <section className="py-28 sm:py-36" style={{ background: '#f7f9fc' }}>
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+              <div>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Fasilitas</p>
+                <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
+                  Fasilitas<br /><span className="text-gray-300">Kami</span>
+                </h2>
+              </div>
+              <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
+                Dilengkapi teknologi medis modern untuk pelayanan terbaik
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[160px]">
+              {fasilitas.map((item, i) => (
+                <div key={i}
+                  className={`relative overflow-hidden rounded-2xl group cursor-pointer ${item.large ? 'col-span-2 row-span-2' : ''} ${item.wide ? 'col-span-2' : ''}`}>
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-3 left-3 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="text-white text-xs font-bold px-2 py-1 rounded-lg" style={{ background: 'rgba(0,0,0,0.5)' }}>
+                      {item.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/*KEUNGGULAN */}
+        {/* <section className="py-28 sm:py-36" style={{ background: '#001d3d' }}>
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+              <div>
+                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#00b4d8' }}>Mengapa Kami</p>
+                <h2 className="text-5xl sm:text-6xl font-black text-white leading-tight">
+                  Keunggulan<br /><span style={{ color: '#00b4d8' }}>RS Catharina</span>
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+              {advantages.map((adv, i) => {
+                const Icon = adv.icon;
                 return (
-                  <div
-                    key={index}
-                    className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow border border-border group"
-                  >
-                    <div className="flex justify-center mb-4">
-                      <div className="p-4 bg-secondary/10 rounded-full group-hover:bg-secondary transition-colors">
-                        <Icon className="text-secondary group-hover:text-white" size={32} />
-                      </div>
+                  <div key={i} className="group p-8 rounded-3xl transition-all duration-300 hover:bg-[#0077b6] cursor-default"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
+                      style={{ background: 'rgba(0,180,216,0.15)' }}>
+                      <Icon size={22} style={{ color: '#00b4d8' }} />
                     </div>
-                    <h3 className="text-lg font-bold text-foreground mb-3">
-                      {advantage.title}
-                    </h3>
-                    <p className="text-foreground/70 text-sm leading-relaxed">
-                      {advantage.description}
-                    </p>
+                    <h3 className="text-white font-black text-base mb-2">{adv.title}</h3>
+                    <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/70 transition-colors">{adv.description}</p>
                   </div>
                 );
               })}
             </div>
-          </div>
-        </section>
 
-        {/* CTA */}
-        <section className="py-20 sm:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-6">
-              Siap Melayani Kesehatan Anda
-            </h2>
-            <p className="text-lg text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Tim medis profesional kami siap memberikan layanan kesehatan terbaik dengan pendekatan yang personal dan penuh perhatian.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-primary text-white rounded-lg hover:shadow-lg transition-all font-bold">
-                Buat Janji Temu
-              </button>
-              <button className="px-8 py-4 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors font-bold">
-                Hubungi Sekarang
-              </button>
+            <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10 border-t border-b border-white/10">
+              {[{ n: '110+', l: 'Tahun Pengalaman' }, { n: '50+', l: 'Spesialisasi Medis' }, { n: '500+', l: 'Tenaga Profesional' }, { n: '24/7', l: 'Layanan Darurat' }].map((s, i) => (
+                <div key={i} className="py-8 px-4 text-center">
+                  <div className="text-3xl font-black text-white mb-1">{s.n}</div>
+                  <div className="text-white/30 text-xs tracking-widest uppercase">{s.l}</div>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
     </>

@@ -42,98 +42,19 @@ export default function ContactSection() {
       }
   };
 
-  const contacts = [
-    {
-      icon: Phone,
-      title: 'Telepon',
-      details: ['0274-555-1914', '(021) 555-1914'],
-      color: 'from-blue-500 to-blue-600',
-    },
-    {
-      icon: Mail,
-      title: 'Email',
-      details: ['info@catharina1914.com', 'appointments@catharina1914.com'],
-      color: 'from-emerald-500 to-emerald-600',
-    },
-    {
-      icon: MapPin,
-      title: 'Lokasi',
-      details: ['Jl. Kesehatan No. 1914', 'Yogyakarta 55000'],
-      color: 'from-red-500 to-red-600',
-    },
-    {
-      icon: Clock,
-      title: 'Jam Operasional',
-      details: ['Senin - Minggu', 'IGD: 24 Jam'],
-      color: 'from-purple-500 to-purple-600',
-    },
-  ];
+
 
   return (
-    <section id="hubungi" className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
+    <section id="hubungi" className="py-20 sm:py-32 bg-gradient-to-black from-white to-neutral-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
-        {/* <div className="text-center mb-16 max-w-3xl mx-auto">
-          <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-bold">
-            Kontak Kami
-          </div>
-          <h2 className="text-5xl sm:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-            Hubungi Kami
-          </h2>
-          <p className="text-xl text-neutral-gray leading-relaxed">
-            Hubungi Rumah Sakit Catharina 1914 untuk konsultasi, appointment, atau pertanyaan kesehatan Anda kapan saja
-          </p>
-        </div> */}
-
-        {/* Contact Cards */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {contacts.map((contact, index) => {
-            const Icon = contact.icon;
-
-            return (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden"
-              >
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity"
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom right, var(--primary), var(--secondary))`
-                  }}
-                />
-
-                <div className="relative z-10">
-                  <div className="mb-4 inline-flex p-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-xl group-hover:shadow-lg transition-all">
-                    <Icon
-                      className="text-secondary group-hover:text-primary transition-colors"
-                      size={28}
-                    />
-                  </div>
-
-                  <h3 className="font-bold text-foreground mb-3 text-lg group-hover:text-primary transition-colors">
-                    {contact.title}
-                  </h3>
-
-                  <div className="space-y-2">
-                    {contact.details.map((detail, idx) => (
-                      <p key={idx} className="text-sm text-foreground/70 font-medium">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div> */}
 
         {/* Form & Info Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* Contact Form */}
           <div className="relative bg-white rounded-2xl p-8 h-full shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50 overflow-hidden">
-            <h3 className="text-3xl font-serif font-bold text-foreground mb-2">
+            <h3 className="text-3xl font-black text-foreground mb-2">
               Kirim Pesan
             </h3>
 
@@ -226,7 +147,7 @@ export default function ContactSection() {
           {/* Info Section */}
           <div className="space-y-6">
 
-            <h3 className="text-3xl font-serif font-bold text-foreground mb-8">
+            <h3 className=" text-3xl font-black text-foreground mb-8">
               Kunjungi Kami
             </h3>
 
