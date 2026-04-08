@@ -136,9 +136,9 @@ export default function Layanan() {
 
         
         
-        {/* SERVICES */}
+        {/* LAYANAN */}
         
-        {/* SERVICES - MODERN CARD GRID */}
+        
         <section className="py-20 sm:py-32 bg-gradient-to-b from-white via-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -234,30 +234,14 @@ export default function Layanan() {
                         ))}
                       </div>
 
-                      {/* Schedule */}
-                      {/* <div
-                        className="flex items-center gap-2 p-3 rounded-xl mb-4"
-                        style={{ background: service.bg }}
-                      >
-                        <Clock size={16} style={{ color: service.color }} />
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[10px] font-bold uppercase tracking-wide mb-0.5" style={{ color: service.color }}>
-                            Jadwal
-                          </p>
-                          <p className="text-xs font-semibold text-gray-700 truncate">
-                            {service.schedule}
-                          </p>
-                        </div>
-                      </div> */}
-
                       {/* CTA Button */}
-                      {/* <button
+                      <button
                         className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:shadow-lg hover:-translate-y-1"
                         style={{ background: service.color }}
                       >
                         Info Lengkap
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                      </button> */}
+                      </button>
                     </div>
                   </div>
                 );
@@ -306,46 +290,6 @@ export default function Layanan() {
             </div>
           </div>
         </section>
-
-        {/*KEUNGGULAN */}
-        {/* <section className="py-28 sm:py-36" style={{ background: '#001d3d' }}>
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
-              <div>
-                <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#00b4d8' }}>Mengapa Kami</p>
-                <h2 className="text-5xl sm:text-6xl font-black text-white leading-tight">
-                  Keunggulan<br /><span style={{ color: '#00b4d8' }}>RS Catharina</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-              {advantages.map((adv, i) => {
-                const Icon = adv.icon;
-                return (
-                  <div key={i} className="group p-8 rounded-3xl transition-all duration-300 hover:bg-[#0077b6] cursor-default"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
-                      style={{ background: 'rgba(0,180,216,0.15)' }}>
-                      <Icon size={22} style={{ color: '#00b4d8' }} />
-                    </div>
-                    <h3 className="text-white font-black text-base mb-2">{adv.title}</h3>
-                    <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/70 transition-colors">{adv.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10 border-t border-b border-white/10">
-              {[{ n: '110+', l: 'Tahun Pengalaman' }, { n: '50+', l: 'Spesialisasi Medis' }, { n: '500+', l: 'Tenaga Profesional' }, { n: '24/7', l: 'Layanan Darurat' }].map((s, i) => (
-                <div key={i} className="py-8 px-4 text-center">
-                  <div className="text-3xl font-black text-white mb-1">{s.n}</div>
-                  <div className="text-white/30 text-xs tracking-widest uppercase">{s.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
       </main>
       <Footer />
     </>

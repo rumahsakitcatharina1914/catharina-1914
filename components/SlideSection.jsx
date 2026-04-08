@@ -33,7 +33,7 @@ const heroSlides = [
     description: 'Tim medis kami siap 24 jam setiap hari untuk menangani keadaan darurat dengan cepat dan profesional.',
     badge: 'Layanan 24 Jam',
     image: '/uploads/slide/no4.jpg'
-  }
+  },
 ];
 
 export default function HeroSection() {

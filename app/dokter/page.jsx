@@ -18,18 +18,18 @@ export default async function DokterPage() {
       <main className="overflow-hidden">
 
         {/* ══════════════════════ HERO ══════════════════════ */}
-        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #001d3d 0%, #003566 50%, #0077b6 100%)', minHeight: '80vh' }}>
-          {/* dot grid */}
+        {/* <section className="relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #001d3d 0%, #003566 50%, #0077b6 100%)', minHeight: '80vh' }}>
+          dot grid
           <div className="absolute inset-0 opacity-[0.05]"
             style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
 
-          {/* watermark */}
+          watermark
           <div className="absolute bottom-0 right-0 select-none pointer-events-none overflow-hidden">
             <span className="text-[20vw] font-black leading-none tracking-tighter"
               style={{ color: 'rgba(255,255,255,0.03)' }}>DOKTER</span>
           </div>
 
-          {/* decorative circles */}
+          decorative circles
           <div className="absolute top-20 right-20 w-80 h-80 rounded-full border border-white/5" />
           <div className="absolute top-32 right-32 w-48 h-48 rounded-full border border-white/5" />
 
@@ -53,7 +53,7 @@ export default async function DokterPage() {
                 </p>
               </div>
 
-              {/* stats */}
+              stats
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { n: doctors.length, l: 'Dokter Aktif' },
@@ -70,7 +70,7 @@ export default async function DokterPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ══════════════════════ DOCTORS GRID ══════════════════════ */}
         <section className="py-28 sm:py-36" style={{ background: '#f7f9fc' }}>

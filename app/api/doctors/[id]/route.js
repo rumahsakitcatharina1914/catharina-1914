@@ -17,9 +17,9 @@ export async function PUT(request, { params }) {
 
     return NextResponse.json(doctor);
   } catch (error) {
-    console.error('Error updating doctor:', error);
+    console.error('Error Update dokter:', error);
     return NextResponse.json(
-      { error: 'Failed to update doctor' },
+      { error: 'Gagal untuk mengupdate dokter' },
       { status: 500 }
     );
   }
@@ -38,12 +38,12 @@ export async function DELETE(request, { params }) {
 
     return NextResponse.json({ 
       success: true,
-      message: 'Doctor deleted successfully' 
+      message: 'Berhasil Menghapus dokter' 
     });
   } catch (error) {
     console.error('Error deleting doctor:', error);
     return NextResponse.json(
-      { error: 'Failed to delete doctor' },
+      { error: 'Gagal untuk menghapus dokter' },
       { status: 500 }
     );
   }

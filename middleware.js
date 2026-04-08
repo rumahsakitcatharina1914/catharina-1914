@@ -16,7 +16,7 @@ export function middleware(request) {
     }
   }
   
-  // sudah login akses login page, redirect ke dashboard
+  // login berhasil redirect ke dashboard
   if (pathname === '/admin') {
     const session = request.cookies.get(COOKIE_NAME);
     

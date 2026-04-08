@@ -27,7 +27,7 @@ export async function POST(request) {
 
     if (!name || !specialization) {
       return NextResponse.json(
-        { error: 'Name and specialization are required' },
+        { error: 'Nama and spesialisasi wajib diisi' },
         { status: 400 }
       );
     }
@@ -44,9 +44,9 @@ export async function POST(request) {
 
     return NextResponse.json(doctor);
   } catch (error) {
-    console.error('Error creating doctor:', error);
+    console.error('Error dalam membuat dokter:', error);
     return NextResponse.json(
-      { error: 'Failed to create doctor' },
+      { error: 'Gagal untuk membuat dokter' },
       { status: 500 }
     );
   }

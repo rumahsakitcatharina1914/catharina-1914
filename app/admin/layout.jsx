@@ -23,6 +23,7 @@ export default function AdminLayout({ children }) {
     { href: '/admin/news', icon: Newspaper, label: 'Berita' },
     { href: '/admin/messages', icon: Mail, label: 'Pesan Masuk' },
     { href: '/admin/doctors', icon: Stethoscope, label: 'Kelola Dokter' },
+    { href: '/admin/layanan', label: 'Layanan & Fasilitas', icon: LayoutGrid },
   ];
 
   const logoutAdmin = async () => {
