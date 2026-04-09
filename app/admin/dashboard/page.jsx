@@ -1,36 +1,41 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Instagram, Mail, Stethoscope, Newspaper, TrendingUp } from 'lucide-react';
+import { Instagram, Mail, Stethoscope, Newspaper, SmilePlus, } from 'lucide-react';
 import Link from 'next/link';
+import { Plus } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
     feeds: 0,
     messages: 0,
     doctors: 0,
-    News: 0,
+    news: 0,
+    layanan: 0,
   });
 
   useEffect(() => {
     const loadStats = async () => {
-      const [feedRes, msgRes, docRes, newRes] = await Promise.all([
+      const [feedRes, msgRes, docRes, newsRes, layananRes] = await Promise.all([
         fetch('/api/instagram-feeds'),
         fetch('/api/messages'),
         fetch('/api/doctors'),
         fetch('/api/news'),
+        fetch('/api/layanan'),
       ]);
 
       const feeds = feedRes.ok ? await feedRes.json() : [];
       const messages = msgRes.ok ? await msgRes.json() : [];
       const doctors = docRes.ok ? await docRes.json() : [];
-      const news = docRes.ok ? await newRes.json() : [];
+      const news = newsRes.ok ? await newsRes.json() : [];
+      const layanan = docRes.ok ? await layananRes.json() : [];
 
       setStats({
         feeds: feeds.length,
         messages: messages.length,
         doctors: doctors.length,
         news: news.length,
+        layanan:layanan.length
       });
     };
 
@@ -56,7 +61,7 @@ export default function AdminDashboard() {
       title: 'Total Dokter',
       value: stats.doctors,
       icon: Stethoscope,
-      color: 'from-green-500 to-emerald-600',
+      color: 'from-green-600 to-emerald-400',
       href: '/admin/doctors',
     },
 
@@ -64,8 +69,15 @@ export default function AdminDashboard() {
       title: 'Berita',
       value: stats.news,
       icon: Newspaper,
-      color: 'from-blue-500 to-purple-600',
+      color: 'from-rose-300 to-pink-600',
       href: '/admin/news',
+    },
+    {
+      title: 'Fasilitas dan Layanan',
+      value: stats.layanan,
+      icon: SmilePlus,
+      color: 'from-orange-600 to-yellow-500',
+      href: '/admin/layanan',
     },
   ];
 

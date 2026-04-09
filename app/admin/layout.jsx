@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Instagram, Newspaper, Mail, Stethoscope, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Instagram, Newspaper, Mail, Stethoscope, LogOut, Menu, X, LayoutGrid, SmilePlus } from 'lucide-react';
 import { useState } from 'react';
 
 export default function AdminLayout({ children }) {
@@ -23,7 +23,7 @@ export default function AdminLayout({ children }) {
     { href: '/admin/news', icon: Newspaper, label: 'Berita' },
     { href: '/admin/messages', icon: Mail, label: 'Pesan Masuk' },
     { href: '/admin/doctors', icon: Stethoscope, label: 'Kelola Dokter' },
-    { href: '/admin/layanan', label: 'Layanan & Fasilitas', icon: LayoutGrid },
+    { href: '/admin/layanan', label: 'Layanan & Fasilitas', icon: SmilePlus },
   ];
 
   const logoutAdmin = async () => {

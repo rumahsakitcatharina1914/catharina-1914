@@ -64,3 +64,38 @@ model News {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Layanan {
+  id          Int      @id @default(autoincrement())
+  num         String   @db.VarChar(10)   // "01", "02", dst
+  title       String   @db.VarChar(255)
+  short       String   @db.VarChar(255)  // subtitle singkat
+  description String   @db.Text
+  features    Json     @default("[]")    // array string
+  schedule    String?  @db.VarChar(255)
+  image       String?  @db.VarChar(500)
+  color       String   @default("#0077b6") @db.VarChar(20)
+  bg          String   @default("#e0f2fe") @db.VarChar(20)
+  slug        String   @unique
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("layanan")
+}
+
+model Fasilitas {
+  id          Int      @id @default(autoincrement())
+  label       String   @db.VarChar(255)
+  description String?  @db.Text          // deskripsi lengkap
+  image       String?  @db.VarChar(500)
+  isLarge     Boolean  @default(false)   // col-span-2 row-span-2
+  isWide      Boolean  @default(false)   // col-span-2
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("fasilitas")
+}
