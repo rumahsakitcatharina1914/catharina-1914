@@ -185,7 +185,10 @@ export default function AdminNewsPage() {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
           <Newspaper className="text-primary" size={32} />
-          <h1 className="text-3xl font-serif font-bold text-foreground">Kelola Berita</h1>
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-black text-foreground">Kelola Berita</h1>
+            <p className="text-foreground/50 mt-1">Tambah Berita, Artikel, Kegiatan RS Catharina 1914</p>
+          </div>
         </div>
       </div>
 
@@ -241,40 +244,40 @@ export default function AdminNewsPage() {
 
             {/* Thumbnail */}
             <label className="block text-sm font-semibold mb-2">Upload Thumbnail *</label>
-            <div className="flex items-center gap-4">
-              <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
-                <Upload size={20} />
-                <span className="font-semibold">
-                  {uploadingImage ? 'Upload' :'Gambar Thumbnail'}
-                </span>
-
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleThumbnailUpload}
-                  className="hidden"
-                  disabled={uploadingImage}
-                />
-              </label>
-            </div>
-            {formData.thumbnail && (
-                <div className="relative mt-4 inline-block">
+            
+            {!formData.thumbnail ? (
+              <div className="flex items-center gap-4">
+                <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
+                  <Upload size={20} />
+                  <span className="font-semibold">
+                    {uploadingImage ? 'Uploading...' : 'Pilih Gambar Thumbnail'}
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleThumbnailUpload}
+                    className="hidden"
+                    disabled={uploadingImage}
+                  />
+                </label>
+              </div>
+            ) : (
+              <div className="relative mt-2 inline-block">
                 <img
                   src={formData.thumbnail}
                   alt="Thumbnail preview"
-                  className="mt-4 w-full max-w-md h-64 object-cover rounded-lg"
+                  className="w-full max-w-md h-64 object-cover rounded-xl border border-border shadow-sm"
                 />
 
                 <button
                   type="button"
-                  onClick={() => setFormData({...formData, thumbnail:''})}
-                  className="absolute top-1 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                  onClick={() => setFormData({ ...formData, thumbnail: '' })}
+                  className="absolute -top-3 -right-3 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-md z-10"
                 >
-                  <Trash2 size={16}/>
+                  <Trash2 size={16} />
                 </button>
-                </div>
-                
-              )}
+              </div>
+            )}
 
 
             {/* Content */}
@@ -330,9 +333,10 @@ export default function AdminNewsPage() {
                       <button
                         type="button"
                         onClick={() => handleRemoveImage(index)}
-                        className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                        //  bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-md z-10
+                        className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full transition-colors hover:bg-red-600"
                       >
-                        <X size={16} />
+                        <Trash2 size={16} />
                       </button>
                       <div className="absolute bottom-2 left-2 px-2 py-1 bg-black/70 text-white text-xs rounded">
                         Gambar {index + 1}
@@ -347,7 +351,7 @@ export default function AdminNewsPage() {
             <div className="flex gap-4">
               <button
                 type="submit"
-                className="px-6 py-3  bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] transition-colors transition-all duration-200 flex items-center justify-center gap-2"
+                className="px-6 py-3 font-semibold bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] transition-colors transition-all duration-200 flex items-center justify-center gap-2 shadow-lg"
                 disabled={uploadingImage}
               >
                 {editingNews ? 'Update Berita' : 'Simpan Berita'}
@@ -366,7 +370,7 @@ export default function AdminNewsPage() {
                     category: 'umum' 
                   });
                 }}
-                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                className="px-6 py-3 font-semibold bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors shadow-lg"
               >
                 Batal
               </button>
@@ -378,11 +382,11 @@ export default function AdminNewsPage() {
       {/* Table*/}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-border">
         <div className="overflow-x-auto">
-          <table className="w-full-w-[700px]">
+          <table className="w-full min-w-[700px]">
             <thead className="bg-neutral-light border-b border-border">
               <tr>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Thumbnail</th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Judul</th>
+                <th className="px-30 py-4 text-left text-sm font-semibold text-foreground">Judul</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Kategori</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Gambar</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Tanggal</th>
@@ -407,8 +411,7 @@ export default function AdminNewsPage() {
                     />
                   </td>
                   <td className="px-6 py-4">
-                    <div className="font-semibold text-foreground">{item.title}</div>
-                    <div className="text-sm text-foreground/60 line-clamp-2">{item.excerpt}</div>
+                    <div className="font-semibold text-xs sm:text-sm md:text-sm lg:text-sm text-foreground">{item.title}</div>
                   </td>
                   <td className="px-6 py-4">
                     <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
@@ -460,7 +463,7 @@ export default function AdminNewsPage() {
               category: 'umum' 
             });
           }}
-          className=" mt-5 flex items-center gap-2 px-6 py-3 bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] transition-colors transition-all duration-200 flex items-center justify-center gap-2 shadow-lg"
+          className=" mt-5 flex items-center gap-2 px-6 py-3 bg-secondary-light text-black rounded-lg hover:bg-[#c5dbe8] border transition-all duration-200 shadow-lg font-semibold"
         >
           <Plus size={20} />
           Tambah Berita

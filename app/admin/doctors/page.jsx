@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Stethoscope, Plus, Trash2, Upload, User, Calendar, Clock, Trash, Edit, X } from 'lucide-react';
+import { Stethoscope, Plus, Trash2,  Upload, User, Calendar, Clock, Trash, Edit, X } from 'lucide-react';
 
 const emptyDoctor = {
   name: '',
@@ -171,8 +171,8 @@ export default function DoctorsPage() {
       <div className="flex items-center gap-3">
         <Stethoscope className="text-primary" size={32} />
         <div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-foreground">Kelola Dokter</h1>
-          <p className="text-foreground/70 mt-1">Tambah dan kelola data dokter rumah sakit</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground">Kelola Dokter</h1>
+          <p className="text-foreground/50 mt-1">Tambah dan kelola data dokter rumah sakit</p>
         </div>
       </div>
 
@@ -223,7 +223,7 @@ export default function DoctorsPage() {
                 <button
                   type="button"
                   onClick={removeImage}
-                  className="absolute -top-2 -right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors z-10"
+                  className="absolute -top-2 -right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
                 >
                   <Trash size={16} />
                 </button>
@@ -270,21 +270,24 @@ export default function DoctorsPage() {
                   onChange={(e) => updateSchedule(index, 'day', e.target.value)}
                 />
                 <div className="flex gap-2 flex-1">
-                  <input
-                    placeholder="08:00 - 12:00"
-                    className="flex-1 border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-                    value={schedule.time}
-                    onChange={(e) => updateSchedule(index, 'time', e.target.value)}
-                  />
-                  {index > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => removeSchedule(index)}
-                      className="text-red-600 hover:bg-red-50 p-2 rounded-lg transition-all shrink-0"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  )}
+                  <div className="relative flex-1">
+                    <input
+                      placeholder="08:00 - 12:00"
+                      className="w-full border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                      style={{ paddingRight: index > 0 ? '2.5rem' : '1rem' }}
+                      value={schedule.time}
+                      onChange={(e) => updateSchedule(index, 'time', e.target.value)}
+                    />
+                    {index > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => removeSchedule(index)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-red-600 hover:bg-red-50 p-2 rounded-lg transition-all shrink-0"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -312,7 +315,7 @@ export default function DoctorsPage() {
               <button
                 type="button"
                 onClick={handleCancelEdit}
-                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors flex items-center gap-2 font-semibold"
+                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors flex items-center gap-2 font-semibold shadow-lg"
               >
                 <X size={18} />
                 Batal

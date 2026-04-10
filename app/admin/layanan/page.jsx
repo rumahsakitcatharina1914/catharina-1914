@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Trash2, Edit, Upload, X, SmilePlus, Image as ImageIcon } from 'lucide-react';
+import { Plus, Edit, Upload, SmilePlus, Image as ImageIcon, Trash2 } from 'lucide-react';
 
 const emptyLayanan = {
   num: '', title: '', short: '', description: '',
@@ -147,8 +147,8 @@ export default function AdminLayananPage() {
       <div className="flex items-center gap-3">
         <SmilePlus className="text-primary" size={32} />
         <div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-foreground">Kelola Layanan & Fasilitas</h1>
-          <p className="text-foreground/70 mt-1">Tambah dan kelola layanan serta fasilitas RS Catharina 1914</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground">Kelola Layanan & Fasilitas</h1>
+          <p className="text-foreground/60 mt-1">Tambah dan kelola layanan serta fasilitas RS Catharina 1914</p>
         </div>
       </div>
 
@@ -217,8 +217,8 @@ export default function AdminLayananPage() {
                 <div>
                   <label className="block text-sm font-semibold mb-2">Fitur / Layanan Tersedia</label>
                   {layananForm.features.map((f, i) => (
-                    <div key={i} className="flex gap-2 mb-2">
-                      <input className="flex-1 border border-border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:outline-none"
+                    <div key={i} className="relative mb-2">
+                      <input className="w-full border border-border rounded-lg px-4 py-2 pr-10 focus:ring-2 focus:ring-primary focus:outline-none"
                         placeholder={`Fitur ${i + 1}`} value={f}
                         onChange={e => {
                           const updated = [...layananForm.features];
@@ -227,8 +227,8 @@ export default function AdminLayananPage() {
                         }} />
                       {i > 0 && (
                         <button type="button" onClick={() => setLayananForm({ ...layananForm, features: layananForm.features.filter((_, idx) => idx !== i) })}
-                          className="p-2 text-red-500 hover:bg-red-50 rounded-lg">
-                          <X size={16} />
+                          className=" absolute right-2 top-1/2 -translate-y-1/2 p-2 text-red-500 hover:bg-red-50 rounded-lg">
+                          <Trash2 size={16} />
                         </button>
                       )}
                     </div>
@@ -260,7 +260,7 @@ export default function AdminLayananPage() {
                         <img src={layananForm.image} className="w-16 h-16 object-cover rounded-lg" />
                         <button type="button" onClick={() => setLayananForm({ ...layananForm, image: '' })}
                           className="absolute -top-1 -right-1 p-1 bg-red-500 text-white rounded-full">
-                          <X size={10} />
+                          <Trash2 size={10} />
                         </button>
                       </div>
                     )}
@@ -363,7 +363,7 @@ export default function AdminLayananPage() {
                         <img src={fasilitasForm.image} className="w-16 h-16 object-cover rounded-lg" />
                         <button type="button" onClick={() => setFasilitasForm({ ...fasilitasForm, image: '' })}
                           className="absolute -top-1 -right-1 p-1 bg-red-500 text-white rounded-full">
-                          <X size={10} />
+                          <Trash2 size={10} />
                         </button>
                       </div>
                     )}

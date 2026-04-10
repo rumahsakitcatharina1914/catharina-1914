@@ -26,8 +26,8 @@ export default function MessagesPage() {
       <div className="flex items-center gap-3">
         <Mail className="text-primary" size={32} />
         <div>
-          <h1 className="text-4xl font-serif font-bold text-foreground">Pesan Masuk</h1>
-          <p className="text-foreground/70 mt-1">Kelola pesan dari pengunjung website</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground">Pesan Masuk</h1>
+          <p className="text-foreground/70 mt-1">Kelola pesan dari pengunjung website RS Catharina 1914</p>
         </div>
       </div>
 

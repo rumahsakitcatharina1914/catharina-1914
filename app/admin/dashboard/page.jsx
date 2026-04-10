@@ -84,8 +84,8 @@ export default function AdminDashboard() {
   return (
     <div className="max-w-7xl mx-auto space-y-8">
       <div>
-        <h1 className="text-4xl font-serif font-bold text-foreground mb-2">Dashboard</h1>
-        <p className="text-foreground/70">Selamat datang di Admin Panel RS Catharina 1914</p>
+        <h1 className="text-2xl sm:text-3xl font-black text-foreground mb-2">Dashboard</h1>
+        <p className="text-foreground/50">Selamat datang di Admin Panel RS Catharina 1914</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

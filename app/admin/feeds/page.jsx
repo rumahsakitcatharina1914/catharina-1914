@@ -128,8 +128,8 @@ export default function FeedsPage() {
       <div className="flex items-center gap-3">
         <Instagram className="text-primary" size={32} />
         <div>
-          <h1 className="text-4xl font-serif font-bold text-foreground">Kelola Instagram Feeds</h1>
-          <p className="text-foreground/70 mt-1">Tambah dan kelola feed Instagram rumah sakit</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground">Kelola Instagram Feeds</h1>
+          <p className="text-foreground/50 mt-1">Tambah dan kelola feed Instagram RS Catharina 1914</p>
         </div>
       </div>
 
@@ -188,7 +188,7 @@ export default function FeedsPage() {
                       {uploading ? 'Uploading...' : 'Klik untuk upload gambar'}
                     </p>
                     <p className="text-sm text-foreground/70 mt-1">
-                      JPG, PNG, atau WebP (Max 5MB)
+                      JPG / PNG(Max 5MB)
                     </p>
                   </div>
                 </label>
@@ -262,16 +262,6 @@ export default function FeedsPage() {
                     <Trash2 size={20} />
                   </button>
                 </div>
-
-                {/* <div className="flex gap-2 items-center">
-                  <Edit size={16} className="text-foreground/50" />
-                  <input
-                    className="flex-1 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                    defaultValue={feed.thumbnail || ''}
-                    onBlur={(e) => updateFeedThumbnail(feed.id, e.target.value)}
-                    placeholder="URL Thumbnail"
-                  />
-                </div> */}
               </div>
             ))}
           </div>
