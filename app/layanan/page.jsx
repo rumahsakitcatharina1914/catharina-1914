@@ -5,7 +5,7 @@ import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import {
   Ambulance, Bone, Bed, Stethoscope, Microscope, Users, Zap,
-  CheckCircle, Shield, Clock, Users2, ArrowRight, Phone, ChevronRight,
+  CheckCircle, Shield, ImageIcon, Clock, Users2, ArrowRight, Phone, ChevronRight,
   BedDouble, 
 } from 'lucide-react';
 
@@ -25,7 +25,6 @@ const iconMap = {
   'Radiologi' : Microscope,
   'Tindakan & Operasi': Zap,
   'ICU' : Shield,
-  'NICU': BedDouble,
 };
 
 async function getLayanan() {
@@ -198,10 +197,10 @@ export default async function Layanan() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[160px]">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {fasilitasList.map((item) => (
                   <Link key={item.id} href={`/layanan/fasilitas/${item.id}`}
-                    className={`relative overflow-hidden rounded-2xl group cursor-pointer ${item.isLarge ? 'col-span-2 row-span-2' : ''} ${item.isWide ? 'col-span-2' : ''}`}>
+                    className={`relative overflow-hidden rounded-2xl group cursor-pointer aspect-square ${item.isLarge ? 'col-span-2 row-span-2' : ''} ${item.isWide ? 'col-span-2' : ''}`}>
                     {item.image ? (
                       <Image src={item.image} alt={item.label} fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"

@@ -420,13 +420,13 @@ export default function AdminLayananPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {fasilitasList.map((item) => (
                   <div key={item.id} className="flex gap-3 p-3 rounded-xl border border-border bg-neutral-light items-start">
-                    {item.image && <img src={item.image} className="w-14 h-14 object-cover rounded-lg flex-shrink-0" />}
+                    {item.image && <img src={item.image} className="w-14 h-14 object-cover rounded-lg flex-shrink-0 aspect-square" />}
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-foreground text-sm truncate">{item.label}</p>
                       {item.description && <p className="text-xs text-foreground/60 line-clamp-2 mt-0.5">{item.description}</p>}
                       <div className="flex gap-2 mt-1">
                         {item.isLarge && <span className="text-[10px] px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded font-bold">Besar</span>}
-                        {item.isWide && <span className="text-[10px] px-1.5 py-0.5 bg-green-100 text-green-700 rounded font-bold">Lebar</span>}
+                        {item.isWide && <span className="text-[10px] px-1.5 py-0.5 bg-purple-100 text-purple-700 rounded font-bold">Lebar</span>}
                       </div>
                     </div>
                     <div className="flex gap-1 flex-shrink-0">

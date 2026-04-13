@@ -23,12 +23,14 @@ export async function POST(request) {
     const body = await request.json();
     const { title, short, description, features, schedule, image, color, bg, num, order } = body;
 
-    const slug = title
+    const baseSlug = title
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/^-|-$/g, '');
 
+    const slug = `${baseSlug}-${Date.now()}`;
+    
     const layanan = await prisma.layanan.create({
       data: {
         num: num || '01',

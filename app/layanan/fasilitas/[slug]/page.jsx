@@ -27,7 +27,7 @@ export default async function FasilitasDetail({ params }) {
   const related = await prisma.fasilitas.findMany({
     where: { isActive: true, NOT: { id: fasilitas.id } },
     orderBy: { order: 'asc' },
-    take: 5,
+    take: 4,
   });
 
   return (
@@ -35,20 +35,15 @@ export default async function FasilitasDetail({ params }) {
       <Header />
       <main>
  
-        {/* HERO  */}
-        <section className="relative overflow-hidden" style={{
-          background: 'linear-gradient(160deg, #001d3d 0%, #003566 50%, #0077b6 100%)',
-          minHeight: '50vh'
+        {/* Hero  */}
+        <section className="relative overflow-hidden" 
+            style={{ background: '#003566' ,
+            minHeight: '50vh'
         }}>
           {/* dot grid */}
           <div className="absolute inset-0 opacity-[0.05]"
             style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
  
-          {/* watermark */}
-          {/* <div className="absolute bottom-0 right-0 select-none pointer-events-none overflow-hidden">
-            <span className="text-[18vw] font-black leading-none tracking-tighter"
-              style={{ color: 'rgba(255,255,255,0.03)' }}>FASILITAS</span>
-          </div> */}
  
           <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-end"
             style={{ minHeight: '50vh', paddingBottom: '5rem', paddingTop: '8rem' }}>
@@ -58,9 +53,9 @@ export default async function FasilitasDetail({ params }) {
               <ArrowLeft size={16} /> Kembali ke Layanan
             </Link>
  
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Building2 size={16} style={{ color: '#90e0ef' }} />
-              <span className="text-xs tracking-[0.3em] uppercase font-bold" style={{ color: '#90e0ef' }}>
+            <div className="inline-flex items-center gap-2 mb-4 text-gray-50">
+              <Building2 size={16}  />
+              <span className="text-xs tracking-[0.3em] uppercase font-bold">
                 Fasilitas RS Catharina 1914
               </span>
             </div>
@@ -71,7 +66,7 @@ export default async function FasilitasDetail({ params }) {
           </div>
         </section>
  
-        {/* KONTEN */}
+        {/* Konten */}
         <section className="py-20 sm:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -82,6 +77,18 @@ export default async function FasilitasDetail({ params }) {
                   Tentang Fasilitas
                 </p>
                 <h2 className="text-4xl font-black text-gray-900 mb-8">Deskripsi Fasilitas</h2>
+
+                {/* Gambar di bawah deskripsi */}
+                {fasilitas.image && (
+                  <div className="mt-8 mb-8 relative w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-md border border-border">
+                    <Image
+                      src={fasilitas.image}
+                      alt={fasilitas.label}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                )}
  
                 {/* Deskripsi */}
                 {fasilitas.description ? (
@@ -94,32 +101,20 @@ export default async function FasilitasDetail({ params }) {
                   </div>
                 )}
  
-                {/* Gambar di bawah deskripsi */}
-                {fasilitas.image && (
-                  <div className="mt-12 rounded-3xl overflow-hidden shadow-lg">
-                    <Image
-                      src={fasilitas.image}
-                      alt={fasilitas.label}
-                      width={800}
-                      height={500}
-                      className="w-full object-cover"
-                    />
-                  </div>
-                )}
               </div>
  
               {/* Sidebar */}
               <div className="space-y-6">
  
                 {/* Info card */}
-                <div className="p-6 rounded-2xl" style={{ background: '#e0f2fe' }}>
+                {/* <div className="p-6 rounded-2xl" style={{ background: '#e0f2fe' }}>
                   <div className="flex items-center gap-2 mb-3">
                     <Building2 size={18} style={{ color: '#0077b6' }} />
                     <p className="font-black text-gray-900">Informasi Fasilitas</p>
                   </div>
                   <p className="text-gray-700 font-semibold">{fasilitas.label}</p>
                   <p className="text-gray-500 text-sm mt-1">RS Catharina 1914</p>
-                </div>
+                </div> */}
  
                 {/* CTA */}
                 <div className="p-6 rounded-2xl text-white"
