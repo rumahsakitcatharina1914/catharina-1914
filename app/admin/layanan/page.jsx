@@ -249,8 +249,8 @@ export default function AdminLayananPage() {
                 <div>
                   <label className="block text-sm font-semibold mb-2">Gambar Layanan</label>
                   <div className="flex items-center gap-4">
-                    <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
-                      <Upload size={18} />
+                    <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-border hover:border-primary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
+                      <Upload size={14} />
                       <span className="font-semibold text-sm">{uploading ? 'Uploading...' : 'Upload Gambar'}</span>
                       <input type="file" accept="image/*" className="hidden" disabled={uploading}
                         onChange={e => handleUpload(e, url => setLayananForm({ ...layananForm, image: url }))} />
@@ -352,8 +352,8 @@ export default function AdminLayananPage() {
                 <div>
                   <label className="block text-sm font-semibold mb-2">Gambar Fasilitas</label>
                   <div className="flex items-center gap-4">
-                    <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
-                      <Upload size={18} />
+                    <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-border hover:border-primary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
+                      <Upload size={14} />
                       <span className="font-semibold text-sm">{uploading ? 'Uploading...' : 'Upload Gambar'}</span>
                       <input type="file" accept="image/*" className="hidden" disabled={uploading}
                         onChange={e => handleUpload(e, url => setFasilitasForm({ ...fasilitasForm, image: url }))} />

@@ -247,10 +247,10 @@ export default function AdminNewsPage() {
             
             {!formData.thumbnail ? (
               <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
-                  <Upload size={20} />
-                  <span className="font-semibold">
-                    {uploadingImage ? 'Uploading...' : 'Pilih Gambar Thumbnail'}
+                <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-border hover:border-primary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
+                  <Upload size={15} />
+                  <span className="font-semibold text-sm">
+                    {uploadingImage ? 'Uploading...' : 'Gambar Thumbnail'}
                   </span>
                   <input
                     type="file"
@@ -303,9 +303,9 @@ export default function AdminNewsPage() {
               </p>
               
               <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-secondary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
-                  <Upload size={20} />
-                  <span className="font-semibold">Upload Gambar</span>
+                <label className="flex items-center gap-2 px-4 py-3 bg-secondary/10 text-secondary border-2 border-dashed border-border hover:border-primary rounded-lg cursor-pointer hover:bg-secondary/20 transition-colors">
+                  <Upload size={15} />
+                  <span className="font-semibold text-sm">Upload Gambar</span>
                   <input
                     type="file"
                     accept="image/*"

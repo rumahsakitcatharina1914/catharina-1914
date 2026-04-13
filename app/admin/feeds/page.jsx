@@ -167,49 +167,41 @@ export default function FeedsPage() {
             <label className="block text-sm font-semibold mb-2">Thumbnail Gambar *</label>
             
             {!uploadedImage ? (
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                  id="file-upload"
-                  disabled={uploading}
-                />
-                <label
+              <div className="flex items-center gap-4">
+                <label 
                   htmlFor="file-upload"
-                  className="cursor-pointer flex flex-col items-center gap-3"
+                  className="flex items-center gap-2 px-6 py-3 text-foreground border-2 border-dashed border-foreground/20 hover:border-primary hover:bg-secondary/5 rounded-lg cursor-pointer transition-colors"
                 >
-                  <div className="p-4 bg-neutral-light rounded-full">
-                    <Upload className="text-primary" size={32} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      {uploading ? 'Uploading...' : 'Klik untuk upload gambar'}
-                    </p>
-                    <p className="text-sm text-foreground/70 mt-1">
-                      JPG / PNG(Max 5MB)
-                    </p>
-                  </div>
+                  <Upload size={15} className="text-foreground" />
+                  <span className="font-semibold text-sm">
+                    {uploading ? 'Uploading...' : 'Upload Gambar'}
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                    id="file-upload"
+                    disabled={uploading}
+                  />
                 </label>
               </div>
             ) : (
-              <div className="relative border border-border rounded-lg p-4 max-w-sm">
-                <button
-                  type="button"
-                  onClick={removeImage}
-                  className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
-                >
-                  <Trash2 size={16} />
-                </button>
+        
+              <div className="relative inline-block mt-2">
                 <img
                   src={uploadedImage}
                   alt="Preview"
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full max-w-sm h-48 object-cover rounded-xl border border-border shadow-sm"
                 />
-                <p className="text-sm text-foreground/70 mt-2 text-center">
-                  Gambar berhasil diupload
-                </p>
+                
+                <button
+                  type="button"
+                  onClick={removeImage}
+                  className="absolute -top-3 -right-3 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-md z-10"
+                >
+                  <Trash2 size={16} />
+                </button>
               </div>
             )}
           </div>

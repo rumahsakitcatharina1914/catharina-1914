@@ -178,7 +178,7 @@ export default function DoctorsPage() {
 
       {/* Form Tambah / Edit */}
       <div className="bg-white rounded-2xl border border-border p-6 shadow-lg">
-        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-xl font-bold mb-5 flex items-center gap-2">
           {editingDoctor ? (
             <>
               <Edit size={24} className="text-primary" />
@@ -225,7 +225,7 @@ export default function DoctorsPage() {
                   onClick={removeImage}
                   className="absolute -top-2 -right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
                 >
-                  <Trash size={16} />
+                  <Trash2 size={16} />
                 </button>
                 <img src={uploadedImage} alt="Preview" className="w-32 h-32 object-cover rounded-lg" />
               </div>
@@ -305,7 +305,7 @@ export default function DoctorsPage() {
             <button
               type="submit"
               disabled={loading || uploading}
-              className="flex-1 bg-secondary-light text-black rounded-lg px-6 py-3 font-semibold hover:bg-[#c5dbe8] border transition-all duration-200 flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+              className="flex-1 bg-secondary-light text-black rounded-lg px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold hover:bg-[#c5dbe8] border transition-all duration-200 flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
             >
               {editingDoctor ? <Edit size={20} /> : <Plus size={20} />}
               {loading ? 'Menyimpan...' : editingDoctor ? 'Update Dokter' : 'Tambah Dokter'}
@@ -315,7 +315,7 @@ export default function DoctorsPage() {
               <button
                 type="button"
                 onClick={handleCancelEdit}
-                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors flex items-center gap-2 font-semibold shadow-lg"
+                className="px-4 py-3 sm:px-6 sm:py-3 text-sm sm:text-base bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors flex items-center gap-2 font-semibold shadow-lg"
               >
                 <X size={18} />
                 Batal
@@ -354,9 +354,7 @@ export default function DoctorsPage() {
             {doctors.map((doctor) => (
               <div
                 key={doctor.id}
-                className={`bg-neutral-light border border-border rounded-xl overflow-hidden hover:shadow-md transition-all ${
-                  editingDoctor?.id === doctor.id ? 'ring-2 ring-primary' : ''
-                }`}
+                className={`bg-neutral-light border border-border rounded-xl overflow-hidden hover:shadow-md transition-all`}
               >
                 {/* Foto + Nama + Tombol */}
                 <div className="flex gap-4 p-4">
@@ -365,7 +363,7 @@ export default function DoctorsPage() {
                       <img
                         src={doctor.image}
                         alt={doctor.name}
-                        className="w-16 h-16 object-cover rounded-lg border-2 border-primary"
+                        className="w-12 h-16 object-cover rounded-lg border-primary"
                       />
                     ) : (
                       <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">

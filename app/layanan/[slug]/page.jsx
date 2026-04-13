@@ -40,11 +40,11 @@ export default async function LayananDetail({ params }) {
         {/* HERO */}
         <section className="relative overflow-hidden" style={{ minHeight: '60vh' }}>
           <div className="absolute inset-0">
-            {layanan.image ? (
+            {/* {layanan.image ? (
               <Image src={layanan.image} alt={layanan.title} fill className="object-cover" priority />
             ) : (
               <div style={{ background: layanan.bg, width: '100%', height: '100%' }} />
-            )}
+            )} */}
             <div className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(0,29,61,0.92) 0%, rgba(0,53,102,0.8) 60%, rgba(0,119,182,0.5) 100%)' }} />
           </div>
@@ -56,7 +56,7 @@ export default async function LayananDetail({ params }) {
               <ArrowLeft size={16} /> Kembali ke Layanan
             </Link>
 
-            <div className="inline-block px-3 py-1.5 rounded-full text-xs font-black text-white mb-4"
+            <div className="w-fit inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black text-white mb-4"
               style={{ background: layanan.color }}>
               {layanan.num} — {layanan.short}
             </div>
