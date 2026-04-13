@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import prisma from '@/lib/prisma';
-import { CheckCircle, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
+import { CheckCircle, Clock, ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -25,7 +25,7 @@ export default async function LayananDetail({ params }) {
 
   const features = Array.isArray(layanan.features) ? layanan.features : [];
 
-  // Layanan terkait (selain yang sedang dibuka)
+
   const related = await prisma.layanan.findMany({
     where: { isActive: true, NOT: { id: layanan.id } },
     orderBy: { order: 'asc' },
@@ -38,37 +38,33 @@ export default async function LayananDetail({ params }) {
       <main>
 
         {/* HERO */}
-        <section className="relative overflow-hidden" style={{ minHeight: '60vh' }}>
-          <div className="absolute inset-0">
-            {/* {layanan.image ? (
-              <Image src={layanan.image} alt={layanan.title} fill className="object-cover" priority />
-            ) : (
-              <div style={{ background: layanan.bg, width: '100%', height: '100%' }} />
-            )} */}
-            <div className="absolute inset-0"
-              style={{ background: 'linear-gradient(135deg, rgba(0,29,61,0.92) 0%, rgba(0,53,102,0.8) 60%, rgba(0,119,182,0.5) 100%)' }} />
+        <section className="relative overflow-hidden" style={{ minHeight: '40vh' }}>
+          <div 
+            className="absolute inset-0"
+            style={{ background: '#003566' }}
+              >
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-end"
-            style={{ minHeight: '60vh', paddingBottom: '5rem', paddingTop: '8rem' }}>
+            style={{ minHeight: '40vh', paddingBottom: '6rem', paddingTop: '4rem' }}>
 
-            <Link href="/layanan" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-8 transition-colors w-fit">
+            <Link href="/layanan" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-10 transition-colors w-fit">
               <ArrowLeft size={16} /> Kembali ke Layanan
             </Link>
 
-            <div className="w-fit inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black text-white mb-4"
+            {/* <div className="w-fit inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black text-white mb-4"
               style={{ background: layanan.color }}>
               {layanan.num} — {layanan.short}
-            </div>
+            </div> */}
 
             <h1 className="text-5xl sm:text-7xl font-black text-white leading-tight tracking-tight mb-4">
               {layanan.title}
             </h1>
 
             {layanan.schedule && (
-              <div className="flex items-center gap-2 mt-2">
-                <Clock size={15} style={{ color: '#90e0ef' }} />
-                <span className="text-white/60 text-sm">{layanan.schedule}</span>
+              <div className="flex items-center gap-2 mt-2 text-white/60 text-sm">
+                <Clock size={15} />
+                <span>{layanan.schedule}</span>
               </div>
             )}
           </div>
@@ -85,6 +81,17 @@ export default async function LayananDetail({ params }) {
                   Tentang Layanan
                 </p>
                 <h2 className="text-4xl font-black text-gray-900 mb-6">Deskripsi Layanan</h2>
+                  {layanan.image && (
+                    <div className="mt-8 mb-8 relative w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-md border border-border">
+                      <Image 
+                      src={layanan.image} 
+                      alt={layanan.title} 
+                      fill 
+                      className="object-cover hover:scale-105 transition-transform duration-700"
+                        />
+                    </div>
+                  )}
+
                 <div className="prose prose-lg max-w-none">
                   <p className="text-gray-600 leading-relaxed text-lg whitespace-pre-line">{layanan.description}</p>
                 </div>

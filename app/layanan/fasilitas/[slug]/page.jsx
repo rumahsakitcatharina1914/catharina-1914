@@ -27,7 +27,7 @@ export default async function FasilitasDetail({ params }) {
   const related = await prisma.fasilitas.findMany({
     where: { isActive: true, NOT: { id: fasilitas.id } },
     orderBy: { order: 'asc' },
-    take: 4,
+    take: 5,
   });
 
   return (
@@ -35,7 +35,7 @@ export default async function FasilitasDetail({ params }) {
       <Header />
       <main>
  
-        {/* ══════════════════════ HERO ══════════════════════ */}
+        {/* HERO  */}
         <section className="relative overflow-hidden" style={{
           background: 'linear-gradient(160deg, #001d3d 0%, #003566 50%, #0077b6 100%)',
           minHeight: '50vh'
@@ -71,7 +71,7 @@ export default async function FasilitasDetail({ params }) {
           </div>
         </section>
  
-        {/* ══════════════════════ KONTEN ══════════════════════ */}
+        {/* KONTEN */}
         <section className="py-20 sm:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

@@ -4,8 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import {
-  Ambulance, Bed, Stethoscope, Microscope, Users, Zap,
-  CheckCircle, Shield, Clock, Users2, ArrowRight, Phone, ChevronRight
+  Ambulance, Bone, Bed, Stethoscope, Microscope, Users, Zap,
+  CheckCircle, Shield, Clock, Users2, ArrowRight, Phone, ChevronRight,
+  BedDouble, 
 } from 'lucide-react';
 
 export const metadata = {
@@ -13,14 +14,18 @@ export const metadata = {
   description: 'Jelajahi berbagai layanan kesehatan unggulan kami.',
 };
 
+
 // Map icon by judul layanan
 const iconMap = {
   'Rawat Jalan': Stethoscope,
-  'Rawat Inap': Bed,
+  'Rawat Inap' : Bed,
   'IGD': Ambulance,
-  'Poliklinik Spesialis': Users,
-  'Laboratorium & Radiologi': Microscope,
+  'Poliklinik': Users,
+  'Laboratorium': Microscope,
+  'Radiologi' : Microscope,
   'Tindakan & Operasi': Zap,
+  'ICU' : Shield,
+  'NICU': BedDouble,
 };
 
 async function getLayanan() {
@@ -62,31 +67,37 @@ export default async function Layanan() {
                   Tim medis profesional kami siap memberikan layanan terbaik dengan pendekatan personal dan penuh perhatian.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  {/* <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-white text-sm hover:opacity-90 transition-all"
+                  <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-white  text-sm hover:opacity-95 transition-all"
                     style={{ background: 'linear-gradient(135deg, #003566, #0077b6)' }}>
-                    Buat Janji Temu <ArrowRight size={16} />
-                  </button> */}
-                  <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-sm hover:bg-gray-50 transition-all"
-                    style={{ border: '2px solid #e2e8f0', color: '#374151' }}>
                     <Phone size={16} /> Hubungi Sekarang
                   </button>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                {services.map((s) => {
-                  const Icon = iconMap[s.title] || Stethoscope;
-                  return (
-                    <a key={s.id} href={`#layanan-${s.id}`}
+                {[
+                  { num: '01', title: 'Rawat Jalan', icon: Stethoscope },
+                  { num: '02', title: 'Rawat Inap', icon: Bed },
+                  { num: '03', title: 'IGD', icon: Ambulance },
+                  { num: '04', title: 'Poliklinik', icon: Users },
+                  { num: '05', title: 'Laboratorium', icon: Microscope },
+                  { num: '06', title: 'Radiologi', icon: Bone  },
+                  { num: '07', title: 'Tindakan & Operasi', icon: Zap },
+                  { num: '08', title: 'ICU', icon: Shield },
+                ].map((s) => {              
+                  const Icon = s.icon;   
+                  return (                  
+                    <a key={s.num} href={`#layanan-${s.num}`}
                       className="group flex items-center gap-3 p-4 rounded-2xl border hover:shadow-md transition-all"
                       style={{ borderColor: '#e2e8f0', background: '#f8fafc' }}>
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: s.bg }}>
-                        <Icon size={18} style={{ color: s.color }} />
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                        style={{ background: '#e0f2fe' }}>
+                        <Icon size={18} style={{ color: '#0077b6' }} />
                       </div>
                       <p className="font-black text-gray-900 text-sm truncate">{s.title}</p>
                     </a>
-                  );
-                })}
+                  );                        
+                })}                         
               </div>
             </div>
           </div>
@@ -122,28 +133,24 @@ export default async function Layanan() {
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center" style={{ background: service.bg }}>
-                            <Icon size={60} style={{ color: service.color, opacity: 0.3 }} />
+                            <Icon size={60} style={{ color: '#0077b6', opacity: 0.3 }} />
                           </div>
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                        <div className="absolute top-4 right-4">
-                          <span className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg"
-                            style={{ background: service.color }}>{service.num}</span>
-                        </div>
                         <div className="absolute bottom-4 left-4">
                           <span className="px-3 py-1.5 rounded-full text-xs font-bold text-white backdrop-blur-sm"
-                            style={{ background: `${service.color}dd` }}>{service.short}</span>
+                            style={{ background: '#005ba3' }}>{service.short}</span>
                         </div>
                       </div>
 
                       {/* Content */}
                       <div className="p-6">
                         <div className="flex items-start gap-3 mb-4">
-                          <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
-                            style={{ background: service.bg }}>
-                            <Icon size={24} style={{ color: service.color }} />
+                          <div className="w-12 h-12 rounded-2xl flex font-semibold items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                            style={{ background: '#e0f2fe', color: '#0077b6' }}>
+                            {service.num}
                           </div>
-                          <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">{service.title}</h3>
+                          <h3 className="text-xl mt-2 font-bold text-gray-900 group-hover:text-primary transition-colors">{service.title}</h3>
                         </div>
 
                         <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">{service.description}</p>
@@ -152,7 +159,7 @@ export default async function Layanan() {
                           {features.slice(0, 3).map((f, i) => (
                             <div key={i} className="flex items-center gap-2">
                               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: service.bg }}>
-                                <CheckCircle size={12} style={{ color: service.color }} />
+                                <CheckCircle size={12} style={{color: '#0077b6' }} />
                               </div>
                               <span className="text-xs text-gray-600 line-clamp-1">{f}</span>
                             </div>
@@ -162,7 +169,7 @@ export default async function Layanan() {
                         {/* Link ke detail */}
                         <Link href={`/layanan/${service.slug}`}
                           className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:shadow-lg hover:-translate-y-1"
-                          style={{ background: service.color }}>
+                          style={{ background: '#005ba3' }}>
                           Info Lengkap
                           <ArrowRight size={16} />
                         </Link>
