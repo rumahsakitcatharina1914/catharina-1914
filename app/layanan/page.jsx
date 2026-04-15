@@ -54,7 +54,7 @@ export default async function Layanan() {
       <main className="overflow-hidden">
 
         {/* HERO */}
-        <section className="py-28 sm:py-36 bg-white">
+        <section className="py-28 sm:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -102,16 +102,27 @@ export default async function Layanan() {
           </div>
         </section>
 
-        {/* LAYANAN CARD GRID */}
-        <section className="py-20 sm:py-15 bg-gradient-to-b from-white via-gray-50 to-white">
+        
+        {/* LAYANAN  */}
+        <section 
+          className="py-15 sm:py-25"
+          style={{ background: '#f7f9fc' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold mb-4">Layanan Kami</div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Layanan Kesehatan Terpadu</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Fasilitas medis lengkap dengan dokter spesialis berpengalaman untuk kebutuhan kesehatan Anda
-              </p>
-            </div>
+            
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+                <div>
+                  <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Layanan</p>
+                  <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
+                    Layanan<br /><span className="text-gray-300">Kami</span>
+                      <p className="text-gray-400 text-sm max-w-xs leading-relaxed mt-4">
+                          Layanan medis lengkap dengan sesuai standar untuk kebutuhan kesehatan Anda
+                      </p>
+                  </h2>
+                </div>
+                
+              </div>
+              
+            
 
             {services.length === 0 ? (
               <div className="text-center py-20 text-gray-400">Belum ada layanan tersedia.</div>
@@ -183,18 +194,19 @@ export default async function Layanan() {
 
         {/* FASILITAS GALLERY */}
         {fasilitasList.length > 0 && (
-          <section className="py-28 sm:py-36" style={{ background: '#f7f9fc' }}>
+          <section className="py-15 sm:py-25" style={{ background: '#f7f9fc' }}>
             <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
                 <div>
                   <p className="text-xs tracking-[0.3em] uppercase font-bold mb-3" style={{ color: '#0077b6' }}>Fasilitas Lainnya</p>
                   <h2 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight">
                     Fasilitas<br /><span className="text-gray-300">Kami</span>
+                      <p className="text-gray-400 text-sm max-w-xs leading-relaxed mt-2">
+                        Fasilitas yang tersedia di Rumah Sakit Umum Catharina 1914
+                      </p>
                   </h2>
                 </div>
-                <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
-                  Fasilitas yang tersedia di Rumah Sakit Umum Catharina 1914
-                </p>
+                
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 grid-flow-dense">
