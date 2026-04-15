@@ -73,7 +73,7 @@ export default function AdminDashboard() {
       href: '/admin/news',
     },
     {
-      title: 'Fasilitas dan Layanan',
+      title: 'Layanan',
       value: stats.layanan,
       icon: SmilePlus,
       color: 'from-orange-600 to-yellow-500',

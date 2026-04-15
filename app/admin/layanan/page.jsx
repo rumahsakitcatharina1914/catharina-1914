@@ -182,20 +182,27 @@ export default function AdminLayananPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2">Nomor (mis: 01)</label>
-                    <input className="w-full border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none"
-                      value={layananForm.num} onChange={e => setLayananForm({ ...layananForm, num: e.target.value })} required />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-2">Urutan Tampil</label>
-                    <input type="number" className="w-full border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none"
-                      value={layananForm.order} onChange={e => setLayananForm({ ...layananForm, order: parseInt(e.target.value) })} />
+                    <input
+                      className="w-full border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none"
+                      placeholder="01"
+                      value={layananForm.num} 
+                      onChange={e => {
+                      const val = e.target.value;
+                      setLayananForm({ 
+                        ...layananForm, 
+                        num: val, 
+                        order: parseInt(val, 10) || 0 
+                          });
+                        }} 
+                        required
+                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold mb-2">Judul Layanan *</label>
                   <input className="w-full border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none"
-                    placeholder="Rawat Jalan" value={layananForm.title}
+                    placeholder="mis: Rawat Jalan" value={layananForm.title}
                     onChange={e => setLayananForm({ ...layananForm, title: e.target.value })} required />
                 </div>
 
@@ -373,16 +380,28 @@ export default function AdminLayananPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2">Urutan Tampil</label>
-                    <input type="number" className="w-full border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none"
-                      value={fasilitasForm.order}
-                      onChange={e => setFasilitasForm({ ...fasilitasForm, order: parseInt(e.target.value) })} />
+                    <input 
+                      type="number" 
+                      min="1"
+                      className="w-full border border-border rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary focus:outline-none"
+                      placeholder="Contoh: 1"
+                      value={fasilitasForm.order === 0 ? '' : fasilitasForm.order} // Mencegah tampilan angka 0 di awal
+                      onChange={e => {
+                        const val = parseInt(e.target.value, 10);
+                        setFasilitasForm({ 
+                          ...fasilitasForm, 
+                          order: isNaN(val) ? 0 : val // Mengatasi error NaN
+                        });
+                      }} 
+                      required
+                    />
                   </div>
                   <div className="flex flex-col gap-3 pt-2">
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input type="checkbox" checked={fasilitasForm.isLarge}
                         onChange={e => setFasilitasForm({ ...fasilitasForm, isLarge: e.target.checked })}
                         className="w-4 h-4 accent-primary" />
-                      <span className="text-sm font-semibold">Tampil Besar (2x2)</span>
+                      <span className="text-sm font-semibold">Tampil Kecil (1x1)</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input type="checkbox" checked={fasilitasForm.isWide}
@@ -425,8 +444,8 @@ export default function AdminLayananPage() {
                       <p className="font-bold text-foreground text-sm truncate">{item.label}</p>
                       {item.description && <p className="text-xs text-foreground/60 line-clamp-2 mt-0.5">{item.description}</p>}
                       <div className="flex gap-2 mt-1">
-                        {item.isLarge && <span className="text-[10px] px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded font-bold">Besar</span>}
-                        {item.isWide && <span className="text-[10px] px-1.5 py-0.5 bg-purple-100 text-purple-700 rounded font-bold">Lebar</span>}
+                        {item.isLarge && <span className="text-[10px] px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded font-bold">Kecil</span>}
+                        {item.isWide && <span className="text-[10px] px-1.5 py-0.5 bg-cyan-100 text-cyan-700 rounded font-bold">Lebar</span>}
                       </div>
                     </div>
                     <div className="flex gap-1 flex-shrink-0">
