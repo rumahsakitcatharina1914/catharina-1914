@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import {  Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -82,7 +81,7 @@ export default function HeroSection() {
               idx === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {/* Background Image */}
+            {/*Gambar Background */}
             <div className="absolute inset-0">
               <Image
                 src={s.image}
@@ -109,17 +108,6 @@ export default function HeroSection() {
             <div className="relative z-10 h-full flex items-center">
               <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
                 <div className="max-w-3xl">
-                  {/* Badge */}
-                  <div
-                    className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-white/15 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-black border border-white/30 animate-fade-in-up"
-                    style={{
-                      animationDelay: idx === currentSlide ? '0.1s' : '0s',
-                      animationFillMode: 'both'
-                    }}
-                  >
-                    <Heart size={16} className="animate-pulse" />
-                    {s.badge}
-                  </div>
 
                   {/* Title */}
                   <h1
@@ -134,7 +122,7 @@ export default function HeroSection() {
 
                   {/* Description */}
                   <p
-                    className="text-base sm:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-2xl font-light animate-slide-up"
+                    className="text-base sm:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-2xl  animate-slide-up"
                     style={{
                       animationDelay: idx === currentSlide ? '0.3s' : '0s',
                       animationFillMode: 'both'
@@ -150,24 +138,6 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="absolute top-6 sm:top-8 right-6 sm:right-8 z-30 flex items-center gap-2">
-        <button
-          onClick={prevSlide}
-          className="p-2.5 sm:p-3 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full border border-white/30 hover:border-white/60 transition-all duration-300 group"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={24} className="text-white group-hover:scale-125 transition-transform" />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="p-2.5 sm:p-3 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full border border-white/30 hover:border-white/60 transition-all duration-300 group"
-          aria-label="Next slide"
-        >
-          <ChevronRight size={24} className="text-white group-hover:scale-125 transition-transform" />
-        </button>
-      </div>
 
       {/* Indicators */}
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2 sm:gap-3 items-center">

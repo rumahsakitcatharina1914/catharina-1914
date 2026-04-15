@@ -250,9 +250,6 @@ export default function ServicesSection() {
                       className="w-20 h-20 object-cover rounded-lg flex-shrink-0 group-hover:scale-105 transition-transform"
                     />
                     <div className="flex-1 min-w-0">
-                      <span className="inline-block px-2 py-0.5 bg-secondary/10 text-secondary rounded text-xs font-semibold mb-1">
-                        {article.category}
-                      </span>
                       <p className="font-semibold text-foreground group-hover:text-secondary transition-colors line-clamp-2 text-sm mb-1">
                         {article.title}
                       </p>
@@ -269,7 +266,7 @@ export default function ServicesSection() {
               </div>
               <Link
                 href="/berita"
-                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-secondary text-white rounded-xl font-semibold hover:bg-secondary/90 transition-colors text-sm"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-secondary text-black rounded-xl font-semibold hover:bg-secondary/90 transition-colors text-sm border-1"
               >
                 Lihat Semua Berita
                 <ArrowRight size={16} />

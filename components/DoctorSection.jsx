@@ -33,10 +33,6 @@ export default function DoctorsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-black tracking-tight mb-4">
-            <Stethoscope size={16} />
-            Tim Medis Profesional
-          </div>
           <h2 className="text-5xl sm:text-6xl font-black tracking-tight text-foreground mb-6 leading-tight">
             Dokter Spesialis Kami
           </h2>
