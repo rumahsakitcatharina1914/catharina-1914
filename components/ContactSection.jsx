@@ -46,7 +46,7 @@ export default function ContactSection() {
 
 
   return (
-    <section id="hubungi" className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
+    <section id="hubungi" className="py-20 sm:py-25 bg-gradient-to-b from-white to-neutral-light mb-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 

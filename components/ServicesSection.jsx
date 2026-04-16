@@ -161,7 +161,7 @@ export default function ServicesSection() {
           <div className="w-full bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/50">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold mb-4" style={{ background: '#e0f2fe', color: '#0077b6' }}>
                   <Instagram size={16} />
                   Feed Instagram
                 </div>
@@ -219,7 +219,7 @@ export default function ServicesSection() {
           {/* Berita Section */}
           <div className="w-full bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-secondary/50">
             <div className="mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary/10 text-secondary rounded-full text-xs font-semibold mb-3">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold  mb-4" style={{ background: '#e0f2fe', color: '#0077b6' }}>
                 <Newspaper size={14} />
                 Berita Terbaru
               </div>
