@@ -10,14 +10,14 @@ export async function POST() {
     
     cookieStore.delete(COOKIE_NAME);
     
-    console.log('✅ Cookie deleted:', COOKIE_NAME);
+    console.log('Cookie deleted:', COOKIE_NAME);
     
     return NextResponse.json({ 
       ok: true, 
       message: 'Berhasil logout' 
     });
   } catch (error) {
-    console.error('❌ Logout error:', error);
+    console.error('Logout error:', error);
     return NextResponse.json(
       { ok: false, message: 'Gagal logout' },
       { status: 500 }

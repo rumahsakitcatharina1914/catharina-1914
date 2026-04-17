@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   referrer: 'strict-origin-when-cross-origin',
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    apple: '/catharina-logo.png',
   },
   openGraph: {
     type: 'website',

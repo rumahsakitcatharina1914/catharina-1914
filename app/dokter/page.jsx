@@ -18,7 +18,7 @@ export default async function DokterPage() {
       <main className="overflow-hidden">
 
         {/* Hero */}
-        <section className="py-28 sm:py-20" style={{ background: '#f7f9fc' }}>
+        <section className="animate-stagger-3 py-28 sm:py-20" style={{ background: '#f7f9fc' }}>
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">

@@ -48,7 +48,7 @@ export default async function TentangKami() {
 
         {/*HERO */}
         <section
-          className="relative min-h-[100svh] flex flex-col justify-end"
+          className="animate-stagger-3 relative min-h-[100svh] flex flex-col justify-end"
           style={{ background: 'linear-gradient(160deg, #001d3d 0%, #003566 45%, #0077b6 100%)' }}
         >
           {/* dot grid pattern */}
@@ -84,7 +84,7 @@ export default async function TentangKami() {
 
 
         {/* SEJARAH — horizontal scrolling timeline feel*/}
-        <section className="py-28 sm:py-40" style={{ background: '' }}>
+        <section className="animate-stagger-3 py-28 sm:py-40 animate-slide-up" >
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
             <div className="mb-20">
@@ -133,7 +133,7 @@ export default async function TentangKami() {
         </section>
 
           {/* STRUKTUR ORGANISASI */}
-          <section className="py-28 sm:py-40 bg-white">
+          <section className="py-28 sm:py-40 bg-white animate-slide-up">
             <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           
               <div className="mb-20">
@@ -144,7 +144,7 @@ export default async function TentangKami() {
                 </h2>
               </div>
           
-              {/* ── Level 1: Direktur PT. KSM ── */}
+              {/*Level 1: Direktur PT. KSM*/}
               <div className="flex justify-center mb-0">
                 <div className="px-6 py-3 rounded-xl text-center text-xs font-bold tracking-widest uppercase border"
                   style={{ background: '#f0f9ff', borderColor: '#bae6fd', color: '#0077b6' }}>
@@ -157,7 +157,7 @@ export default async function TentangKami() {
                 <div className="w-0.5 h-8 bg-gray-300"  />
               </div>
           
-              {/* ── Level 2: Kepala RS ── */}
+              {/*Level 2: Kepala RS*/}
               <div className="flex justify-center mb-0">
                 <div className="relative rounded-2xl overflow-hidden text-center px-10 py-5 min-w-[220px] shadow-lg"
                   style={{ background: 'linear-gradient(135deg, #003d7a, #005ba3)' }}>
@@ -166,12 +166,12 @@ export default async function TentangKami() {
                 </div>
               </div>
           
-              {/* connector */}
+              {/* connector*/}
               <div className="flex justify-center">
                 <div className="w-0.5 h-8 bg-gray-300" />
               </div>
           
-              {/* ── Level 3: Komite Medik ── */}
+              {/*Level 3: Komite Medik*/}
               <div className="flex justify-center mb-0">
                 <div className="px-5 py-3 rounded-xl text-center text-xs border max-w-sm w-full"
                   style={{ background: '#fefce8', borderColor: '#fde68a', color: '#92400e' }}>
@@ -180,7 +180,7 @@ export default async function TentangKami() {
                 </div>
               </div>
           
-              {/* ── Level 4: 2 Kabag — responsif ── */}
+              {/*Level 4: 2 Kabag — responsif*/}
               <div className="flex flex-col items-center">
                 {/* vertical connector ke horizontal */}
                 <div className="w-0.5 h-8 bg-gray-300" />
@@ -217,7 +217,7 @@ export default async function TentangKami() {
                 <div className="w-0.5 h-8 bg-gray-300"  />
               </div>
           
-              {/* ── Level 5: Staff ── */}
+              {/*Level 5: Staff*/}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, transparent, #e2e8f0)' }} />
@@ -257,7 +257,7 @@ export default async function TentangKami() {
                 </div>
               </div>
           
-              {/* ── Level 6: Instalasi ── */}
+              {/*Level 6: Instalasi */}
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-px flex-1" style={{ background: 'linear-gradient(to right, transparent, #fed7aa)' }} />
@@ -308,7 +308,7 @@ export default async function TentangKami() {
           </section>
         
         {/* VISI MISI TUJUAN */}
-        <section style={{ background: '#D6E6F2' }} className="py-28 sm:py-40">
+        <section style={{ background: '#D6E6F2' }} className="py-28 sm:py-40 animate-slide-up">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
             <div className="mb-20">

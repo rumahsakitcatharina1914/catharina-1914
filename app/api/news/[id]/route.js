@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import fs from 'fs';
+import path from 'path';
 
 
 // GET - Fetch single news by ID
@@ -69,6 +71,34 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
   try {
     const { id } = await params;
+
+    const newsItem = await prisma.news.findUnique({
+      where: { id: parseInt(id) }
+    });
+
+    if (!newsItem) {
+      return NextResponse.json(
+        { error: 'Berita tidak ditemukan' },
+        { status: 404 }
+      );
+    }
+
+    if (newsItem.thumbnail) {
+      const thumbnailPath = path.join(process.cwd(), 'public', newsItem.thumbnail);
+      if (fs.existsSync(thumbnailPath)) {
+        fs.unlinkSync(thumbnailPath); 
+      }
+    }
+
+    if (newsItem.images && Array.isArray(newsItem.images)) {
+      for (const imageUrl of newsItem.images) {
+        const imagePath = path.join(process.cwd(), 'public', imageUrl);
+        if (fs.existsSync(imagePath)) {
+          fs.unlinkSync(imagePath); 
+        }
+      }
+    }
+
     await prisma.news.delete({
       where: { id: parseInt(id) }
     });

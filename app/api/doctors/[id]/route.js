@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import fs from 'fs';
+import path from 'path';
+
 
 // PUT - Update doctor
 export async function PUT(request, { params }) {
@@ -31,6 +34,25 @@ export async function DELETE(request, { params }) {
 
     const { id } = await params;
     const doctorId = parseInt(id);
+
+    const doctor = await prisma.doctor.findUnique({
+      where: { id: doctorId },
+    });
+
+    if (!doctor) {
+      return NextResponse.json(
+        {error: "Dokter tidak ditemukan" },
+        {status: 404}
+      );
+    }
+
+    if (doctor.image) {
+      const imagePath = path.join(process.cwd(), 'public', doctor.image);
+
+      if(fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
 
     await prisma.doctor.delete({
       where: { id: doctorId },

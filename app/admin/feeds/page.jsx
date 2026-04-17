@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Instagram, Plus, Trash2, Upload, X, Image as ImageIcon, Edit } from 'lucide-react';
+import { Instagram, Plus, Trash2, Upload, Image as ImageIcon,  } from 'lucide-react';
 
 export default function FeedsPage() {
   const [feeds, setFeeds] = useState([]);
@@ -82,6 +82,8 @@ export default function FeedsPage() {
       });
 
       if (res.ok) {
+
+        alert('Feed Instagram berhasil ditambahkan!');
         setFeedForm({ title: '', href: '', thumbnail: '' });
         setUploadedImage(null);
         loadFeeds();
@@ -99,29 +101,17 @@ export default function FeedsPage() {
 
   const deleteFeed = async (id) => {
   if (!confirm('Yakin ingin menghapus feed ini?')) return;
+  
   await fetch(`/api/instagram-feeds/${id}`, { method: 'DELETE' });
-  loadFeeds();
+    if (res.ok) {
+      alert('feed berhasil dihapus!');
+      loadFeeds();
+    }
+    else {
+      alert('Gagal menghapus feed.');
+    }
   };
 
-  const updateFeedThumbnail = async (id, thumbnail) => {
-  if (!thumbnail || thumbnail.trim() === '') return;
-  
-  try {
-    const res = await fetch(`/api/instagram-feeds/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ thumbnail }),
-    });
-
-    if (res.ok) {
-      loadFeeds();
-      // Optional: show success message
-      // alert('Thumbnail berhasil diupdate!');
-    }
-  } catch (error) {
-    console.error('Error updating thumbnail:', error);
-  }
-};
 
   return (
     <div className="max-w-5xl mx-auto space-y-8 ">

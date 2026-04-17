@@ -3,6 +3,29 @@
 @custom-variant dark (&:is(.dark *));
 
 
+
+@keyframes fadeUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
 :root {
   /* Primary: Dark Blue (professional healthcare) */
   --primary-dark: #003d7a;
@@ -363,12 +386,7 @@
     @apply transition-all duration-300 ease-out;
   }
 
-  /* instagram position */
-  .instagram-media {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-  }
+
 }
 
 

@@ -16,7 +16,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-primary-dark font-bold text-xl shadow-lg bg-white" >
                   <Image
-                      src="/catharina-logo2.png"
+                      src="/catharina-logo.png"
                       alt="Logo RSU Catharina"
                       width={30}
                       height={30}

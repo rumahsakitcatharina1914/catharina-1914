@@ -38,7 +38,7 @@ export async function POST(request) {
     return NextResponse.json({ ok: true, message: 'Login berhasil' });
 
   } catch (error) {
-    console.error('❌ Login error:', error);
+    console.error('Login error:', error);
     return NextResponse.json(
       { ok: false, message: 'Terjadi kesalahan server' },
       { status: 500 }
