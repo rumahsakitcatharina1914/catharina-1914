@@ -98,7 +98,7 @@ export default function HeroSection() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: `linear-gradient(135deg, rgba(5, 102, 181, 0.4), rgba(41, 176, 229, 0.3))`
+                backgroundImage: `linear-gradient(105deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%)`
               }}
             >
               
@@ -140,7 +140,7 @@ export default function HeroSection() {
 
 
       {/* Indicators */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2 sm:gap-3 items-center">
+      {/* <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2 sm:gap-3 items-center">
         {heroSlides.map((_, index) => (
           <button
             key={index}
@@ -153,7 +153,8 @@ export default function HeroSection() {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }
+

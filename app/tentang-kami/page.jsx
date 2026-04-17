@@ -161,7 +161,6 @@ export default async function TentangKami() {
               <div className="flex justify-center mb-0">
                 <div className="relative rounded-2xl overflow-hidden text-center px-10 py-5 min-w-[220px] shadow-lg"
                   style={{ background: 'linear-gradient(135deg, #003d7a, #005ba3)' }}>
-                  <div className="absolute top-0 left-0 w-1 h-full" style={{ background: '#00b4d8' }} />
                   <p className="text-white font-black text-base">Dr. dr. Elman Boy, M.Kes</p>
                   <p className="text-white/60 text-xs tracking-widest uppercase mt-1">Kepala RS</p>
                 </div>
@@ -397,7 +396,7 @@ export default async function TentangKami() {
               </div>
               <Link href="/berita"
                 className="group inline-flex items-center gap-3 px-6 py-3 rounded-full font-bold text-sm transition-all"
-                style={{ background: '#001d3d', color: 'white' }}>
+                style={{ background: '#005ba3', color: 'white' }}>
                 Lihat Semua
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>

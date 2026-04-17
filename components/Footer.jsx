@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Phone, MapPin, Mail, Clock, Stethoscope, Facebook, Instagram } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,15 +13,21 @@ export default function Footer() {
           
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-primary-dark font-bold text-xl shadow-lg" style={{backgroundImage: 'linear-gradient(to bottom right, #0099d8, #0099d8)'}}>
-                C
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-primary-dark font-bold text-xl shadow-lg bg-white" >
+                  <Image
+                      src="/catharina-logo2.png"
+                      alt="Logo RSU Catharina"
+                      width={30}
+                      height={30}
+                      className="object-contain"
+                  />
+                </div>
+                <div>
+                  <div className="font-bold text-xl leading-tight">RSU Catharina</div>
+                  <div className="text-sm font-bold text-secondary">1914</div>
+                </div>
               </div>
-              <div>
-                <div className="font-serif font-bold text-xl leading-tight">RS Catharina</div>
-                <div className="text-sm font-bold text-secondary">1914</div>
-              </div>
-            </div>
             <p className="text-base text-white/90 leading-relaxed mb-6 font-light max-w-sm">
               Rumah Sakit Catharina 1914 adalah fasilitas layanan kesehatan terpercaya yang berkomitmen memberikan pelayanan kesehatan berkualitas tinggi untuk semua lapisan masyarakat.
             </p>
@@ -120,38 +127,40 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="font-bold mb-6 text-lg text-white uppercase tracking-wider">Kontak</h3>
-            <div className="space-y-5">
-              <div className="flex gap-3 items-start group">
-                <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone size={16} className="text-secondary group-hover:text-white" />
+          <section>
+            <div>
+              <h3 className="font-bold mb-6 text-lg text-white uppercase tracking-wider">Kontak</h3>
+              <div className="space-y-5">
+                <div className="flex gap-3 items-start group">
+                  <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone size={16} className="text-secondary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-secondary uppercase">Telepon</p>
+                    <p className="text-white/90 font-medium text-xs">0812-6326-4846</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs font-bold text-secondary uppercase">Telepon</p>
-                  <p className="text-white/90 font-medium text-xs">0812-6326-4846</p>
+                <div className="flex gap-3 items-start group">
+                  <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin size={16} className="text-secondary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-secondary uppercase">Lokasi</p>
+                    <p className="text-white/90 font-medium text-xs"> Jalan Besar Sech Silau, Sei Renggas, Kisaran</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-3 items-start group">
-                <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin size={16} className="text-secondary group-hover:text-white" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-secondary uppercase">Lokasi</p>
-                  <p className="text-white/90 font-medium text-xs"> Jalan Besar Sech Silau, Sei Renggas, Kisaran</p>
-                </div>
-              </div>
-              <div className="flex gap-3 items-start group">
-                <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0 ">
-                  <Mail size={16} className="text-secondary group-hover:text-white" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-secondary uppercase">Email</p>
-                  <p className="text-white/90 font-small text-xs">rumahsakitcatharina@gmail.com</p>
+                <div className="flex gap-3 items-start group">
+                  <div className="w-8 h-8 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0 ">
+                    <Mail size={16} className="text-secondary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-secondary uppercase">Email</p>
+                    <p className="text-white/90 font-small text-xs">rumahsakitcatharina@gmail.com</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
 
         {/* IGD Banner */}

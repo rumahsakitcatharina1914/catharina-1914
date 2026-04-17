@@ -16,7 +16,7 @@ export default function DoctorsSection() {
         const res = await fetch('/api/doctors');
         if (res.ok) {
           const data = await res.json();
-          setDoctors(data.slice(0, 6)); // Ambil 6 dokter teratas
+          setDoctors(data.slice(0, 4)); 
         }
       } catch (error) {
         console.error('Error fetching doctors:', error);
@@ -29,15 +29,18 @@ export default function DoctorsSection() {
   }, []);
 
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-b from-white to-neutral-light">
+    <section className="py-20 sm:py-32 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h2 className="text-5xl sm:text-6xl font-black tracking-tight text-foreground mb-6 leading-tight">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <p className="text-sm font-bold uppercase tracking-widest text-[#0077b6] mb-3">
             Dokter Spesialis Kami
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6">
+            Daftar Dokter Kami
           </h2>
-          <p className="text-xl text-neutral-gray leading-relaxed text-gray-400">
-            Dipercaya oleh banyak pasien dengan dedikasi tinggi untuk memberikan perawatan kesehatan terbaik
+          <p className="text-gray-500 leading-relaxed text-lg">
+            Dipercaya oleh banyak pasien dengan dedikasi tinggi untuk memberikan perawatan kesehatan terbaik.
           </p>
         </div>
 
@@ -73,14 +76,7 @@ export default function DoctorsSection() {
               <Link
                 href="/dokter"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-black rounded-xl font-bold hover:bg-primary/90 hover:shadow-lg transition-all group border-2"
-                style={{
-                backgroundImage: isHovered 
-                    ? 'linear-gradient(to bottom right, rgba(4, 79, 140, 0.2), rgba(0, 153, 216, 0.2))' 
-                    : 'linear-gradient(to right, #005ba3, #003d7a)',
-                color: isHovered ? '#005ba3' : 'white',
-                }}
-                onMouseEnter={() => setIsHovered(true)}  
-                onMouseLeave={() => setIsHovered(false)} 
+                 style={{ background: '#e0f2fe', color: '#0077b6' }}
               >
                 Lihat Semua Dokter
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />

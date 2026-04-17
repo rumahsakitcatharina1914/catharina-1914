@@ -9,6 +9,7 @@ import SlideSection from '@/components/SlideSection';
 import prisma from '@/lib/prisma'; 
 import DoctorsSection from '../components/DoctorSection';
 import PageTransition from '../components/PageTransition';
+import QuickInfo from '@/components/QuickInfo';
 
 
 export const metadata = {
@@ -29,6 +30,7 @@ export default async function HomePage() {
       <main className="overflow-hidden">
       <PageTransition>
         <SlideSection/>
+        <QuickInfo/>
         <DoctorsSection/>
         <ServicesSection />
         <ContactSection />
