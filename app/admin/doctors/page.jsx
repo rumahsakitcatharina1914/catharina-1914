@@ -197,7 +197,7 @@ export default function DoctorsPage() {
           <div>
             <label className="block text-sm font-semibold mb-2">Foto Dokter</label>
             {!uploadedImage ? (
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors">
+              <div className="flex items-center gap-4">
                 <input
                   type="file"
                   accept="image/*"
@@ -206,15 +206,18 @@ export default function DoctorsPage() {
                   id="doctor-photo-upload"
                   disabled={uploading}
                 />
-                <label htmlFor="doctor-photo-upload" className="cursor-pointer flex flex-col items-center gap-3">
+                <label 
+                  htmlFor="doctor-photo-upload" 
+                  className="flex items-center gap-2 px-6 py-3 text-foreground border-2 border-dashed border-foreground/20 hover:border-primary hover:bg-secondary/5 rounded-lg cursor-pointer transition-colors">
+                  
                   <div className="p-4 bg-neutral-light rounded-full">
-                    <Upload className="text-primary" size={32} />
+                    <Upload className="text-primary" size={18} />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">
+                    <p className="font-semibold text-sm text-foreground">
                       {uploading ? 'Uploading...' : 'Klik untuk upload foto dokter'}
                     </p>
-                    <p className="text-sm text-foreground/70 mt-1">JPG, PNG (Max 5MB)</p>
+                    <p className="text-xs text-foreground/70 mt-1">JPG, PNG (Max 5MB)</p>
                   </div>
                 </label>
               </div>

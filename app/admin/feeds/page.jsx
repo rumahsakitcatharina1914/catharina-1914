@@ -102,7 +102,7 @@ export default function FeedsPage() {
   const deleteFeed = async (id) => {
   if (!confirm('Yakin ingin menghapus feed ini?')) return;
   
-  await fetch(`/api/instagram-feeds/${id}`, { method: 'DELETE' });
+  const res = await fetch(`/api/instagram-feeds/${id}`, { method: 'DELETE' });
     if (res.ok) {
       alert('feed berhasil dihapus!');
       loadFeeds();
