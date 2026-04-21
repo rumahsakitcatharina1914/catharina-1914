@@ -6,11 +6,10 @@ const COOKIE_VALUE = 'authenticated';
 export function middleware(request) {
   const { pathname } = request.nextUrl;
   
-  // Proteksi halaman admin (kecuali login)
+  // Proteksi halaman admin 
   if (pathname.startsWith('/admin') && pathname !== '/admin') {
     const session = request.cookies.get(COOKIE_NAME);
     
-    // Kalau tidak ada session atau value salah, redirect ke login
     if (!session || session.value !== COOKIE_VALUE) {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }

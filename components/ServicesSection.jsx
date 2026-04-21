@@ -2,58 +2,36 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Ambulance, Bed, Stethoscope, Microscope, Users, Zap, ArrowRight, Check, Instagram, Newspaper, Calendar } from 'lucide-react';
+import { Ambulance, Bed, Stethoscope, Microscope, Users, Zap, ArrowRight, CheckCircle, Instagram, Newspaper, Calendar } from 'lucide-react';
 
 export default function ServicesSection() {
-  const services = [
-    {
-      icon: Stethoscope,
-      title: 'Rawat Jalan',
-      description: 'Layanan konsultasi dan pemeriksaan dengan dokter spesialis berpengalaman untuk berbagai keluhan medis.',
-      features: ['Konsultasi dokter', 'Pemeriksaan kesehatan', 'Resep & Obat-obatan'],
-      color: '#0077b6', bg: '#e0f2fe',
-    },
-    {
-      icon: Bed,
-      title: 'Rawat Inap',
-      description: 'Perawatan intensif dengan fasilitas kamar modern, bersih, dan nyaman demi proses pemulihan yang optimal.',
-      features: ['Kamar VIP & Standar', 'Perawatan 24 jam', 'Keluarga boleh menginap'],
-      color: '#0077b6', bg: '#e0f2fe',
-    },
-    {
-      icon: Ambulance,
-      title: 'IGD (Gawat Darurat)',
-      description: 'Layanan darurat 24 jam siap membantu menangani kondisi medis mendesak Anda dengan cepat dan tanggap.',
-      features: ['Respons 24/7', 'Dokter spesialis', 'Ambulans siaga'],
-      color: '#0077b6', bg: '#e0f2fe',
-    },
-    {
-      icon: Users,
-      title: 'Poliklinik Spesialis',
-      description: 'Layanan kesehatan spesifik dari deretan dokter ahli dan konsultan di berbagai bidang medis tertentu.',
-      features: ['Mata', 'Jantung', 'Anak', 'Kandungan', 'Penyakit Dalam'],
-      color: '#0077b6', bg: '#e0f2fe',
-    },
-    {
-      icon: Microscope,
-      title: 'Lab & Radiologi',
-      description: 'Dukungan diagnosa akurat dengan menggunakan peralatan modern dan teknologi medis terkini.',
-      features: ['Tes darah', 'Rontgen', 'CT Scan', 'USG', 'ECG'],
-      color: '#0077b6', bg: '#e0f2fe',
-    },
-    {
-      icon: Zap,
-      title: 'Tindakan & Operasi',
-      description: 'Prosedur tindakan medis dan bedah yang dilakukan oleh tim ahli di dalam fasilitas ruang operasi yang steril.',
-      features: ['Operasi mayor', 'Operasi minor', 'Endoskopi', 'Anestesi umum'],
-      color: '#0077b6', bg: '#e0f2fe',
-    },
-  ];
-
+  
+  const [services, setServices] = useState([]);
   const [instagramPosts, setInstagramPosts] = useState([]);
   const [newsArticles, setNewsArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchServices = async () => {
+    try {
+      const res = await fetch('/api/layanan');
+      if (res.ok) {
+        const data = await res.json();
+        const activeServices = data.filter(service => service.isActive);
+        setServices(activeServices);
+      }
+    } catch (error) {
+      console.error('Gagal mengambil data layanan:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+
+    useEffect(()=> {
+    fetchServices();
+  },  []);
+
+  
   useEffect(() => {
     const fetchFeedsAndNews = async () => {
       try {
@@ -81,6 +59,8 @@ export default function ServicesSection() {
     fetchFeedsAndNews();
   }, []);
 
+
+
   return (
     <section className="py-24 sm:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -98,46 +78,85 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/*SERVICES GRID*/}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-
+        {/* SERVICES GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {services.slice(0, 3).map((service) => {
+            const features = Array.isArray(service.features) ? service.features : [];
             return (
-              <div
-                key={index}
-                className="group flex flex-col bg-white rounded-2xl p-8 border border-gray-200 hover:border-[#0077b6] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
-              >
-                {/* Header Card: Ikon & Judul */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-                    style={{ background: service.bg, color: service.color }}
-                  >
-                    <Icon size={26} strokeWidth={2.5} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#0077b6] transition-colors">
-                    {service.title}
-                  </h3>
+              <div key={service.id} id={`layanan-${service.id}`}
+                className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
+
+                {/* Image dengan Efek Gradasi */}
+                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                  {service.image ? (
+                    <img src={service.image} alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center" style={{ background: service.bg || '#e0f2fe' }}>
+                      <Stethoscope size={60} style={{ color: '#0077b6', opacity: 0.3 }} />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  
+                  {service.short && (
+                    <div className="absolute bottom-4 left-4">
+                      <span className="px-3 py-1.5 rounded-full text-xs font-bold text-white backdrop-blur-sm"
+                        style={{ background: '#005ba3' }}>{service.short}</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Deskripsi */}
-                <p className="text-gray-600 mb-8 leading-relaxed text-sm">
-                  {service.description}
-                </p>
+                {/* Content Card */}
+                <div className="p-6">
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-2xl flex font-semibold items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                      style={{ background: '#e0f2fe', color: '#0077b6' }}>
+                      {service.num || '00'}
+                    </div>
+                    <h3 className="text-xl mt-2 font-bold text-gray-900 group-hover:text-[#0077b6] transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
 
-                {/* List Fitur */}
-                <ul className="space-y-3 mb-8 flex-grow">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-700">
-                      <Check size={18} strokeWidth={2.5} className="text-[#0077b6] flex-shrink-0" />
-                      <span className="font-medium">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
+                    {service.description}
+                  </p>
+
+                  {/* List Fitur dengan Ikon Bulat */}
+                  <div className="space-y-2 mb-4">
+                    {features.slice(0, 3).map((f, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: service.bg || '#e0f2fe' }}>
+                          <CheckCircle size={12} style={{ color: '#0077b6' }} />
+                        </div>
+                        <span className="text-xs text-gray-600 line-clamp-1">{f}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Link ke detail */}
+                  <Link href={`/layanan/${service.slug}`}
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:shadow-lg hover:-translate-y-1"
+                    style={{ background: '#005ba3' }}>
+                    Info Lengkap
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Tombol navigasi */}
+        <div className="flex justify-center mb-24">
+          <Link
+            href="/layanan"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-[#0077b6] text-[#0077b6] font-bold rounded-full hover:bg-[#0077b6] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md group"
+          >
+            Lihat Semua Layanan 
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
         {/* Garis Pemisah Antar Seksi */}

@@ -1,14 +1,11 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-
 import ServicesSection from '@/components/ServicesSection';
 import ContactSection from '@/components/ContactSection';
 import Link from 'next/link';
 import SlideSection from '@/components/SlideSection';
 import prisma from '@/lib/prisma'; 
 import DoctorsSection from '../components/DoctorSection';
-import PageTransition from '../components/PageTransition';
 import QuickInfo from '@/components/QuickInfo';
 
 
@@ -28,13 +25,11 @@ export default async function HomePage() {
       <Header />
       
       <main className="overflow-hidden">
-      <PageTransition>
         <SlideSection/>
         <QuickInfo/>
         <DoctorsSection/>
         <ServicesSection />
         <ContactSection />
-        </PageTransition>
       </main>
       <Footer />
     </>

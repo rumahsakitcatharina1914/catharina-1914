@@ -8,24 +8,23 @@ export async function POST(request) {
   try {
     const body = await request.json();
 
-    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminUsername = process.env.ADMIN_USERNAME;
     const adminPassword = process.env.ADMIN_PASSWORD;
 
-    if (!body?.email || !body?.password) {
+    if (!body?.username || !body?.password) {
       return NextResponse.json(
-        { ok: false, message: 'Email dan password wajib diisi' },
+        { ok: false, message: 'Username dan password wajib diisi' },
         { status: 400 }
       );
     }
 
-    if (body.email !== adminEmail || body.password !== adminPassword) {
+    if (body.username !== adminUsername || body.password !== adminPassword) {
       return NextResponse.json(
-        { ok: false, message: 'Email atau password salah' },
+        { ok: false, message: 'Username atau password salah' },
         { status: 401 }
       );
     }
 
-    // Pakai cookieStore,
     const cookieStore = await cookies();
     cookieStore.set(COOKIE_NAME, COOKIE_VALUE, { 
       httpOnly: true,

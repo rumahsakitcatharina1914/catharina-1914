@@ -75,8 +75,7 @@ export default function DoctorsSection() {
             <div className="text-center">
               <Link
                 href="/dokter"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-black rounded-xl font-bold hover:bg-primary/90 hover:shadow-lg transition-all group border-2"
-                 style={{ background: '#e0f2fe', color: '#0077b6' }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-[#0077b6] text-[#0077b6] font-bold rounded-full hover:bg-[#005ba3] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md group"
               >
                 Lihat Semua Dokter
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />

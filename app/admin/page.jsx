@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowLeft, Lock, Mail, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Lock, User, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 export default function AdminLoginPage() {
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ username: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -46,22 +46,21 @@ export default function AdminLoginPage() {
 
         <div className="w-full bg-white rounded-2xl border border-border p-8 hover:shadow-2xl transition-all group">
           <p className="text-foreground/70 text-sm mb-6 text-center">
-            Masukkan akun Gmail dan password admin yang benar untuk membuka dashboard.
+            Masukkan akun dan password admin yang benar untuk membuka dashboard.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Email Gmail
+                Nama Akun 
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/50" size={20} />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/50" size={20} />
                 <input
-                  type="email"
+                  type="text"
                   className="w-full pl-11 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-neutral-light"
-                  placeholder="catharina2026@gmail.com"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  value={form.username}
+                  onChange={(e) => setForm({ ...form, username: e.target.value })}
                   required
                   disabled={loading}
                 />
