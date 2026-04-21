@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import DoctorCard from '@/components/DoctorCard';
 import { Stethoscope, ArrowRight, User } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function DoctorsSection() {
   const [doctors, setDoctors] = useState([]);
@@ -32,7 +33,13 @@ export default function DoctorsSection() {
     <section className="py-20 sm:py-32 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}  
+          className="text-center mb-16 max-w-3xl mx-auto"
+        >
           <p className="text-sm font-bold uppercase tracking-widest text-[#0077b6] mb-3">
             Dokter Spesialis Kami
           </p>
@@ -42,7 +49,7 @@ export default function DoctorsSection() {
           <p className="text-gray-500 leading-relaxed text-lg">
             Dipercaya oleh banyak pasien dengan dedikasi tinggi untuk memberikan perawatan kesehatan terbaik.
           </p>
-        </div>
+        </motion.div>
 
         {/* Loading State */}
         {loading && (
@@ -64,10 +71,18 @@ export default function DoctorsSection() {
         {!loading && doctors.length > 0 && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-              {doctors.map((doctor) => (
-                <div key={doctor.id} className="max-w-[250px] mx-auto w-full">
+              {doctors.map((doctor, index) => (
+                <motion.div 
+                  key={doctor.id} 
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                  className="max-w-[250px] mx-auto w-full"
+
+                >
                 <DoctorCard doctor={doctor} />
-                </div>
+                </motion.div>
               ))}
             </div>
 

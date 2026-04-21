@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Ambulance, Bed, Stethoscope, Microscope, Users, Zap, ArrowRight, CheckCircle, Instagram, Newspaper, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function ServicesSection() {
   
@@ -66,7 +67,14 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* HEADER LAYANAN*/}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }} 
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16 max-w-3xl mx-auto"
+          
+          >
           <p className="text-sm font-bold uppercase tracking-widest text-[#0077b6] mb-3">
             Fasilitas & Layanan
           </p>
@@ -76,17 +84,25 @@ export default function ServicesSection() {
           <p className="text-gray-500 leading-relaxed text-lg">
             Kami menyediakan layanan kesehatan komprehensif dengan standar kualitas tinggi untuk memenuhi kebutuhan medis Anda dan keluarga.
           </p>
-        </div>
+        </motion.div>
 
         {/* SERVICES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {services.slice(0, 3).map((service) => {
+          {services.slice(0, 3).map((service, index) => {
             const features = Array.isArray(service.features) ? service.features : [];
             return (
-              <div key={service.id} id={`layanan-${service.id}`}
-                className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
+              <motion.div 
+                key={service.id} 
+                id={`layanan-${service.id}`}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.3, ease: "easeOut" }}
+                className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100"
+              
+              >
 
-                {/* Image dengan Efek Gradasi */}
+                {/* Image  */}
                 <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                   {service.image ? (
                     <img src={service.image} alt={service.title}
@@ -123,7 +139,7 @@ export default function ServicesSection() {
                     {service.description}
                   </p>
 
-                  {/* List Fitur dengan Ikon Bulat */}
+                  {/* List Fitur*/}
                   <div className="space-y-2 mb-4">
                     {features.slice(0, 3).map((f, i) => (
                       <div key={i} className="flex items-center gap-2">
@@ -143,7 +159,7 @@ export default function ServicesSection() {
                     <ArrowRight size={16} />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -152,12 +168,13 @@ export default function ServicesSection() {
         <div className="flex justify-center mb-24">
           <Link
             href="/layanan"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-[#0077b6] text-[#0077b6] font-bold rounded-full hover:bg-[#0077b6] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md group"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-[#0077b6] text-[#0077b6] font-bold rounded-full hover:bg-[#005ba3] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md group"
           >
             Lihat Semua Layanan 
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
+
 
         {/* Garis Pemisah Antar Seksi */}
         <div className="w-full h-px bg-gray-200 mb-24"></div>

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   applicationName: 'Rumah Sakit Catharina 1914',
   referrer: 'strict-origin-when-cross-origin',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/catharina-logo.png',
     apple: '/catharina-logo.png',
   },
   openGraph: {
