@@ -103,7 +103,7 @@ export default function ServicesSection() {
               >
 
                 {/* Image  */}
-                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                {/* <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                   {service.image ? (
                     <img src={service.image} alt={service.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -121,7 +121,7 @@ export default function ServicesSection() {
                         style={{ background: '#005ba3' }}>{service.short}</span>
                     </div>
                   )}
-                </div>
+                </div> */}
 
                 {/* Content Card */}
                 <div className="p-6">

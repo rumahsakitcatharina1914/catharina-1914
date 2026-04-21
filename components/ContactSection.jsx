@@ -217,7 +217,7 @@ export default function ContactSection() {
                   <div className="space-y-3 text-sm">
                     <div className="flex flex-col">
                       <span className="font-bold text-gray-700">Poliklinik / Rawat Jalan:</span>
-                      <span className="text-gray-500 font-medium">Senin - Minggu (07:00 - 18:00 WIB)</span>
+                      <span className="text-gray-500 font-medium">Senin - Sabtu (07:00 - 18:00 WIB)</span>
                     </div>
                     <div className="w-full h-px bg-gray-100" />
                     <div className="flex flex-col">

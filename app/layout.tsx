@@ -45,13 +45,14 @@ export const metadata: Metadata = {
   },
 }
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="id" className={`${playfair.variable} ${lato.variable}`} style={{ overflowX: 'hidden' }}>
+    <html lang="id" className={`scroll-smooth ${playfair.variable} ${lato.variable}`} style={{ overflowX: 'hidden' }}>
       <body className={`font-sans antialiased bg-background text-foreground overflow-x-clip max-w-full`} style={{ position: 'relative' }}>
         <div className="relative flex flex-col min-h-screen w-full overflow-x-clip">
           {children}

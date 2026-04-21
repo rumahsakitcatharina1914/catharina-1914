@@ -66,10 +66,14 @@ export default async function Layanan() {
                   Tim medis profesional kami siap memberikan layanan terbaik dengan pendekatan personal dan penuh perhatian.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-white  text-sm hover:opacity-95 transition-all"
+                  <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://wa.me/6281263264846?text=Halo%20RS%20Catharina%201914%2C%20saya%20ingin%20bertanya%20seputar%20informasi%20layanan%20kesehatan."
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-black text-white  text-sm hover:opacity-95 transition-all"
                     style={{ background: 'linear-gradient(135deg, #003566, #0077b6)' }}>
                     <Phone size={16} /> Hubungi Sekarang
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -119,7 +123,6 @@ export default async function Layanan() {
                       </p>
                   </h2>
                 </div>
-                
               </div>
               
             

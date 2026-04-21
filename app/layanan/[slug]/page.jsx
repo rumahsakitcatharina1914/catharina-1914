@@ -1,5 +1,3 @@
-// app/layanan/[slug]/page.jsx
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
@@ -51,11 +49,6 @@ export default async function LayananDetail({ params }) {
             <Link href="/layanan" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-10 transition-colors w-fit">
               <ArrowLeft size={16} /> Kembali ke Layanan
             </Link>
-
-            {/* <div className="w-fit inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black text-white mb-4"
-              style={{ background: layanan.color }}>
-              {layanan.num} — {layanan.short}
-            </div> */}
 
             <h1 className="text-5xl sm:text-7xl font-black text-white leading-tight tracking-tight mb-4">
               {layanan.title}
@@ -133,10 +126,14 @@ export default async function LayananDetail({ params }) {
                   style={{ background: 'linear-gradient(135deg, #003566, #0077b6)' }}>
                   <h4 className="font-black text-lg mb-2">Butuh Informasi?</h4>
                   <p className="text-white/70 text-sm mb-4">Hubungi tim kami untuk informasi lebih lanjut tentang layanan ini.</p>
-                  <button className="w-full py-3 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition-all hover:opacity-90"
+                  <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://wa.me/6281263264846?text=Halo%20RS%20Catharina%201914%2C%20saya%20ingin%20bertanya%20seputar%20informasi%20layanan%20kesehatan."
+                    className="w-full py-3 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition-all hover:opacity-90"
                     style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)' }}>
                     Hubungi Kami <ArrowRight size={14} />
-                  </button>
+                  </a>
                 </div>
 
                 {/* Layanan lain */}

@@ -113,7 +113,10 @@ export default async function DokterPage() {
                     ))}
                   </div>
 
-                  <a href="#hubungi"
+                  <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://wa.me/6281263264846?text=Halo%20RS%20Catharina%201914%2C%20saya%20ingin%20bertanya%20seputar%20informasi%20layanan%20kesehatan."
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-sm transition-all hover:opacity-90 hover:-translate-y-0.5"
                     style={{ background: '#0077b6', color: 'white' }}>
                     Hubungi Kami <ArrowRight size={15} />
@@ -140,16 +143,16 @@ export default async function DokterPage() {
             <div className="space-y-3">
               {[
                 {
-                  question: 'Apakah saya perlu appointment sebelum konsultasi?',
-                  answer: 'Kami merekomendasikan appointment untuk menghindari waktu tunggu yang lama. Anda bisa menelepon kami atau menggunakan form online. Walau tanpa appointment, kami tetap melayani dengan urutan antrian.',
+                  question: 'Apakah saya harus membuat janji sebelum datang?',
+                  answer: 'Untuk saat ini, pendaftaran bisa dilakukan secara langsung. Anda bisa melakukan datang langsung ke rumah sakit.',
                 },
                 {
-                  question: 'Berapa lama waktu konsultasi dengan dokter?',
-                  answer: 'Durasi konsultasi berkisar 15-30 menit tergantung kondisi dan kompleksitas kasus. Sudah termasuk pemeriksaan awal dan diskusi diagnosis.',
+                  question: 'Apakah melayani pasien BPJS Kesehatan?',
+                  answer: 'Ya, kami melayani pasien BPJS Kesehatan. Pastikan Anda membawa kartu BPJS asli, KTP, dan surat rujukan.',
                 },
                 {
                   question: 'Apakah dokter menerima pasien baru?',
-                  answer: 'Ya, semua dokter kami menerima pasien baru. Hubungi kami untuk informasi jadwal dan membuat appointment.',
+                  answer: 'Ya, Bagi pasien baru, silakan membawa Kartu Identitas (KTP/KIA/Paspor) asli. Bagi pengguna asuransi atau BPJS, harap membawa kartu asuransi fisik dan dokumen pendukung lainnya.',
                 },
                 {
                   question: 'Bagaimana jika tidak bisa datang pada jadwal yang ditentukan?',

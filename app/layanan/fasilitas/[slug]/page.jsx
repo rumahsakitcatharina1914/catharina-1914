@@ -1,5 +1,3 @@
-// app/layanan/fasilitas/[id]/page.jsx
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
@@ -123,11 +121,14 @@ export default async function FasilitasDetail({ params }) {
                   <p className="text-white/70 text-sm mb-4">
                     Hubungi tim kami untuk informasi lebih lanjut tentang fasilitas ini.
                   </p>
-                  <button
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://wa.me/6281263264846?text=Halo%20RS%20Catharina%201914%2C%20saya%20ingin%20bertanya%20seputar%20informasi%20layanan%20kesehatan."
                     className="w-full py-3 rounded-xl font-black text-sm flex items-center justify-center gap-2 transition-all hover:opacity-90"
                     style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)' }}>
                     Hubungi Kami <ArrowRight size={14} />
-                  </button>
+                  </a>
                 </div>
  
                 {/* Fasilitas lainnya */}
