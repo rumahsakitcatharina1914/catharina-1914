@@ -88,7 +88,7 @@ export default function ServicesSection() {
 
         {/* SERVICES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {services.slice(0, 3).map((service, index) => {
+          {services.slice(0, 6).map((service, index) => {
             const features = Array.isArray(service.features) ? service.features : [];
             return (
               <motion.div 
@@ -101,27 +101,6 @@ export default function ServicesSection() {
                 className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100"
               
               >
-
-                {/* Image  */}
-                {/* <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                  {service.image ? (
-                    <img src={service.image} alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center" style={{ background: service.bg || '#e0f2fe' }}>
-                      <Stethoscope size={60} style={{ color: '#0077b6', opacity: 0.3 }} />
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  
-                  {service.short && (
-                    <div className="absolute bottom-4 left-4">
-                      <span className="px-3 py-1.5 rounded-full text-xs font-bold text-white backdrop-blur-sm"
-                        style={{ background: '#005ba3' }}>{service.short}</span>
-                    </div>
-                  )}
-                </div> */}
 
                 {/* Content Card */}
                 <div className="p-6">
@@ -188,9 +167,9 @@ export default function ServicesSection() {
             <div className="flex items-center justify-between border-b-2 border-gray-100 pb-4 mb-8">
               <div className="flex items-center gap-3">
                 <Instagram className="text-[#0077b6]" size={24} />
-                <h3 className="text-2xl font-black text-gray-900">Instagram Kami</h3>
+                <h3 className="text-xl font-black text-gray-900">Instagram Kami</h3>
               </div>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#0077b6] transition-colors flex items-center gap-1">
+              <a href="https://www.instagram.com/rsucatharina1914kisaran_?igsh=eHRleHo3dXA4eGRn" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#0077b6] transition-colors flex items-center gap-1">
                 @catharina1914 <ArrowRight size={14} />
               </a>
             </div>
@@ -233,7 +212,7 @@ export default function ServicesSection() {
             <div className="flex items-center justify-between border-b-2 border-gray-100 pb-4 mb-8">
               <div className="flex items-center gap-3">
                 <Newspaper className="text-[#0077b6]" size={24} />
-                <h3 className="text-2xl font-black text-gray-900">Kabar Terbaru</h3>
+                <h3 className="text-xl font-black text-gray-900">Kabar Terbaru</h3>
               </div>
               <Link href="/berita" className="text-sm font-bold text-gray-400 hover:text-[#0077b6] transition-colors flex items-center gap-1">
                 Lihat Semua <ArrowRight size={14} />

@@ -151,8 +151,8 @@ export default async function DokterPage() {
                   answer: 'Ya, kami melayani pasien BPJS Kesehatan. Pastikan Anda membawa kartu BPJS asli, KTP, dan surat rujukan.',
                 },
                 {
-                  question: 'Apakah dokter menerima pasien baru?',
-                  answer: 'Ya, Bagi pasien baru, silakan membawa Kartu Identitas (KTP/KIA/Paspor) asli. Bagi pengguna asuransi atau BPJS, harap membawa kartu asuransi fisik dan dokumen pendukung lainnya.',
+                  question: 'Kapan waktu yang diperbolehkan untuk menjenguk pasien',
+                  answer: 'Pagi(10.00-12.00), Sore(13.00-17.00), Malam(19.00-21.00)',
                 },
                 {
                   question: 'Bagaimana jika tidak bisa datang pada jadwal yang ditentukan?',

@@ -20,10 +20,10 @@ export default async function TentangKami() {
   const latestNews = await getLatestNews();
 
   const timeline = [
-    { year: '1914', title: 'Pendirian', description: 'Rumah Sakit Catharina didirikan oleh para suster kongregasi dengan visi mulia melayani kesehatan masyarakat tanpa memandang latar belakang.' },
-    { year: '1950', title: 'Ekspansi Pertama', description: 'Penambahan fasilitas rawat inap, bangsal baru, dan pembukaan departemen spesialis pertama untuk melayani lebih banyak pasien.' },
-    { year: '2000', title: 'Era Modernisasi', description: 'Adopsi teknologi medis terkini, sertifikasi internasional, dan transformasi digital sistem manajemen rumah sakit.' },
-    { year: '2024', title: 'Inovasi Digital', description: 'Terus berinovasi dengan layanan kesehatan digital, telemedicine, dan program kesehatan masyarakat berkelanjutan.' },
+    { year: '1914', title: 'Pendirian', description: 'Rumah sakit ini dahulunya berada di bawah kepemilikan perusahaan perkebunan Belanda-Amerika yang bernama Hollandsch-Amerikaansche Plantage Maatschappij (HAPM). Pada masa kepemilikan HAPM rumah sakit ini bernama Catharina Hospitaal yang diambil dari nama salah satu dokter pertama yang bertugas di rumah sakit tersebut.' },
+    { year: '1950', title: 'Ekspansi Pertama', description: 'Dalam perjalanan sejarahnya yang tidak terlepas dari nasib perusahaan perkebunan HAPM yang pernah dinasionalisasi pada tahun 1960-an menjadi PN Karet XVI, kemudian berganti nama menjadi PT Uniroyal Rubber Sumatera Plantations, kemudian menjadi PT United Sumatera Plantations (USP)' },
+    { year: '2000', title: 'Era Modernisasi', description: 'Kepemilikan menjadi PT Bakrie Sumatera Plantations hingga sampai akhirnya tahun 2015 rumah sakit ini berpisah manajemen dengan perusahan perkebunan dan dikukuhkan menjadi RSU Ibu Kartini oleh PT Kartini Sentra Medika. Adopsi yang dilakukan yaitu teknologi medis terkini, sertifikasi, dan transformasi digital sistem manajemen rumah sakit.' },
+    { year: '2024', title: 'Inovasi Digital', description: 'Nama rumah sakit berubah menjadi RS Catharina 1914. Rumah Sakit ini terus mengembangkan inovasi digital melalui layanan kesehatan berbasis teknologi, termasuk telemedicine serta program kesehatan masyarakat yang berkelanjutan.' },
   ];
 
 
@@ -74,7 +74,7 @@ export default async function TentangKami() {
                 Sakit<br />
                 <span style={{ color: '#91C8E4' }}>Catharina</span>
               </h1>
-              <p className="text-white/60 text-xl leading-relaxed max-w-xl font-light">
+              <p className="text-white/60 text-xl leading-relaxed max-w-xl font-semibold">
                 Lebih dari satu abad hadir dengan mengabdi untuk kesehatan masyarakat dengan hati, ilmu, dan teknologi terkini.
               </p>
             </div>
@@ -83,7 +83,7 @@ export default async function TentangKami() {
         </section>
 
 
-        {/* SEJARAH — horizontal scrolling timeline feel*/}
+        {/* SEJARAH */}
         <section className="animate-stagger-3 py-28 sm:py-40 animate-slide-up" >
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 

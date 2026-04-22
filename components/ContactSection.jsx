@@ -243,7 +243,7 @@ export default function ContactSection() {
                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 text-gray-600"><Mail size={18}/></div>
                    <div>
                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Email Resmi</p>
-                     <p className="font-bold text-gray-900">rumahsakitcatharina@gmail.com</p>
+                     <p className="font-bold text-gray-900 text-sm sm:text-base break-all">rumahsakitcatharina@gmail.com</p>
                    </div>
                  </div>
                </div>
