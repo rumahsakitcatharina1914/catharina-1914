@@ -5,7 +5,7 @@ import prisma from '@/lib/prisma';
 import { CheckCircle, ArrowRight, Calendar, Target, Heart, Shield, User, Users, Award, TrendingUp,} from 'lucide-react';
 
 export const metadata = {
-  title: 'Tentang Kami',
+  title: 'Tentang Kami | RS Catharina 1914',
   description: 'Sejarah, visi, misi, dan Struktur Organisasi Rumah Sakit Catharina 1914.',
 };
 

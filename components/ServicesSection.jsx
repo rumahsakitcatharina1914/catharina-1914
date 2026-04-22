@@ -104,12 +104,13 @@ export default function ServicesSection() {
 
                 {/* Content Card */}
                 <div className="p-6">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-2xl flex font-semibold items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
-                      style={{ background: '#e0f2fe', color: '#0077b6' }}>
+                  <div className="flex items-center gap-3 mb-4 p-1 pr-6 w-fit rounded-full transition-all-group"
+                        style={{ background: '#e0f2fe' }}>
+                    <div className="w-12 h-12 rounded-full flex font-semibold items-center justify-center flex-shrink-0"
+                      style={{ background: '#005ba3', color: '#ffffff'}}>
                       {service.num || '00'}
                     </div>
-                    <h3 className="text-xl mt-2 font-bold text-gray-900 group-hover:text-[#0077b6] transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#0077b6] transition-colors whitespace-nowrap">
                       {service.title}
                     </h3>
                   </div>
