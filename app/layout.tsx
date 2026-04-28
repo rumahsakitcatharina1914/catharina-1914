@@ -1,7 +1,6 @@
 import React from "react"
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Lato } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Script from "next/script"
 
@@ -61,7 +60,6 @@ export default function RootLayout({
           src="https://www.instagram.com/embed.js"
           strategy="lazyOnload"
         />
-        <Analytics />
       </body>
     </html>
   )
