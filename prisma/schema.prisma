@@ -10,7 +10,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 // Model untuk Instagram Feeds
@@ -42,7 +43,7 @@ model Doctor {
   id             Int      @id @default(autoincrement())
   name           String   @db.VarChar(255)
   specialization String   @db.VarChar(255)
-  schedule       Json?    // Menyimpan jadwal dalam format JSON
+  schedule       Json?    
   image          String?  @db.VarChar(500)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
@@ -56,7 +57,7 @@ model News {
   title       String
   slug        String   @unique
   excerpt     String   @db.Text
-  content     String   @db.LongText
+  content     String   @db.Text
   thumbnail   String
   images      Json?    @default("[]") 
   category    String   @default("umum")
@@ -67,11 +68,11 @@ model News {
 
 model Layanan {
   id          Int      @id @default(autoincrement())
-  num         String   @db.VarChar(10)   // "01", "02", dst
+  num         String   @db.VarChar(10)   
   title       String   @db.VarChar(255)
-  short       String   @db.VarChar(255)  // subtitle singkat
+  short       String   @db.VarChar(255)  
   description String   @db.Text
-  features    Json     @default("[]")    // array string
+  features    Json     @default("[]")    
   schedule    String?  @db.VarChar(255)
   image       String?  @db.VarChar(500)
   color       String   @default("#0077b6") @db.VarChar(20)
@@ -88,10 +89,10 @@ model Layanan {
 model Fasilitas {
   id          Int      @id @default(autoincrement())
   label       String   @db.VarChar(255)
-  description String?  @db.Text          // deskripsi lengkap
+  description String?  @db.Text          
   image       String?  @db.VarChar(500)
-  isLarge     Boolean  @default(false)   // col-span-2 row-span-2
-  isWide      Boolean  @default(false)   // col-span-2
+  isLarge     Boolean  @default(false)   
+  isWide      Boolean  @default(false)   
   isActive    Boolean  @default(true)
   order       Int      @default(0)
   createdAt   DateTime @default(now())
