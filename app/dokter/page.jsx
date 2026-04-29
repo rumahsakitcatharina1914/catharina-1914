@@ -3,6 +3,8 @@ import Footer from '@/components/Footer';
 import DoctorCard from '@/components/DoctorCard';
 import { Stethoscope, ArrowRight, CheckCircle } from 'lucide-react';
 import prisma from '@/lib/prisma';
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 0; 
 
 export const metadata = {
   title: 'Dokter | RS Catharina 1914',

@@ -3,6 +3,8 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 0; 
 import {
   Ambulance, Bone, Bed, Stethoscope, Microscope, Users, Zap,
   CheckCircle, Shield, ImageIcon, Clock, Users2, ArrowRight, Phone, ChevronRight,

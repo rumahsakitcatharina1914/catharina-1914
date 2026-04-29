@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import prisma from '@/lib/prisma';
 import { CheckCircle, ArrowRight, Calendar, Target, Heart, Shield, User, Users, Award, TrendingUp,} from 'lucide-react';
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 0; 
 
 export const metadata = {
   title: 'Tentang Kami | RS Catharina 1914',

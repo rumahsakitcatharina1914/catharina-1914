@@ -7,6 +7,8 @@ import SlideSection from '@/components/SlideSection';
 import prisma from '@/lib/prisma'; 
 import DoctorsSection from '../components/DoctorSection';
 import QuickInfo from '@/components/QuickInfo';
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 0; 
 
 
 export const metadata = {
